@@ -171,7 +171,7 @@ class _SignInScreenState extends State<SignInScreen> {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
+          border: Border.all(color: Theme.of(context).colorScheme.secondary),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
@@ -181,7 +181,7 @@ class _SignInScreenState extends State<SignInScreen> {
             children: [
               Icon(
                 icon,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.secondary,
               ),
               const SizedBox(width: 8),
               Text(
