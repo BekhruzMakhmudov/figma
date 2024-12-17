@@ -12,7 +12,7 @@ class SocialButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Theme.of(context).colorScheme.secondary),
+          border: Border.all(color: Theme.of(context).colorScheme.onSurface),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
@@ -22,7 +22,7 @@ class SocialButton extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: Theme.of(context).colorScheme.secondary,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
               const SizedBox(width: 8),
               Text(
