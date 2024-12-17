@@ -1,3 +1,4 @@
+import 'package:figma/widget/social_button.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -149,45 +150,17 @@ class _SignInScreenState extends State<SignInScreen> {
                 ],
               ),
               const Spacer(flex: 2),
-              _buildSocialButtonWithIcon(
-                  'Sign in with Google', Icons.email, () {}),
+              SocialButton(
+                  text: 'Sign in with Google', icon: Icons.email, onTap: () {}),
               const Spacer(flex: 1),
-              _buildSocialButtonWithIcon(
-                  'Sign in with Facebook', Icons.facebook, () {}),
+              SocialButton(
+                  text: 'Sign in with Facebook',
+                  icon: Icons.facebook,
+                  onTap: () {}),
               const Spacer(flex: 1),
-              _buildSocialButtonWithIcon(
-                  'Sign in with Apple', Icons.apple, () {}),
+              SocialButton(
+                  text: 'Sign in with Apple', icon: Icons.apple, onTap: () {}),
               const Spacer(flex: 2),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSocialButtonWithIcon(
-      String text, IconData icon, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Theme.of(context).colorScheme.secondary),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                text,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
             ],
           ),
         ),
