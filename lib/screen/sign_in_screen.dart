@@ -1,3 +1,4 @@
+import 'package:figma/screen/sign_up_screen.dart';
 import 'package:figma/widget/social_button.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +60,14 @@ class _SignInScreenState extends State<SignInScreen> {
                             ?.copyWith(color: Colors.blue)),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpScreen(),
+                        ),
+                      );
+                    },
                     child: Text('Sign up',
                         style: Theme.of(context)
                             .textTheme

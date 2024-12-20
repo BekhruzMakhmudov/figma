@@ -16,18 +16,23 @@ class _HouseScreenState extends State<HouseScreen> {
     return Scaffold(
       appBar: AppBar(
         title: GestureDetector(
-              onTap: () {},
-              child: Row(
-                children: [
-                  Icon(Icons.keyboard_arrow_left, size: 35),
-                  SizedBox(width: 4), // Space between icon and text
-                  Text(
-                    'Back',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ],
+          onTap: () {},
+          child: TextButton.icon(
+            onPressed: () {},
+            icon: Icon(
+              Icons.keyboard_arrow_left,
+              size: 35,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            label: Text(
+              'Back',
+              style: TextStyle(
+                fontSize: 20,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
+          ),
+        ),
         centerTitle: false,
       ),
       body: SingleChildScrollView(
