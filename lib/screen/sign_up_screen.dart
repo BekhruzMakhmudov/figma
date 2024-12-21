@@ -1,5 +1,6 @@
 import 'package:figma/screen/sign_in_screen.dart';
 import 'package:figma/widget/link_text.dart';
+import 'package:figma/widget/requirement_password.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -13,8 +14,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool isValidPhone = true;
   bool isValidEmail = false;
   bool isVerificationCodeEmpty = true;
-  bool _obscureText1 = true;
-  bool _obscureText2 = true;
+  bool _obscurePassword = true;
+  bool _obscureConfirm = true;
   final _formKey1 = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
   final _emailController = TextEditingController();
@@ -366,9 +367,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
             key: _formKey2,
             child: Column(
               children: [
+                RequirementPassword(text:_passwordController.text),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _passwordController,
-                  obscureText: _obscureText1,
+                  obscureText: _obscurePassword,
+                  onChanged: (value) {
+                    setState(() {
+                      _passwordController.text = value;
+                    });
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Password is required';
@@ -384,12 +392,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     labelText: "Set up password",
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscureText1 ? Icons.visibility_off : Icons.visibility,
+                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
                       ),
                       onPressed: () {
                         setState(
                           () {
-                            _obscureText1 = !_obscureText1;
+                            _obscurePassword = !_obscurePassword;
                           },
                         );
                       },
@@ -402,7 +410,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: 16),
                 TextFormField(
                   controller: _confirmPasswordController,
-                  obscureText: _obscureText2,
+                  obscureText: _obscureConfirm,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please confirm your password';
@@ -416,12 +424,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     labelText: "Confirm password",
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscureText2 ? Icons.visibility_off : Icons.visibility,
+                        _obscureConfirm ? Icons.visibility_off : Icons.visibility,
                       ),
                       onPressed: () {
                         setState(
                           () {
-                            _obscureText2 = !_obscureText2;
+                            _obscureConfirm = !_obscureConfirm;
                           },
                         );
                       },
@@ -431,9 +439,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                const Text(
-                    "Password must have: 1 capital, 8+ characters, 1 number"),
               ],
             ),
           ),
