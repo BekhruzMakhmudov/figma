@@ -75,10 +75,7 @@ class _HouseScreenState extends State<HouseScreen> {
                 height: 200,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    'https://via.placeholder.com/400x200',
-                    fit: BoxFit.cover,
-                  ),
+                  child: Container(color: Colors.grey),
                 ),
               ),
               SizedBox(height: 12),

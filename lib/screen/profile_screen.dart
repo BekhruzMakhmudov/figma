@@ -1,3 +1,4 @@
+import 'package:figma/screen/change_password_screen.dart';
 import 'package:figma/widget/profile_option.dart';
 import 'package:flutter/material.dart';
 
@@ -105,7 +106,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ProfileOption(
             title: "Change password",
             icon: Icons.lock_outline,
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChangePasswordScreen(),
+                ),
+              );
+            },
           ),
           ProfileOption(
             title: "Log out",
