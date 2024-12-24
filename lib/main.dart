@@ -1,4 +1,4 @@
-import 'package:figma/screen/forgot_password/forgot_password_screen.dart';
+import 'package:figma/screen/filter_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      home: ForgotPasswordScreen(),
+      home: FilterScreen(),
     );
   }
 }
