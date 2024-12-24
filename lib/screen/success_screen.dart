@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class SuccessScreen extends StatelessWidget {
   final String text;
   final String buttonText;
+  final Widget? nextScreen;
   const SuccessScreen({
     super.key,
     required this.text,
     required this.buttonText,
+    this.nextScreen,
   });
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,12 @@ class SuccessScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 ElevatedButton(
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () => (nextScreen == null)
+                      ? Navigator.of(context).pop()
+                      : Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => nextScreen!),
+                        ),
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(double.infinity, 50),
                     backgroundColor: Colors.white,
