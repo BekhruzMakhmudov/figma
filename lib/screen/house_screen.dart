@@ -73,9 +73,11 @@ class _HouseScreenState extends State<HouseScreen> {
               SizedBox(
                 width: double.infinity,
                 height: 200,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(color: Colors.grey),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.grey,
+                  ),
                 ),
               ),
               SizedBox(height: 12),

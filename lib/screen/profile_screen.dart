@@ -1,4 +1,5 @@
 import 'package:figma/screen/change_password_screen.dart';
+import 'package:figma/screen/profile_edit_screen.dart';
 import 'package:figma/widget/profile_option.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         elevation: 0,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfileEditScreen(),
+                ),
+              );
+            },
             child: Text(
               "Edit",
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(

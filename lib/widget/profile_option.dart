@@ -24,7 +24,7 @@ class ProfileOption extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.2),
+              color: Colors.grey.withAlpha(20),
               spreadRadius: 2,
               blurRadius: 6,
               offset: const Offset(0, 3),
