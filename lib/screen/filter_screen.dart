@@ -1,6 +1,7 @@
 import 'package:figma/widget/checkbox.dart';
+import 'package:figma/widget/expansion.dart';
 import 'package:figma/widget/form_button.dart';
-import 'package:figma/widget/range_number.dart';
+import 'package:figma/widget/list_tile_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -18,6 +19,18 @@ class _FilterScreenState extends State<FilterScreen> {
   bool isVillaSelected = false;
   bool isApartmentSelected = false;
 
+  final TextEditingController fromSizeController =
+      TextEditingController(text: '0');
+  final TextEditingController toSizeController =
+      TextEditingController(text: '345');
+
+  int adults = 2;
+  int bedrooms = 2;
+  int beds = 0;
+  int bathrooms = 0;
+  int carPlace = 0;
+  int charger = 0;
+
   final List<String> statusFilters = [
     'Knocked you',
     'I Knocked',
@@ -34,6 +47,7 @@ class _FilterScreenState extends State<FilterScreen> {
     'House',
     'Detached House',
   ];
+
   final List<String> typeAmenity = [
     'Wi-Fi',
     'Hi-Fi Sound',
@@ -62,6 +76,7 @@ class _FilterScreenState extends State<FilterScreen> {
     'Wii',
     'Car',
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,14 +128,8 @@ class _FilterScreenState extends State<FilterScreen> {
 
               // Location Section
               const SizedBox(height: 24),
-              ExpansionTile(
-                title: Text(
-                  'Where?',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
+              Expansion(
+                text: 'Where?',
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -138,14 +147,8 @@ class _FilterScreenState extends State<FilterScreen> {
 
               // Calendar Section
               const SizedBox(height: 16),
-              ExpansionTile(
-                title: Text(
-                  'Dates',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
+              Expansion(
+                text: 'Dates',
                 children: [
                   TableCalendar(
                     firstDay: DateTime.utc(2021, 1, 1),
@@ -166,109 +169,132 @@ class _FilterScreenState extends State<FilterScreen> {
 
               // Guests Section
               const SizedBox(height: 16),
-              ExpansionTile(
-                title: Text(
-                  'Guests',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
+              Expansion(
+                text: 'Guests',
                 children: [
-                  ListTile(
-                    title: Text(
-                      'Adults',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  ListTileCounter(
+                    title: 'Adults',
+                    subtitle: 'Older than 13 y.o',
+                    value: adults,
+                    onChanged: (value) => setState(
+                      () {
+                        adults = value;
+                      },
                     ),
-                    subtitle: const Text('Older than 13 y.o'),
-                    trailing: RangeNumber(),
                   ),
                 ],
               ),
               // Property Type Section
               const SizedBox(height: 16),
-              ExpansionTile(
-                title: Text(
-                  'Type',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
+              Expansion(
+                text: 'Type',
                 children: [
                   ...typeAccommodation.map((text) => CheckBox(text: text))
                 ],
               ),
               // Rooms Section
               const SizedBox(height: 16),
-              ExpansionTile(
-                title: Text(
-                  'Rooms & arrangements',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
+              Expansion(
+                text: 'Rooms & arrangements',
                 children: [
-                  ListTile(
-                    title: const Text(
-                      'Bedrooms',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  ListTileCounter(
+                    title: 'Bedrooms',
+                    value: bedrooms,
+                    onChanged: (value) => setState(
+                      () {
+                        bedrooms = value;
+                      },
                     ),
-                    trailing: RangeNumber(),
                   ),
-                  ListTile(
-                    title: const Text(
-                      'Beds',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  ListTileCounter(
+                    title: 'Beds',
+                    value: beds,
+                    onChanged: (value) => setState(
+                      () {
+                        beds = value;
+                      },
                     ),
-                    trailing: RangeNumber(),
                   ),
-                  ListTile(
-                    title: const Text(
-                      'Bathrooms',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  ListTileCounter(
+                    title: 'Bathrooms',
+                    value: bathrooms,
+                    onChanged: (value) => setState(
+                      () {
+                        bathrooms = value;
+                      },
                     ),
-                    trailing: RangeNumber(),
+                  ),
+                ],
+              ),
+              //Size of place Section
+              const SizedBox(height: 16),
+              Expansion(
+                text: 'Size of place',
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: fromSizeController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              labelText: 'From',
+                              suffixText: 'm²',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: TextField(
+                            controller: toSizeController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              labelText: 'To',
+                              suffixText: 'm²',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
               // Amenities Section
               const SizedBox(height: 16),
-              ExpansionTile(
-                title: Text(
-                  'Amenities',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
+              Expansion(
+                text: 'Amenities',
                 children: [...typeAmenity.map((text) => CheckBox(text: text))],
               ),
               // Car Section
               const SizedBox(height: 16),
-              ExpansionTile(
-                title: Text(
-                  'Place for a car',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
+              Expansion(
+                text: 'Place for a car',
                 children: [
-                  ListTile(
-                    title: Text(
-                      'Car place',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  ListTileCounter(
+                    title: 'Car place',
+                    value: carPlace,
+                    onChanged: (value) => setState(
+                      () {
+                        carPlace = value;
+                      },
                     ),
-                    trailing: RangeNumber(),
                   ),
-                  ListTile(
-                    title: Text(
-                      'Charger for electric car',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  ListTileCounter(
+                    title: 'Charger for electric car',
+                    value: charger,
+                    onChanged: (value) => setState(
+                      () {
+                        charger = value;
+                      },
                     ),
-                    trailing: RangeNumber(),
                   ),
                 ],
               ),
