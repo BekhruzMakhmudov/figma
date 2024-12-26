@@ -6,7 +6,8 @@ import 'package:figma/widget/requirement_password.dart';
 import 'package:flutter/material.dart';
 
 class NewPasswordScreen extends StatefulWidget {
-  const NewPasswordScreen({super.key});
+  final bool? inSignUp;
+  const NewPasswordScreen({super.key, this.inSignUp});
 
   @override
   State<NewPasswordScreen> createState() => _NewPasswordScreenState();
@@ -14,8 +15,12 @@ class NewPasswordScreen extends StatefulWidget {
 
 class _NewPasswordScreenState extends State<NewPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _passwordController = TextEditingController();
+
+  final _newPasswordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+
+  bool obscureNewPassword=true;
+  bool obscureConfirmPassword=true;
 
   @override
   Widget build(BuildContext context) {
@@ -32,22 +37,36 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FormTitle(title: 'New password', subtitle: '03/03'),
+              FormTitle(
+                  title: (widget.inSignUp == null) ? 'New password' : 'Sign up',
+                  subtitle: '03/03',
+                  inSignUp: widget.inSignUp),
               const SizedBox(height: 24),
-              RequirementPassword(text: _passwordController.text),
+              RequirementPassword(text: _newPasswordController.text),
               const SizedBox(height: 24),
               TextFormField(
-                controller: _passwordController,
-                obscureText: true,
+                controller: _newPasswordController,
+                obscureText: obscureNewPassword,
                 onChanged: (value) {
                   setState(() {
-                    _passwordController.text = value;
+                    _newPasswordController.text = value;
                   });
                 },
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Set up password',
                   border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.check, color: Colors.green),
+                  suffixIcon: IconButton(
+                      icon: Icon(
+                        obscureNewPassword ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(
+                          () {
+                            obscureNewPassword = !obscureNewPassword;
+                          },
+                        );
+                      },
+                    ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -63,14 +82,25 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               const SizedBox(height: 16),
               TextFormField(
                 controller: _confirmPasswordController,
-                obscureText: true,
-                decoration: const InputDecoration(
+                obscureText: obscureConfirmPassword,
+                decoration: InputDecoration(
                   labelText: 'Confirm password',
                   border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.check, color: Colors.green),
+                  suffixIcon: IconButton(
+                      icon: Icon(
+                        obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(
+                          () {
+                            obscureConfirmPassword = !obscureConfirmPassword;
+                          },
+                        );
+                      },
+                    ),
                 ),
                 validator: (value) {
-                  if (value != _passwordController.text) {
+                  if (value != _newPasswordController.text) {
                     return 'Passwords do not match';
                   }
                   return null;
@@ -78,7 +108,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               ),
               const SizedBox(height: 24),
               FormButton(
-                text: 'Save',
+                text: (widget.inSignUp == null) ? 'Save' : 'Create Account',
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
                     Navigator.push(
@@ -94,6 +124,24 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                   }
                 },
               ),
+              if (widget.inSignUp ?? false)
+                Center(
+                  child: TextButton.icon(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(
+                      Icons.keyboard_arrow_left,
+                      color: Colors.blue,
+                      size: 30,
+                    ),
+                    label: Text(
+                      "Back",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge
+                          ?.copyWith(color: Colors.blue),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),

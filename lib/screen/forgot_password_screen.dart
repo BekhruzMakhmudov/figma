@@ -1,4 +1,4 @@
-import 'package:figma/screen/forgot_password/verification_screen.dart';
+import 'package:figma/screen/verification_screen.dart';
 import 'package:figma/widget/form_button.dart';
 import 'package:figma/widget/form_title.dart';
 import 'package:flutter/material.dart';
