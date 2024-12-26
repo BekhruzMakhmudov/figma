@@ -1,5 +1,6 @@
 import 'package:figma/screen/forgot_password_screen.dart';
 import 'package:figma/screen/sign_up_screen.dart';
+import 'package:figma/widget/header_text.dart';
 import 'package:figma/widget/social_button.dart';
 import 'package:flutter/material.dart';
 
@@ -52,12 +53,11 @@ class _SignInScreenState extends State<SignInScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Sign in',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineLarge
-                        ?.copyWith(color: Colors.blue),
+                  HeaderText(
+                    text: 'Sign in',
+                    isLarge: true,
+                    isBold: true,
+                    color: Colors.blue,
                   ),
                   GestureDetector(
                     onTap: () {
@@ -68,11 +68,12 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       );
                     },
-                    child: Text('Sign up',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineLarge
-                            ?.copyWith(color: Colors.grey)),
+                    child: HeaderText(
+                      text: 'Sign up',
+                      isLarge: true,
+                      isBold: true,
+                      color: Colors.grey,
+                    ),
                   ),
                 ],
               ),
@@ -141,12 +142,10 @@ class _SignInScreenState extends State<SignInScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Text(
-                  'Sign in',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(color: Colors.white),
+                child: HeaderText(
+                  text: 'Sign in',
+                  isLarge: false,
+                  color: Colors.white,
                 ),
               ),
               const Spacer(flex: 2),

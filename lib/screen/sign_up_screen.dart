@@ -1,4 +1,5 @@
 import 'package:figma/screen/verification_screen.dart';
+import 'package:figma/util/get_validation_color.dart';
 import 'package:figma/widget/form_button.dart';
 import 'package:figma/widget/form_title.dart';
 import 'package:figma/widget/link_text.dart';
@@ -11,19 +12,32 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  int currentStep = 0;
   bool isValidPhone = true;
-  bool isValidEmail = false;
-  bool isVerificationCodeEmpty = true;
+  bool isValidEmail = true;
+
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+
+  final focusNode = FocusNode();
+  bool isFocused = false;
 
   String selectedCountryCode = '+1';
-  TextEditingController phoneController = TextEditingController();
 
   final List<String> countryCodes = ['+1', '+44', '+91', '+61', '+81'];
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode.addListener(() {
+      setState(() {
+        isFocused = focusNode.hasFocus;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +93,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const SizedBox(height: 10),
               TextFormField(
                 controller: _emailController,
+                onChanged: (value) {
+                  setState(() {
+                    isValidEmail = false;
+                  });
+                },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     setState(() {
@@ -99,11 +118,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
                 decoration: InputDecoration(
                   hintText: "E-mail",
-                  suffixIcon: isValidEmail
+                  suffixIcon: isValidEmail && _emailController.text.isNotEmpty
                       ? Icon(Icons.check, color: Colors.green)
                       : null,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: getValidationColor(
+                          context: context,
+                          isValid: isValidEmail,
+                          isEmpty: _emailController.text.isEmpty),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: getValidationColor(
+                          context: context,
+                          isValid: isValidEmail,
+                          isEmpty: _emailController.text.isEmpty),
+                      width: 2,
+                    ),
                   ),
                 ),
               ),
@@ -111,9 +147,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                      color: isValidPhone
-                          ? Colors.grey
-                          : Theme.of(context).colorScheme.error),
+                    color: getValidationColor(
+                      context: context,
+                      isValid: isValidPhone,
+                      isEmpty: _phoneController.text.isEmpty,
+                    ),
+                    width: isFocused ? 2 : 1,
+                  ),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -126,11 +166,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           selectedCountryCode = newValue!;
                         });
                       },
-                      style: TextStyle(
-                        color: isValidPhone
-                            ? Theme.of(context).colorScheme.onSurface
-                            : Theme.of(context).colorScheme.error,
-                      ),
                       underline: Container(),
                       items: countryCodes
                           .map<DropdownMenuItem<String>>((String value) {
@@ -142,9 +177,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
-                        controller: phoneController,
+                        controller: _phoneController,
+                        focusNode: focusNode,
                         keyboardType: TextInputType.phone,
                         maxLength: 9,
+                        onChanged: (value) {
+                          setState(() {
+                            isValidPhone = false;
+                          });
+                        },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             setState(() {
@@ -168,10 +209,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           counterText: "",
                           isDense: true,
                           border: InputBorder.none,
-                          hintStyle: TextStyle(
-                              color: isValidPhone
-                                  ? Colors.grey
-                                  : Theme.of(context).colorScheme.error),
+                          suffixIcon:
+                              isValidPhone && _phoneController.text.isNotEmpty
+                                  ? Icon(Icons.check, color: Colors.green)
+                                  : null,
                         ),
                       ),
                     ),
