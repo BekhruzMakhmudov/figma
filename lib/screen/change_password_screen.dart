@@ -1,4 +1,5 @@
 import 'package:figma/screen/success_screen.dart';
+import 'package:figma/widget/header_text.dart';
 import 'package:figma/widget/requirement_password.dart';
 import 'package:flutter/material.dart';
 
@@ -28,18 +29,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Change password",
-          style: Theme.of(context)
-              .textTheme
-              .headlineSmall
-              ?.copyWith(fontWeight: FontWeight.bold),
+        title: HeaderText(
+          text:"Change password",
+          isLarge: false,
+          isBold: true,
         ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.keyboard_arrow_left,
-            size: 35,
-          ),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),

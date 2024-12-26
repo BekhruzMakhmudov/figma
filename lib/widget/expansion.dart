@@ -1,3 +1,4 @@
+import 'package:figma/widget/header_text.dart';
 import 'package:flutter/material.dart';
 
 class Expansion extends StatelessWidget {
@@ -7,12 +8,10 @@ class Expansion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: Text(
-        text,
-        style: Theme.of(context)
-            .textTheme
-            .headlineSmall
-            ?.copyWith(fontWeight: FontWeight.bold),
+      title: HeaderText(
+        text:text,
+        isLarge: false,
+        isBold: true,
       ),
       children: children,
     );

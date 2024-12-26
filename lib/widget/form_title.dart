@@ -1,4 +1,5 @@
 import 'package:figma/screen/sign_in_screen.dart';
+import 'package:figma/widget/header_text.dart';
 import 'package:flutter/material.dart';
 
 class FormTitle extends StatelessWidget {
@@ -19,12 +20,11 @@ class FormTitle extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              title,
-              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
+            HeaderText(
+              text: title,
+              isLarge: true,
+              isBold: true,
+              color: Colors.blue,
             ),
             if (inSignUp ?? false)
               Text(

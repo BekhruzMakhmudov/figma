@@ -1,3 +1,4 @@
+import 'package:figma/widget/header_text.dart';
 import 'package:flutter/material.dart';
 
 class ProfileEditScreen extends StatefulWidget {
@@ -22,12 +23,10 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Edit Information',
-          style: Theme.of(context)
-              .textTheme
-              .headlineSmall
-              ?.copyWith(fontWeight: FontWeight.bold),
+        title: HeaderText(
+          text:'Edit Information',
+          isLarge: false,
+          isBold: true,
         ),
         leading: IconButton(
           icon: Icon(

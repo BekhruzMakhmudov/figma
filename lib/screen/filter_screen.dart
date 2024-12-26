@@ -1,6 +1,7 @@
 import 'package:figma/widget/checkbox.dart';
 import 'package:figma/widget/expansion.dart';
 import 'package:figma/widget/form_button.dart';
+import 'package:figma/widget/header_text.dart';
 import 'package:figma/widget/list_tile_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -81,12 +82,10 @@ class _FilterScreenState extends State<FilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Filter',
-          style: Theme.of(context)
-              .textTheme
-              .headlineLarge
-              ?.copyWith(fontWeight: FontWeight.bold),
+        title: HeaderText(
+          text:'Filter',
+          isLarge: true,
+          isBold: true,
         ),
         centerTitle: false,
         actions: [

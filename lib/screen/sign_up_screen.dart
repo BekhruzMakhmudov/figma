@@ -29,7 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
+        leading: BackButton(onPressed: () => Navigator.pop(context)),
         elevation: 0,
       ),
       body: Padding(

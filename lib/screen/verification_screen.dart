@@ -14,7 +14,6 @@ class VerificationScreen extends StatefulWidget {
 
 class _VerificationScreenState extends State<VerificationScreen> {
   final _codeController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +75,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          const NewPasswordScreen(inSignUp: true),
+                          NewPasswordScreen(inSignUp: widget.inSignUp),
                     ),
                   );
                 }

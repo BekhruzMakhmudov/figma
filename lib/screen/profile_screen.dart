@@ -1,5 +1,6 @@
 import 'package:figma/screen/change_password_screen.dart';
 import 'package:figma/screen/profile_edit_screen.dart';
+import 'package:figma/widget/header_text.dart';
 import 'package:figma/widget/profile_option.dart';
 import 'package:flutter/material.dart';
 
@@ -17,12 +18,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Profile",
-          style: Theme.of(context)
-              .textTheme
-              .headlineMedium
-              ?.copyWith(fontWeight: FontWeight.bold),
+        title: HeaderText(
+          text: "Profile",
+          isBold: true,
         ),
         centerTitle: false,
         elevation: 0,
