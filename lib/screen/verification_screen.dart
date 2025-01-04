@@ -1,3 +1,4 @@
+import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/new_password_screen.dart';
 import 'package:figma/widget/form_button.dart';
 import 'package:figma/widget/form_title.dart';
@@ -16,12 +17,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
   final _codeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: const BackButton(),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+    return FormFrame(
+      hasAppBar: true,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -50,21 +47,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
             ),
             const SizedBox(height: 10),
             if (widget.inSignUp ?? false)
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text:
-                          "Didn't receive an email? Check your spam folder or ",
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
-                    ),
-                    linkText(
-                        text: "resend verification e-mail in 00:59",
-                        onTap: () {}),
-                  ],
-                ),
+              Wrap(
+                children: [
+                  Text("Didn't receive an email? Check your spam folder or "),
+                  linkText(
+                      text: "resend verification e-mail in 00:59",
+                      onTap: () {}),
+                ],
               ),
             const SizedBox(height: 24),
             FormButton(

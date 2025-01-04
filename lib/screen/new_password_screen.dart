@@ -1,3 +1,4 @@
+import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/sign_in_screen.dart';
 import 'package:figma/screen/success_screen.dart';
 import 'package:figma/widget/form_button.dart';
@@ -24,12 +25,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: const BackButton(),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+    return FormFrame(
+      hasAppBar: true,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Form(

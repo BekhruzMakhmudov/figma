@@ -1,3 +1,4 @@
+import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/screen/change_password_screen.dart';
 import 'package:figma/screen/profile_edit_screen.dart';
 import 'package:figma/widget/header_text.dart';
@@ -12,11 +13,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  int _currentIndex = 3;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return NavigationFrame(
       appBar: AppBar(
         title: HeaderText(
           text: "Profile",
@@ -126,35 +126,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             icon: Icons.logout,
             color: Colors.red,
             onTap: () {},
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        selectedItemColor: Colors.blue, // Active tab color
-        unselectedItemColor: Colors.grey, // Inactive tab color
-        showUnselectedLabels: true,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Houses",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: "Chats",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: "Knock-knocks",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
           ),
         ],
       ),

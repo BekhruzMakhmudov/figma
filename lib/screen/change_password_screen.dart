@@ -1,3 +1,4 @@
+import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/screen/success_screen.dart';
 import 'package:figma/widget/header_text.dart';
 import 'package:figma/widget/requirement_password.dart';
@@ -11,7 +12,6 @@ class ChangePasswordScreen extends StatefulWidget {
 }
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
-  int _currentIndex = 3;
   bool isValid = false;
 
   final _formKey = GlobalKey<FormState>();
@@ -27,7 +27,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return NavigationFrame(
       appBar: AppBar(
         title: HeaderText(
           text:"Change password",
@@ -86,35 +86,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        selectedItemColor: Colors.blue, // Active tab color
-        unselectedItemColor: Colors.grey, // Inactive tab color
-        showUnselectedLabels: true,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Houses",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: "Chats",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: "Knock-knocks",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
-        ],
       ),
     );
   }

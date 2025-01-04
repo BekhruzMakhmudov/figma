@@ -1,3 +1,4 @@
+import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/widget/header_text.dart';
 import 'package:flutter/material.dart';
 
@@ -9,19 +10,14 @@ class ProfileEditScreen extends StatefulWidget {
 }
 
 class _ProfileEditScreenState extends State<ProfileEditScreen> {
-  int _currentIndex = 3;
-
   final TextEditingController firstNameController = TextEditingController();
-
   final TextEditingController lastNameController = TextEditingController();
-
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return NavigationFrame(
       appBar: AppBar(
         title: HeaderText(
           text:'Edit Information',
@@ -173,35 +169,6 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        selectedItemColor: Colors.blue, // Active tab color
-        unselectedItemColor: Colors.grey, // Inactive tab color
-        showUnselectedLabels: true,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Houses",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: "Chats",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: "Knock-knocks",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
-        ],
       ),
     );
   }

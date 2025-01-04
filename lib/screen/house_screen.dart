@@ -1,3 +1,4 @@
+import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/widget/room_card.dart';
 import 'package:figma/widget/icon_text.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +10,10 @@ class HouseScreen extends StatefulWidget {
 }
 
 class _HouseScreenState extends State<HouseScreen> {
-  int _currentIndex = 3;
   bool _isExpanded = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return NavigationFrame(
       appBar: AppBar(
         title: GestureDetector(
           onTap: () {},
@@ -283,36 +283,6 @@ class _HouseScreenState extends State<HouseScreen> {
             ],
           ),
         ),
-      ),
-      // Bottom Navigation Bar
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        selectedItemColor: Colors.blue, // Active tab color
-        unselectedItemColor: Colors.grey, // Inactive tab color
-        showUnselectedLabels: true,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Houses",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: "Chats",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: "Knock-knocks",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
-        ],
       ),
     );
   }

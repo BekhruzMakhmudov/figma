@@ -1,3 +1,4 @@
+import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/forgot_password_screen.dart';
 import 'package:figma/screen/sign_up_screen.dart';
 import 'package:figma/widget/header_text.dart';
@@ -43,7 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return FormFrame(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SafeArea(

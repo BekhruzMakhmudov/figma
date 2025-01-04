@@ -1,3 +1,4 @@
+import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/verification_screen.dart';
 import 'package:figma/util/get_validation_color.dart';
 import 'package:figma/widget/form_button.dart';
@@ -41,38 +42,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(onPressed: () => Navigator.pop(context)),
-        elevation: 0,
-      ),
+    return FormFrame(
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FormTitle(title: "Sign up", subtitle: "01/03", inSignUp: true),
-              const SizedBox(height: 24),
-              Text(
-                "Most preferably is to use the same name as in the passport",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall
-                    ?.copyWith(color: Colors.grey),
-              ),
-              const SizedBox(height: 10),
               TextFormField(
                 controller: _firstNameController,
                 decoration: InputDecoration(
                   hintText: "First name",
+                  helperText:
+                      "Most preferably is to use the same name as in the passport",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
               ),
-              SizedBox(height: 16),
               TextFormField(
                 controller: _lastNameController,
                 decoration: InputDecoration(
@@ -82,15 +72,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 32),
-              Text(
-                "We will send you a verification code to this e-mail address",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall
-                    ?.copyWith(color: Colors.grey),
-              ),
-              const SizedBox(height: 10),
               TextFormField(
                 controller: _emailController,
                 onChanged: (value) {
@@ -118,6 +99,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
                 decoration: InputDecoration(
                   hintText: "E-mail",
+                  helperText:
+                      "We will send you a verification code to this e-mail address",
                   suffixIcon: isValidEmail && _emailController.text.isNotEmpty
                       ? Icon(Icons.check, color: Colors.green)
                       : null,
@@ -143,7 +126,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -158,7 +140,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 child: Row(
                   children: [
-                    SizedBox(width: 12),
+                    SizedBox(width: 8),
                     DropdownButton<String>(
                       value: selectedCountryCode,
                       onChanged: (newValue) {
@@ -219,7 +201,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 32),
               FormButton(
                   text: "Agree and continue",
                   onTap: () {
@@ -233,23 +214,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       );
                     }
                   }),
-              SizedBox(height: 16),
-              RichText(
-                text: TextSpan(
+              Wrap(
+                  alignment: WrapAlignment.center,
                   children: [
-                    TextSpan(
-                      text: "By continuing you agree with our ",
+                    Text(
+                      "By continuing you agree with our ",
                       style: TextStyle(color: Colors.grey),
                     ),
                     linkText(text: "terms & conditions", onTap: () {}),
-                    TextSpan(
-                      text: " and ",
+                    Text(
+                      " and ",
                       style: TextStyle(color: Colors.grey),
                     ),
                     linkText(text: "privacy policy", onTap: () {}),
                   ],
                 ),
-              ),
             ],
           ),
         ),

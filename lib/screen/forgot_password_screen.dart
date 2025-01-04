@@ -1,3 +1,4 @@
+import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/verification_screen.dart';
 import 'package:figma/widget/form_button.dart';
 import 'package:figma/widget/form_title.dart';
@@ -16,11 +17,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: const BackButton(),
-        elevation: 0,
-      ),
+    return FormFrame(
+      hasAppBar: true,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Form(
