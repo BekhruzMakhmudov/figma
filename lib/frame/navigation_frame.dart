@@ -18,7 +18,7 @@ class _NavigationFrameState extends State<NavigationFrame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: widget.appBar,
-      body: widget.body,
+      body: SafeArea(child: widget.body),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {

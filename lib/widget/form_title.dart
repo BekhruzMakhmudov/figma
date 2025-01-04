@@ -40,8 +40,13 @@ class FormTitle extends StatelessWidget {
               )
             : Row(
                 children: [
-                  Text("Already a member?",
-                      style: Theme.of(context).textTheme.bodyLarge),
+                  Text(
+                    "Already a member?",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  ),
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
@@ -53,10 +58,10 @@ class FormTitle extends StatelessWidget {
                     },
                     child: Text(
                       "Sing in",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(color: Colors.blue),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                   ),
                 ],

@@ -49,9 +49,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FormTitle(title: "Sign up", subtitle: "01/03", inSignUp: true),
+              Spacer(flex: 3),
               TextFormField(
                 controller: _firstNameController,
                 decoration: InputDecoration(
@@ -63,6 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
+              Spacer(flex: 1),
               TextFormField(
                 controller: _lastNameController,
                 decoration: InputDecoration(
@@ -72,6 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
+              Spacer(flex: 3),
               TextFormField(
                 controller: _emailController,
                 onChanged: (value) {
@@ -126,6 +128,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
+              Spacer(flex: 1),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -201,6 +204,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
               ),
+              Spacer(flex: 6),
               FormButton(
                   text: "Agree and continue",
                   onTap: () {
@@ -214,21 +218,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       );
                     }
                   }),
+              Spacer(flex: 1),
               Wrap(
-                  alignment: WrapAlignment.center,
-                  children: [
-                    Text(
-                      "By continuing you agree with our ",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    linkText(text: "terms & conditions", onTap: () {}),
-                    Text(
-                      " and ",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    linkText(text: "privacy policy", onTap: () {}),
-                  ],
-                ),
+                alignment: WrapAlignment.center,
+                children: [
+                  Text(
+                    "By continuing you agree with our ",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  linkText(text: "terms & conditions", onTap: () {}),
+                  Text(
+                    " and ",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  linkText(text: "privacy policy", onTap: () {}),
+                ],
+              ),
+              Spacer(flex: 1),
             ],
           ),
         ),

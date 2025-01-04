@@ -47,137 +47,134 @@ class _SignInScreenState extends State<SignInScreen> {
     return FormFrame(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: SafeArea(
-          child: Column(
-            children: [
-              const Spacer(flex: 1),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  HeaderText(
-                    text: 'Sign in',
-                    isLarge: true,
-                    isBold: true,
-                    color: Colors.blue,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUpScreen(),
-                        ),
-                      );
-                    },
-                    child: HeaderText(
-                      text: 'Sign up',
-                      isLarge: true,
-                      isBold: true,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-              const Spacer(flex: 2),
-              TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  errorText: _emailError,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                HeaderText(
+                  text: 'Sign in',
+                  isLarge: true,
+                  isBold: true,
+                  color: Colors.blue,
                 ),
-              ),
-              const Spacer(flex: 1),
-              TextField(
-                controller: _passwordController,
-                obscureText: _obscureText,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  errorText: _passwordError,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _obscureText ? Icons.visibility_off : Icons.visibility,
-                    ),
-                    onPressed: () {
-                      setState(
-                        () {
-                          _obscureText = !_obscureText;
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ForgotPasswordScreen(),
+                        builder: (context) => SignUpScreen(),
                       ),
                     );
                   },
-                  child: Text(
-                    'Forgot password?',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(color: Colors.grey),
+                  child: HeaderText(
+                    text: 'Sign up',
+                    isLarge: true,
+                    isBold: true,
+                    color: Colors.grey,
                   ),
                 ),
-              ),
-              const Spacer(flex: 1),
-              ElevatedButton(
-                onPressed: _validateAndSignIn,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  minimumSize: const Size(double.infinity, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: HeaderText(
-                  text: 'Sign in',
-                  isLarge: false,
-                  color: Colors.white,
+              ],
+            ),
+            const Spacer(flex: 3),
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                errorText: _emailError,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              const Spacer(flex: 2),
-              Row(
-                children: [
-                  const Expanded(child: Divider()),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text('or sign in with',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(color: Colors.grey)),
+            ),
+            const Spacer(flex: 1),
+            TextField(
+              controller: _passwordController,
+              obscureText: _obscureText,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                errorText: _passwordError,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscureText ? Icons.visibility_off : Icons.visibility,
                   ),
-                  const Expanded(child: Divider()),
-                ],
+                  onPressed: () {
+                    setState(
+                      () {
+                        _obscureText = !_obscureText;
+                      },
+                    );
+                  },
+                ),
               ),
-              const Spacer(flex: 2),
-              SocialButton(
-                  text: 'Sign in with Google', icon: Icons.email, onTap: () {}),
-              const Spacer(flex: 1),
-              SocialButton(
-                  text: 'Sign in with Facebook',
-                  icon: Icons.facebook,
-                  onTap: () {}),
-              const Spacer(flex: 1),
-              SocialButton(
-                  text: 'Sign in with Apple', icon: Icons.apple, onTap: () {}),
-              const Spacer(flex: 2),
-            ],
-          ),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ForgotPasswordScreen(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Forgot password?',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(color: Colors.grey),
+                ),
+              ),
+            ),
+            const Spacer(flex: 3),
+            ElevatedButton(
+              onPressed: _validateAndSignIn,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                minimumSize: const Size(double.infinity, 50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: HeaderText(
+                text: 'Sign in',
+                isLarge: false,
+                color: Colors.white,
+              ),
+            ),
+            const Spacer(flex: 3),
+            Row(
+              children: [
+                const Expanded(child: Divider()),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text('or sign in with',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium
+                          ?.copyWith(color: Colors.grey)),
+                ),
+                const Expanded(child: Divider()),
+              ],
+            ),
+            const Spacer(flex: 3),
+            SocialButton(
+                text: 'Sign in with Google', icon: Icons.email, onTap: () {}),
+            const Spacer(flex: 1),
+            SocialButton(
+                text: 'Sign in with Facebook',
+                icon: Icons.facebook,
+                onTap: () {}),
+            const Spacer(flex: 1),
+            SocialButton(
+                text: 'Sign in with Apple', icon: Icons.apple, onTap: () {}),
+            const Spacer(flex: 3),
+          ],
         ),
       ),
     );
