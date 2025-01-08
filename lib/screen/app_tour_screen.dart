@@ -64,15 +64,14 @@ class _AppTourScreenState extends State<AppTourScreen> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Column(
+      body: Column(
           children: [
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
-                onPageChanged: (int page) {
+                onPageChanged: (int next) {
                   setState(() {
-                    _currentPage = page;
+                    _currentPage = next;
                   });
                 },
                 itemCount: _contents.length,
@@ -122,7 +121,6 @@ class _AppTourScreenState extends State<AppTourScreen> {
             ),
           ],
         ),
-      ),
     );
   }
 }

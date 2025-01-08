@@ -1,5 +1,5 @@
+import 'package:figma/screen/profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:figma/screen/app_tour_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      home: AppTourScreen(),
+      home: ProfileScreen(),
     );
   }
 }

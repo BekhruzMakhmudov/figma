@@ -34,9 +34,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           isLarge: false,
           isBold: true,
         ),
-        leading: BackButton(
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+        leading: BackButton(),
       ),
       body: Form(
         key: _formKey,
