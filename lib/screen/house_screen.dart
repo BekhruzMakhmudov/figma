@@ -1,10 +1,13 @@
 import 'package:figma/frame/navigation_frame.dart';
+import 'package:figma/model/house_model.dart';
+import 'package:figma/widget/house_detail.dart';
 import 'package:figma/widget/room_card.dart';
 import 'package:figma/widget/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class HouseScreen extends StatefulWidget {
-  const HouseScreen({super.key});
+  final HouseModel houseModel;
+  const HouseScreen({super.key, required this.houseModel});
   @override
   State<HouseScreen> createState() => _HouseScreenState();
 }
@@ -15,25 +18,7 @@ class _HouseScreenState extends State<HouseScreen> {
   Widget build(BuildContext context) {
     return NavigationFrame(
       appBar: AppBar(
-        title: GestureDetector(
-          onTap: () {},
-          child: TextButton.icon(
-            onPressed: () {},
-            icon: Icon(
-              Icons.keyboard_arrow_left,
-              size: 35,
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
-            label: Text(
-              'Back',
-              style: TextStyle(
-                fontSize: 20,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-            ),
-          ),
-        ),
-        centerTitle: false,
+        title: Text("Back"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -49,7 +34,7 @@ class _HouseScreenState extends State<HouseScreen> {
                   ),
                   children: [
                     TextSpan(
-                      text: "Cozy Apartments in Berlin, Germany",
+                      text: widget.houseModel.title,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
@@ -66,7 +51,7 @@ class _HouseScreenState extends State<HouseScreen> {
               ),
               SizedBox(height: 4),
               Text(
-                "Berlin, Germany",
+                widget.houseModel.address,
                 style: TextStyle(fontSize: 16, color: Colors.grey[600]),
               ),
               SizedBox(height: 4),
@@ -81,21 +66,11 @@ class _HouseScreenState extends State<HouseScreen> {
                 ),
               ),
               SizedBox(height: 12),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Wrap(
-                  spacing: 10.0, // Horizontal spacing
-                  runSpacing: 10.0,
-                  children: [
-                    IconText(icon: Icons.person, text: "4 guests"),
-                    Text("•"),
-                    IconText(icon: Icons.bed, text: "2 bedrooms"),
-                    Text("•"),
-                    IconText(icon: Icons.king_bed, text: "2 beds"),
-                    Text("•"),
-                    IconText(icon: Icons.bathroom, text: "1 bathroom"),
-                  ],
-                ),
+              HouseDetail(
+                guests: widget.houseModel.guests,
+                bathrooms: widget.houseModel.bathrooms,
+                bedrooms: widget.houseModel.bedrooms,
+                beds: widget.houseModel.beds,
               ),
               Divider(),
               // About Place
@@ -113,7 +88,7 @@ class _HouseScreenState extends State<HouseScreen> {
                     ),
                     SizedBox(height: 12),
                     Text(
-                      "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed.",
+                      widget.houseModel.about ?? "",
                       maxLines: _isExpanded ? null : 3,
                       style: TextStyle(fontSize: 16, height: 1.4),
                     ),
@@ -245,13 +220,19 @@ class _HouseScreenState extends State<HouseScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               IconText(
-                                  icon: Icons.surround_sound,
-                                  text: "Hi-Fi Sound"),
+                                icon: Icons.surround_sound,
+                                text: "Hi-Fi Sound",
+                              ),
                               SizedBox(height: 8),
                               IconText(
-                                  icon: Icons.local_library, text: "Library"),
+                                icon: Icons.local_library,
+                                text: "Library",
+                              ),
                               SizedBox(height: 8),
-                              IconText(icon: Icons.kitchen, text: "Dishwasher"),
+                              IconText(
+                                icon: Icons.kitchen,
+                                text: "Dishwasher",
+                              ),
                             ],
                           ),
                         ),
@@ -274,7 +255,7 @@ class _HouseScreenState extends State<HouseScreen> {
                     ),
                     SizedBox(height: 12),
                     Text(
-                      "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation.",
+                      widget.houseModel.rules ?? "",
                       style: TextStyle(fontSize: 16, height: 1.4),
                     ),
                   ],
