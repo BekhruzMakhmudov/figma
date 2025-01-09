@@ -28,6 +28,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return NavigationFrame(
+      index: 3,
       appBar: AppBar(
         title: HeaderText(
           text:"Change password",

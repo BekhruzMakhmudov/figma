@@ -19,6 +19,7 @@ class ReviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     int yourReviews = reviews.length;
     return NavigationFrame(
+      index: 2,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(18),

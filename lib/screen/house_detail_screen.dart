@@ -17,6 +17,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return NavigationFrame(
+      index: 3,
       appBar: AppBar(
         title: Text("Back"),
       ),

@@ -1,4 +1,6 @@
+import 'package:figma/screen/app_tour_screen.dart';
 import 'package:figma/screen/houses_list_screen.dart';
+import 'package:figma/screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      home: HousesScreen(),
+      home: SignUpScreen(),
     );
   }
 }

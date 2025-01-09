@@ -12,6 +12,7 @@ class HousesScreen extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: NavigationFrame(
+        index: 0,
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,

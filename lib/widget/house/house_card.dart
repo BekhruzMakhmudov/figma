@@ -6,9 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:figma/model/house_model.dart';
 
-class HouseCard extends StatelessWidget {
+class HouseCard extends StatefulWidget {
   final HouseModel houseModel;
   const HouseCard({super.key, required this.houseModel});
+
+  @override
+  State<HouseCard> createState() => _HouseCardState();
+}
+
+class _HouseCardState extends State<HouseCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,7 +22,8 @@ class HouseCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HouseDetailScreen(houseModel: houseModel),
+            builder: (context) =>
+                HouseDetailScreen(houseModel: widget.houseModel),
           ),
         );
       },
@@ -37,19 +44,25 @@ class HouseCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                if (houseModel.owner != userData)
+                if (widget.houseModel.owner != userData)
                   Positioned(
                     right: 0,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          widget.houseModel.isFavorite =
+                              !widget.houseModel.isFavorite;
+                        });
+                      },
                       icon: Icon(
-                        houseModel.isFavorite
+                        widget.houseModel.isFavorite
                             ? Icons.favorite
                             : Icons.favorite_border,
+                        color: Colors.red,
                       ),
                     ),
                   ),
-                if (houseModel.isVerified)
+                if (widget.houseModel.isVerified)
                   Positioned(
                     bottom: 8,
                     left: 7,
@@ -60,18 +73,18 @@ class HouseCard extends StatelessWidget {
                       textColor: Colors.white,
                     ),
                   ),
-                if (houseModel.isVerified)
+                if (widget.houseModel.isVerified)
                   Positioned(
                     bottom: 8,
                     right: 9,
                     child: IconText(
                       icon: Icons.star,
                       iconColor: Colors.yellow,
-                      text: "${houseModel.rating}",
+                      text: "${widget.houseModel.rating}",
                       textColor: Colors.white,
                     ),
                   ),
-                if (!houseModel.isVerified)
+                if (!widget.houseModel.isVerified)
                   Positioned(
                     bottom: 8,
                     left: 7,
@@ -93,13 +106,13 @@ class HouseCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        houseModel.address,
+                        widget.houseModel.address,
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 14,
                         ),
                       ),
-                      if (houseModel.status != null)
+                      if (widget.houseModel.status != null)
                         Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 8,
@@ -110,7 +123,7 @@ class HouseCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
-                            mapFilters[houseModel.status]!,
+                            mapFilters[widget.houseModel.status]!,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 12,
@@ -122,7 +135,7 @@ class HouseCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    houseModel.title,
+                    widget.houseModel.title,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -130,13 +143,13 @@ class HouseCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   HouseDetail(
-                    guests: houseModel.guests,
-                    bathrooms: houseModel.bathrooms,
-                    bedrooms: houseModel.bedrooms,
-                    beds: houseModel.beds,
+                    guests: widget.houseModel.guests,
+                    bathrooms: widget.houseModel.bathrooms,
+                    bedrooms: widget.houseModel.bedrooms,
+                    beds: widget.houseModel.beds,
                   ),
-                  if (houseModel.owner != userData) SizedBox(height: 8),
-                  if (houseModel.owner != userData)
+                  if (widget.houseModel.owner != userData) SizedBox(height: 8),
+                  if (widget.houseModel.owner != userData)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -152,7 +165,7 @@ class HouseCard extends StatelessWidget {
                             ),
                             const SizedBox(width: 8),
                             Text(
-                              houseModel.owner,
+                              widget.houseModel.owner,
                               style: TextStyle(fontSize: 18),
                             ),
                           ],

@@ -1,4 +1,6 @@
 import 'package:figma/frame/form_frame.dart';
+import 'package:figma/screen/app_tour_screen.dart';
+import 'package:figma/screen/houses_list_screen.dart';
 import 'package:figma/screen/sign_in_screen.dart';
 import 'package:figma/screen/success_screen.dart';
 import 'package:figma/widget/form/form_button.dart';
@@ -20,8 +22,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   final _newPasswordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  bool obscureNewPassword=true;
-  bool obscureConfirmPassword=true;
+  bool obscureNewPassword = true;
+  bool obscureConfirmPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +55,19 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                   labelText: 'Set up password',
                   border: OutlineInputBorder(),
                   suffixIcon: IconButton(
-                      icon: Icon(
-                        obscureNewPassword ? Icons.visibility_off : Icons.visibility,
-                      ),
-                      onPressed: () {
-                        setState(
-                          () {
-                            obscureNewPassword = !obscureNewPassword;
-                          },
-                        );
-                      },
+                    icon: Icon(
+                      obscureNewPassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
+                    onPressed: () {
+                      setState(
+                        () {
+                          obscureNewPassword = !obscureNewPassword;
+                        },
+                      );
+                    },
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -84,17 +88,19 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                   labelText: 'Confirm password',
                   border: OutlineInputBorder(),
                   suffixIcon: IconButton(
-                      icon: Icon(
-                        obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
-                      ),
-                      onPressed: () {
-                        setState(
-                          () {
-                            obscureConfirmPassword = !obscureConfirmPassword;
-                          },
-                        );
-                      },
+                    icon: Icon(
+                      obscureConfirmPassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
+                    onPressed: () {
+                      setState(
+                        () {
+                          obscureConfirmPassword = !obscureConfirmPassword;
+                        },
+                      );
+                    },
+                  ),
                 ),
                 validator: (value) {
                   if (value != _newPasswordController.text) {
@@ -108,15 +114,18 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                 text: (widget.inSignUp == null) ? 'Save' : 'Create Account',
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SuccessScreen(
-                          text: "Password has been change successfully",
-                          buttonText: "Sign in",
-                          nextScreen: SignInScreen(),
-                        ),
+                        builder: (context) => (widget.inSignUp == null)
+                            ? SuccessScreen(
+                                text: "Password has been change successfully",
+                                buttonText: "Sign in",
+                                nextScreen: SignInScreen(),
+                              )
+                            : AppTourScreen(),
                       ),
+                      (route)=>false,
                     );
                   }
                 },

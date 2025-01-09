@@ -9,6 +9,7 @@ class MyHousesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationFrame(
+      index: 3,
       appBar: AppBar(
         elevation: 0,
         leading: BackButton(),
