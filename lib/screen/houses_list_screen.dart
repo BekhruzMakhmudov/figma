@@ -4,9 +4,14 @@ import 'package:figma/screen/filter_screen.dart';
 import 'package:figma/widget/house/house_card.dart';
 import 'package:flutter/material.dart';
 
-class HousesScreen extends StatelessWidget {
+class HousesScreen extends StatefulWidget {
   const HousesScreen({super.key});
 
+  @override
+  State<HousesScreen> createState() => _HousesScreenState();
+}
+
+class _HousesScreenState extends State<HousesScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -28,7 +33,7 @@ class HousesScreen extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.tune, color: Colors.black),
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => FilterScreen(),
@@ -56,7 +61,14 @@ class HousesScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     itemCount: houses.length,
                     itemBuilder: (context, index) {
-                      return HouseCard(houseModel: houses[index]);
+                      return HouseCard(
+                        houseModel: houses[index],
+                        onTap: () {
+                          setState(() {
+                            houses[index].isFavorite = !houses[index].isFavorite;
+                          });
+                        },
+                      );
                     },
                   ),
             EmptyStateWidget(),

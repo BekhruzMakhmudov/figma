@@ -24,7 +24,7 @@ class MyHousesScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ...myHouses.map(
-                    (house) => HouseCard(houseModel: house),
+                    (house) => HouseCard(houseModel: house,onTap: (){}),
                   ),
                 ],
               ),

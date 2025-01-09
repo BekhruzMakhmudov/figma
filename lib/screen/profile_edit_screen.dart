@@ -1,3 +1,4 @@
+import 'package:figma/data/profile_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
       index: 3,
       appBar: AppBar(
         title: HeaderText(
-          text:'Edit Information',
+          text: 'Edit Information',
           isLarge: false,
           isBold: true,
         ),
@@ -131,11 +132,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 .bodyLarge
                                 ?.copyWith(color: Colors.grey),
                           ),
-                          Text(
-                            'peter@gmail.com',
-                            style: Theme.of(context).textTheme.bodyLarge,
+                          Row(
+                            children: [
+                              Text(
+                                emailData,
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                              SizedBox(width: 16),
+                              Icon(Icons.keyboard_arrow_right),
+                            ],
                           ),
-                          Icon(Icons.keyboard_arrow_right),
                         ],
                       ),
                       onTap: () {},
@@ -155,11 +161,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 .bodyLarge
                                 ?.copyWith(color: Colors.grey),
                           ),
-                          Text(
-                            '+38 043 485 45 34',
-                            style: Theme.of(context).textTheme.bodyLarge,
+                          Row(
+                            children: [
+                              Text(
+                                phoneData,
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                              SizedBox(width: 16),
+                              Icon(Icons.keyboard_arrow_right),
+                            ],
                           ),
-                          Icon(Icons.keyboard_arrow_right),
                         ],
                       ),
                       onTap: () {},

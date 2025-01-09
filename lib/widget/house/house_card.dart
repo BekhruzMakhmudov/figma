@@ -8,7 +8,8 @@ import 'package:figma/model/house_model.dart';
 
 class HouseCard extends StatefulWidget {
   final HouseModel houseModel;
-  const HouseCard({super.key, required this.houseModel});
+  final VoidCallback onTap;
+  const HouseCard({super.key, required this.houseModel,required this.onTap});
 
   @override
   State<HouseCard> createState() => _HouseCardState();
@@ -48,12 +49,7 @@ class _HouseCardState extends State<HouseCard> {
                   Positioned(
                     right: 0,
                     child: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          widget.houseModel.isFavorite =
-                              !widget.houseModel.isFavorite;
-                        });
-                      },
+                      onPressed: widget.onTap,
                       icon: Icon(
                         widget.houseModel.isFavorite
                             ? Icons.favorite

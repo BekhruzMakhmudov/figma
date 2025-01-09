@@ -1,3 +1,4 @@
+import 'package:figma/screen/houses_list_screen.dart';
 import 'package:figma/widget/filter/checkbox.dart';
 import 'package:figma/widget/filter/expansion.dart';
 import 'package:figma/widget/form/form_button.dart';
@@ -37,11 +38,11 @@ class _FilterScreenState extends State<FilterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final statusFilters=mapFilters.values.toList();
+    final statusFilters = mapFilters.values.toList();
     return Scaffold(
       appBar: AppBar(
         title: HeaderText(
-          text:'Filter',
+          text: 'Filter',
           isLarge: true,
           isBold: true,
         ),
@@ -49,7 +50,12 @@ class _FilterScreenState extends State<FilterScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.close, size: 30),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HousesScreen(),
+              ),
+            ),
           ),
         ],
       ),
@@ -228,7 +234,9 @@ class _FilterScreenState extends State<FilterScreen> {
               const SizedBox(height: 16),
               Expansion(
                 text: 'Amenities',
-                children: [...amenityName.values.map((text) => CheckBox(text: text))],
+                children: [
+                  ...amenityName.values.map((text) => CheckBox(text: text))
+                ],
               ),
               // Car Section
               const SizedBox(height: 16),
@@ -255,7 +263,16 @@ class _FilterScreenState extends State<FilterScreen> {
                   ),
                 ],
               ),
-              FormButton(text: "Apply Filters", onTap: () {}),
+              FormButton(
+                  text: "Apply Filters",
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HousesScreen(),
+                      ),
+                    );
+                  }),
               SizedBox(height: 8),
               FormButton(
                 text: "Reset Filters",

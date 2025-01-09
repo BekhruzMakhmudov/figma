@@ -1,12 +1,16 @@
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/screen/change_password_screen.dart';
+import 'package:figma/screen/favorite_houses_screen.dart';
+import 'package:figma/screen/my_houses_list_screen.dart';
 import 'package:figma/screen/profile_edit_screen.dart';
+import 'package:figma/screen/review_screen.dart';
 import 'package:figma/screen/sign_in_screen.dart';
 import 'package:figma/widget/alert_cancel.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/profile_option.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/profile_data.dart';
+import 'package:figma/data/review_data.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -86,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(height: 10),
                         Text(emailData),
                         SizedBox(height: 5),
-                        Text("+38 043 485 45 34"),
+                        Text(phoneData),
                       ],
                     ),
                   ),
@@ -97,7 +101,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ProfileOption(
               title: "My houses",
               icon: Icons.home,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyHousesScreen(),
+                  ),
+                );
+              },
             ),
             ProfileOption(
               title: "Available periods",
@@ -107,12 +118,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ProfileOption(
               title: "Favourites",
               icon: Icons.favorite_border,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FavoriteHousesScreen(),
+                  ),
+                );
+              },
             ),
             ProfileOption(
               title: "Reviews",
               icon: Icons.star_border,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReviewScreen(reviews: reviews),
+                  ),
+                );
+              },
             ),
             ProfileOption(
               title: "Change password",

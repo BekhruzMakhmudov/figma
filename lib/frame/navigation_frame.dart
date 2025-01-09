@@ -22,19 +22,27 @@ class NavigationFrame extends StatefulWidget {
 class _NavigationFrameState extends State<NavigationFrame> {
   @override
   Widget build(BuildContext context) {
-    final screens = [HousesScreen(),MyHousesScreen(),ReviewScreen(reviews: reviews), ProfileScreen()];
+    final screens = [
+      HousesScreen(),
+      MyHousesScreen(),
+      ReviewScreen(reviews: reviews),
+      ProfileScreen()
+    ];
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: widget.appBar,
       body: SafeArea(child: widget.body),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: widget.index,
-        onTap: (index) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => screens[index],
-            ),
-          );
+        onTap: (newIndex) {
+          if (widget.index != newIndex) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => screens[newIndex],
+              ),
+            );
+          }
         },
         selectedItemColor: Colors.blue, // Active tab color
         unselectedItemColor: Colors.grey, // Inactive tab color

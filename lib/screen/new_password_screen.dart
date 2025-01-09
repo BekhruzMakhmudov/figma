@@ -1,6 +1,5 @@
 import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/app_tour_screen.dart';
-import 'package:figma/screen/houses_list_screen.dart';
 import 'package:figma/screen/sign_in_screen.dart';
 import 'package:figma/screen/success_screen.dart';
 import 'package:figma/widget/form/form_button.dart';
