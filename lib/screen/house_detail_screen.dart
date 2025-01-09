@@ -5,14 +5,14 @@ import 'package:figma/widget/house/room_card.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:flutter/material.dart';
 
-class HouseScreen extends StatefulWidget {
+class HouseDetailScreen extends StatefulWidget {
   final HouseModel houseModel;
-  const HouseScreen({super.key, required this.houseModel});
+  const HouseDetailScreen({super.key, required this.houseModel});
   @override
-  State<HouseScreen> createState() => _HouseScreenState();
+  State<HouseDetailScreen> createState() => _HouseDetailScreenState();
 }
 
-class _HouseScreenState extends State<HouseScreen> {
+class _HouseDetailScreenState extends State<HouseDetailScreen> {
   bool _isExpanded = false;
   @override
   Widget build(BuildContext context) {

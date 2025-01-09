@@ -1,6 +1,6 @@
-import 'package:figma/screen/review_screen.dart';
+import 'package:figma/screen/houses_list_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:figma/data/review_data.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      home: ReviewScreen(reviews: reviews),
+      home: HousesScreen(),
     );
   }
 }

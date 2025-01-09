@@ -1,11 +1,12 @@
+import 'package:figma/data/filter_data.dart';
 import 'package:figma/model/review_model.dart';
-
+import 'package:figma/util/get_average_rating.dart';
 class HouseModel{
   final bool isVerified;
-  final double? rating;
   final String address;
   final String? location;
   final String title;
+  final String owner;
   final int guests;
   final int bedrooms;
   final int beds;
@@ -13,14 +14,16 @@ class HouseModel{
   final String? imageUrl;
   final String? about;
   final String? rules;
-  List? amenities;
+  final StatusFilters? status;
+  bool isFavorite=false;
+  List<AmenityFilters> amenities;
   List<ReviewModel> reviews;
   HouseModel({
     required this.isVerified,
-    this.rating,
     this.location,
     required this.address,
     required this.title,
+    required this.owner,
     required this.guests,
     required this.bedrooms,
     required this.beds,
@@ -28,7 +31,11 @@ class HouseModel{
     this.imageUrl,
     this.about,
     this.rules,
-    this.amenities,
+    this.status,
+    this.amenities=const [],
     this.reviews=const [],
   });
+  double get rating {
+    return getAverageRating(reviews);
+  }
 }

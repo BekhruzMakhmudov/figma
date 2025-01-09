@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:figma/model/house_model.dart';
-import 'package:figma/util/get_average_rating.dart';
 
 class ReviewTarget extends StatelessWidget {
   final HouseModel houseModel;
@@ -9,10 +8,6 @@ class ReviewTarget extends StatelessWidget {
     super.key,
     required this.houseModel,
   });
-
-  double get rating {
-    return getAverageRating(houseModel.reviews);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +33,7 @@ class ReviewTarget extends StatelessWidget {
             ),
             Row(
               children: [
-                Text('$rating'),
+                Text('${houseModel.rating}'),
                 const SizedBox(width: 4),
                 const Icon(Icons.star, color: Colors.amber, size: 16),
                 Text('(${houseModel.reviews.length} Reviews)'),

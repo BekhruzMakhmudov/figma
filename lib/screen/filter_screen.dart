@@ -5,6 +5,7 @@ import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/filter/list_tile_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:figma/data/filter_data.dart';
 
 class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});
@@ -32,54 +33,11 @@ class _FilterScreenState extends State<FilterScreen> {
   int carPlace = 0;
   int charger = 0;
 
-  final List<String> statusFilters = [
-    'Knocked you',
-    'I Knocked',
-    'Negotiation',
-    'Deal'
-  ];
   final List<bool> statusSelected = [false, false, false, false];
-
-  final List<String> typeAccommodation = [
-    'Villa',
-    'Apartment',
-    'Mansion',
-    'Manor',
-    'House',
-    'Detached House',
-  ];
-
-  final List<String> typeAmenity = [
-    'Wi-Fi',
-    'Hi-Fi Sound',
-    'Working space',
-    'Fireplce',
-    'Dishwasher',
-    'Pet Friendly',
-    'Equipped for kids',
-    'Swimming pool',
-    'Garden',
-    'Playstation',
-    'Cleaning included',
-    'Motocycle',
-    'Bicycle',
-    'Satelite',
-    'Home cinema',
-    'Library',
-    'Lounge',
-    'Dryer',
-    'Terrace',
-    'Gym',
-    'Balcony',
-    'Cable TV',
-    'Netflix',
-    'Boat',
-    'Wii',
-    'Car',
-  ];
 
   @override
   Widget build(BuildContext context) {
+    final statusFilters=mapFilters.values.toList();
     return Scaffold(
       appBar: AppBar(
         title: HeaderText(
@@ -270,7 +228,7 @@ class _FilterScreenState extends State<FilterScreen> {
               const SizedBox(height: 16),
               Expansion(
                 text: 'Amenities',
-                children: [...typeAmenity.map((text) => CheckBox(text: text))],
+                children: [...amenityName.values.map((text) => CheckBox(text: text))],
               ),
               // Car Section
               const SizedBox(height: 16),

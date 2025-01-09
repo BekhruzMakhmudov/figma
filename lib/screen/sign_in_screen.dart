@@ -27,17 +27,11 @@ class _SignInScreenState extends State<SignInScreen> {
     setState(() {
       _emailError = null;
       _passwordError = null;
-
       if (_emailController.text.isEmpty) {
         _emailError = 'This field is required';
-      } else if (!_emailController.text.contains('@')) {
-        _emailError = 'This email does not exist';
       }
-
       if (_passwordController.text.isEmpty) {
         _passwordError = 'This field is required';
-      } else if (_passwordController.text != '123') {
-        _passwordError = 'Password incorrect';
       }
     });
   }

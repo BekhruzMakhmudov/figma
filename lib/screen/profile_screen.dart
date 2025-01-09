@@ -6,6 +6,7 @@ import 'package:figma/widget/alert_cancel.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/profile_option.dart';
 import 'package:flutter/material.dart';
+import 'package:figma/data/profile_data.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -66,9 +67,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
-                          "Norbert Blumenberg",
+                          userData,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -82,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Text("blumenbergnorbie@gmail.com"),
+                        Text(emailData),
                         SizedBox(height: 5),
                         Text("+38 043 485 45 34"),
                       ],
