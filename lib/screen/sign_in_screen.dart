@@ -1,8 +1,8 @@
 import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/forgot_password_screen.dart';
 import 'package:figma/screen/sign_up_screen.dart';
-import 'package:figma/widget/header_text.dart';
-import 'package:figma/widget/social_button.dart';
+import 'package:figma/widget/text/header_text.dart';
+import 'package:figma/widget/form/social_button.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {

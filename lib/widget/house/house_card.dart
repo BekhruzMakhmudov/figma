@@ -1,7 +1,7 @@
 import 'package:figma/screen/house_screen.dart';
-import 'package:figma/widget/house_detail.dart';
+import 'package:figma/widget/house/house_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:figma/widget/icon_text.dart';
+import 'package:figma/widget/text/icon_text.dart';
 import 'package:figma/model/house_model.dart';
 
 class HouseCard extends StatelessWidget {

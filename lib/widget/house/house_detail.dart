@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:figma/widget/icon_text.dart';
+import 'package:figma/widget/text/icon_text.dart';
 
 class HouseDetail extends StatelessWidget {
   final int guests;

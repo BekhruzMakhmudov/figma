@@ -1,7 +1,7 @@
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/screen/success_screen.dart';
-import 'package:figma/widget/header_text.dart';
-import 'package:figma/widget/requirement_password.dart';
+import 'package:figma/widget/text/header_text.dart';
+import 'package:figma/widget/form/requirement_password.dart';
 import 'package:flutter/material.dart';
 
 class ChangePasswordScreen extends StatefulWidget {

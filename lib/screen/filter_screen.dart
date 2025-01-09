@@ -1,8 +1,8 @@
-import 'package:figma/widget/checkbox.dart';
-import 'package:figma/widget/expansion.dart';
-import 'package:figma/widget/form_button.dart';
-import 'package:figma/widget/header_text.dart';
-import 'package:figma/widget/list_tile_counter.dart';
+import 'package:figma/widget/filter/checkbox.dart';
+import 'package:figma/widget/filter/expansion.dart';
+import 'package:figma/widget/form/form_button.dart';
+import 'package:figma/widget/text/header_text.dart';
+import 'package:figma/widget/filter/list_tile_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 

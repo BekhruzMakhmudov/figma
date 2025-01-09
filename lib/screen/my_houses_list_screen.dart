@@ -1,5 +1,5 @@
 import 'package:figma/frame/navigation_frame.dart';
-import 'package:figma/widget/house_card.dart';
+import 'package:figma/widget/house/house_card.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/house_data.dart';
 

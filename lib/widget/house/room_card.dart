@@ -1,4 +1,4 @@
-import 'package:figma/widget/icon_text.dart';
+import 'package:figma/widget/text/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class RoomCard extends StatelessWidget {

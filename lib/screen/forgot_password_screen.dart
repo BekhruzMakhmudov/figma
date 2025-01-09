@@ -1,7 +1,7 @@
 import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/verification_screen.dart';
-import 'package:figma/widget/form_button.dart';
-import 'package:figma/widget/form_title.dart';
+import 'package:figma/widget/form/form_button.dart';
+import 'package:figma/widget/form/form_title.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -44,7 +44,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   if (value == null || value.isEmpty) {
                     return 'This field is required';
                   }
-                  if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                  if (!RegExp(r'^[\w-]+@([\w-]+\.)+[\w-]{2,4}$')
                       .hasMatch(value)) {
                     return 'Please enter a valid email';
                   }

@@ -3,7 +3,7 @@ import 'package:figma/screen/change_password_screen.dart';
 import 'package:figma/screen/profile_edit_screen.dart';
 import 'package:figma/screen/sign_in_screen.dart';
 import 'package:figma/widget/alert_cancel.dart';
-import 'package:figma/widget/header_text.dart';
+import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/profile_option.dart';
 import 'package:flutter/material.dart';
 

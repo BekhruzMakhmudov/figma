@@ -1,5 +1,5 @@
 import 'package:figma/frame/navigation_frame.dart';
-import 'package:figma/widget/header_text.dart';
+import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 
 class ProfileEditScreen extends StatefulWidget {

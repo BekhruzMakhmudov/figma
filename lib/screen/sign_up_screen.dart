@@ -1,9 +1,9 @@
 import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/verification_screen.dart';
 import 'package:figma/util/get_validation_color.dart';
-import 'package:figma/widget/form_button.dart';
-import 'package:figma/widget/form_title.dart';
-import 'package:figma/widget/link_text.dart';
+import 'package:figma/widget/form/form_button.dart';
+import 'package:figma/widget/form/form_title.dart';
+import 'package:figma/widget/text/link_text.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {

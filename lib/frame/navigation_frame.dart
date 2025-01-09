@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class NavigationFrame extends StatefulWidget {
   final Widget body;
-  final PreferredSizeWidget appBar;
+  final PreferredSizeWidget? appBar;
   const NavigationFrame({
     super.key,
     required this.body,
-    required this.appBar,
+    this.appBar,
   });
   @override
   State<StatefulWidget> createState() => _NavigationFrameState();

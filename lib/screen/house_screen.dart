@@ -1,8 +1,8 @@
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/model/house_model.dart';
-import 'package:figma/widget/house_detail.dart';
-import 'package:figma/widget/room_card.dart';
-import 'package:figma/widget/icon_text.dart';
+import 'package:figma/widget/house/house_detail.dart';
+import 'package:figma/widget/house/room_card.dart';
+import 'package:figma/widget/text/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class HouseScreen extends StatefulWidget {

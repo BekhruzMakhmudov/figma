@@ -1,3 +1,5 @@
+import 'package:figma/model/review_model.dart';
+
 class HouseModel{
   final bool isVerified;
   final double? rating;
@@ -12,6 +14,7 @@ class HouseModel{
   final String? about;
   final String? rules;
   List? amenities;
+  List<ReviewModel> reviews;
   HouseModel({
     required this.isVerified,
     this.rating,
@@ -26,5 +29,6 @@ class HouseModel{
     this.about,
     this.rules,
     this.amenities,
+    this.reviews=const [],
   });
 }

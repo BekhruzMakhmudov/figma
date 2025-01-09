@@ -1,9 +1,9 @@
 import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/sign_in_screen.dart';
 import 'package:figma/screen/success_screen.dart';
-import 'package:figma/widget/form_button.dart';
-import 'package:figma/widget/form_title.dart';
-import 'package:figma/widget/requirement_password.dart';
+import 'package:figma/widget/form/form_button.dart';
+import 'package:figma/widget/form/form_title.dart';
+import 'package:figma/widget/form/requirement_password.dart';
 import 'package:flutter/material.dart';
 
 class NewPasswordScreen extends StatefulWidget {
