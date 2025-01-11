@@ -88,7 +88,6 @@ class _FilterScreenState extends State<FilterScreen> {
                   },
                 ),
               ),
-
               // Location Section
               const SizedBox(height: 24),
               Expansion(

@@ -1,9 +1,7 @@
-import 'package:figma/data/review_data.dart';
 import 'package:figma/screen/houses_list_screen.dart';
 import 'package:figma/screen/knock_status_screen.dart';
 import 'package:figma/screen/my_houses_list_screen.dart';
 import 'package:figma/screen/profile_screen.dart';
-import 'package:figma/screen/review_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavigationFrame extends StatefulWidget {
@@ -32,7 +30,12 @@ class _NavigationFrameState extends State<NavigationFrame> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: widget.appBar,
-      body: SafeArea(child: widget.body),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: widget.body,
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: widget.index,
         onTap: (newIndex) {

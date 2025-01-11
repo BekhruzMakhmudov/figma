@@ -46,9 +46,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+      body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -181,7 +179,6 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
             ),
           ],
         ),
-      ),
     );
   }
 }

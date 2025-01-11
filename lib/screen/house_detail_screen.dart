@@ -22,9 +22,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
         title: Text("Back"),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RichText(
@@ -265,7 +263,6 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
             ],
           ),
         ),
-      ),
     );
   }
 }

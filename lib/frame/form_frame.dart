@@ -14,7 +14,12 @@ class FormFrame extends StatelessWidget {
               elevation: 0,
             )
           : null,
-      body: SafeArea(child: body),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: body,
+        ),
+      ),
     );
   }
 }

@@ -19,7 +19,7 @@ class ListTileShadow extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(
         vertical: 6,
-        horizontal: (leading != null) ? 18 : 0,
+        horizontal: (leading != null) ? 6 : 0,
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,

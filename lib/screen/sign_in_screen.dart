@@ -39,9 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return FormFrame(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+      body: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,7 +168,6 @@ class _SignInScreenState extends State<SignInScreen> {
             const Spacer(flex: 3),
           ],
         ),
-      ),
     );
   }
 }

@@ -43,9 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return FormFrame(
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Form(
+      body: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -238,7 +236,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ],
           ),
         ),
-      ),
     );
   }
 }

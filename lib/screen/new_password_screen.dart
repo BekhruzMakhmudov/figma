@@ -28,9 +28,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   Widget build(BuildContext context) {
     return FormFrame(
       hasAppBar: true,
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Form(
+      body: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,7 +148,6 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
             ],
           ),
         ),
-      ),
     );
   }
 }

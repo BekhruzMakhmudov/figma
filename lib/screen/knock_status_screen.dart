@@ -17,9 +17,7 @@ class KnockStatusScreen extends StatelessWidget {
     return NavigationFrame(
       index: 2,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header
@@ -143,7 +141,6 @@ class KnockStatusScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 

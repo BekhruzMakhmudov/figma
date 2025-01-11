@@ -54,9 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: Row(
+             Row(
                 children: [
                   Container(
                     width: 100,
@@ -96,7 +94,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
-            ),
             ListTileShadow(
               title: "My houses",
               leading: Icon(Icons.home),

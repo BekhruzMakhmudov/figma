@@ -19,9 +19,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   Widget build(BuildContext context) {
     return FormFrame(
       hasAppBar: true,
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
+      body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FormTitle(
@@ -90,7 +88,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
               ),
           ],
         ),
-      ),
     );
   }
 }

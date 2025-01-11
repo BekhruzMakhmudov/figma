@@ -17,13 +17,10 @@ class ReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int yourReviews = reviews.length;
     return NavigationFrame(
       index: 2,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(18),
-          child: Column(
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               HeaderText(
@@ -60,7 +57,7 @@ class ReviewScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: Text('Your reviews ($yourReviews)'),
+                      child: Text('Your reviews (${reviews.length})'),
                     ),
                   ),
                 ],
@@ -76,7 +73,6 @@ class ReviewScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }

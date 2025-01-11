@@ -58,7 +58,6 @@ class _HousesScreenState extends State<HousesScreen> {
             (houses.isEmpty)
                 ? EmptyStateWidget()
                 : ListView.builder(
-                    padding: const EdgeInsets.all(16),
                     itemCount: houses.length,
                     itemBuilder: (context, index) {
                       return HouseCard(

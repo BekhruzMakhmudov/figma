@@ -39,9 +39,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       ),
       body: Form(
         key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacer(flex: 2),
@@ -85,7 +83,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             ],
           ),
         ),
-      ),
     );
   }
 
