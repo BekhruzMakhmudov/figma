@@ -7,7 +7,7 @@ import 'package:figma/screen/review_screen.dart';
 import 'package:figma/screen/sign_in_screen.dart';
 import 'package:figma/widget/alert_cancel.dart';
 import 'package:figma/widget/text/header_text.dart';
-import 'package:figma/widget/profile_option.dart';
+import 'package:figma/widget/list_tile_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/profile_data.dart';
 import 'package:figma/data/review_data.dart';
@@ -97,10 +97,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            const Divider(thickness: 1),
-            ProfileOption(
+            ListTileShadow(
               title: "My houses",
-              icon: Icons.home,
+              leading: Icon(Icons.home),
               onTap: () {
                 Navigator.push(
                   context,
@@ -110,14 +109,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               },
             ),
-            ProfileOption(
+            ListTileShadow(
               title: "Available periods",
-              icon: Icons.calendar_today_outlined,
+              leading: Icon(Icons.calendar_month),
               onTap: () {},
             ),
-            ProfileOption(
+            ListTileShadow(
               title: "Favourites",
-              icon: Icons.favorite_border,
+              leading: Icon(Icons.favorite_border),
               onTap: () {
                 Navigator.push(
                   context,
@@ -127,9 +126,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               },
             ),
-            ProfileOption(
+            ListTileShadow(
               title: "Reviews",
-              icon: Icons.star_border,
+              leading: Icon(Icons.star_border),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
@@ -139,9 +138,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               },
             ),
-            ProfileOption(
+            ListTileShadow(
               title: "Change password",
-              icon: Icons.lock_outline,
+              leading: Icon(Icons.key),
               onTap: () {
                 Navigator.push(
                   context,
@@ -151,9 +150,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               },
             ),
-            ProfileOption(
+            ListTileShadow(
               title: "Log out",
-              icon: Icons.logout,
+              leading: Icon(
+                Icons.logout,
+                color: Colors.red,
+              ),
               color: Colors.red,
               onTap: () {
                 showDialog(

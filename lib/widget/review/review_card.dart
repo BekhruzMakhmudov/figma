@@ -37,8 +37,8 @@ class ReviewCard extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 48,
-              height: 48,
+              width: 50,
+              height: 50,
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(12),
@@ -49,7 +49,7 @@ class ReviewCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  reviewModel.user,
+                  reviewModel.author.name,
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
                 Text(

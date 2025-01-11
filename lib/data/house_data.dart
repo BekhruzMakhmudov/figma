@@ -1,6 +1,6 @@
 import 'package:figma/data/filter_data.dart';
-import 'package:figma/data/profile_data.dart';
 import 'package:figma/data/review_data.dart';
+import 'package:figma/data/user_data.dart';
 import 'package:figma/model/house_model.dart';
 List<HouseModel> emptyHouseList = [];
 final houses = [
@@ -8,7 +8,7 @@ final houses = [
     isVerified: true,
     address: 'Schoneberg, Berlin',
     title: 'Cozy apartments in Berlin, Germany',
-    owner: "Peter Nolan",
+    owner: users[1],
     guests: 4,
     bedrooms: 2,
     beds: 2,
@@ -24,7 +24,7 @@ final myHouses = [
     isVerified: true,
     address: 'Schoneberg, Berlin',
     title: 'Cozy apartments in Berlin, Germany',
-    owner: userData,
+    owner: users[0],
     guests: 4,
     bedrooms: 2,
     beds: 2,
@@ -37,7 +37,7 @@ final myHouses = [
     isVerified: false,
     address: 'Schoneberg, Berlin',
     title: 'Cozy apartments in Berlin, Germany',
-    owner: userData,
+    owner: users[0],
     guests: 4,
     bedrooms: 2,
     beds: 2,

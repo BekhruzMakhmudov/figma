@@ -50,7 +50,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               Wrap(
                 children: [
                   Text("Didn't receive an email? Check your spam folder or "),
-                  linkText(
+                  LinkText(
                       text: "resend verification e-mail in 00:59",
                       onTap: () {}),
                 ],

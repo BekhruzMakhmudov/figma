@@ -1,12 +1,13 @@
 import 'package:figma/data/filter_data.dart';
 import 'package:figma/model/review_model.dart';
+import 'package:figma/model/user_model.dart';
 import 'package:figma/util/get_average_rating.dart';
 class HouseModel{
   final bool isVerified;
   final String address;
   final String? location;
   final String title;
-  final String owner;
+  final UserModel owner;
   final int guests;
   final int bedrooms;
   final int beds;

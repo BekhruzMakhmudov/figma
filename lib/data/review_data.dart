@@ -1,3 +1,4 @@
+import 'package:figma/data/user_data.dart';
 import 'package:figma/model/review_model.dart';
 
 final reviews = [
@@ -9,7 +10,7 @@ final reviews = [
     nearPlace: 4,
     neighbors: 3,
     amenities: 4,
-    user: "Peter Nolan",
+    author: users[1],
     date: "12.09.2020",
   ),
   ReviewModel(
@@ -20,7 +21,7 @@ final reviews = [
     nearPlace: 5,
     neighbors: 5,
     amenities: 5,
-    user: "Peter Nolan",
+    author: users[1],
     date: "12.09.2020",
   ),
 ];

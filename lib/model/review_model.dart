@@ -1,3 +1,5 @@
+import 'package:figma/model/user_model.dart';
+
 enum Parameter {
   cleanliness,
   communication,
@@ -9,7 +11,7 @@ enum Parameter {
 class ReviewModel {
   final String title;
   final String content;
-  final String user;
+  final UserModel author;
   final String date;
   final double cleanliness;
   final double communication;
@@ -20,7 +22,7 @@ class ReviewModel {
   ReviewModel({
     required this.title,
     required this.content,
-    required this.user,
+    required this.author,
     required this.date,
     required this.cleanliness,
     required this.communication,

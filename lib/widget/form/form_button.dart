@@ -4,8 +4,12 @@ class FormButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final bool? isMain;
-  const FormButton(
-      {super.key, required this.text, required this.onTap, this.isMain});
+  const FormButton({
+    super.key,
+    required this.text,
+    required this.onTap,
+    this.isMain,
+  });
   @override
   Widget build(BuildContext context) {
     return SizedBox(
