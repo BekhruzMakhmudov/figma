@@ -1,4 +1,4 @@
-import 'package:figma/screen/houses_list_screen.dart';
+import 'package:figma/screen/house/houses_list_screen.dart';
 import 'package:figma/widget/filter/checkbox.dart';
 import 'package:figma/widget/filter/expansion.dart';
 import 'package:figma/widget/form/form_button.dart';

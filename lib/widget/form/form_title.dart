@@ -1,4 +1,4 @@
-import 'package:figma/screen/sign_in_screen.dart';
+import 'package:figma/screen/form/sign_in_screen.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 

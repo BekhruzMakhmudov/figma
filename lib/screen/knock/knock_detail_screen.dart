@@ -1,5 +1,5 @@
 import 'package:figma/data/knock_data.dart';
-import 'package:figma/widget/knock_card.dart';
+import 'package:figma/widget/knock/knock_card.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
 import 'package:figma/frame/form_frame.dart';
-import 'package:figma/screen/verification_screen.dart';
+import 'package:figma/screen/form/verification_screen.dart';
 import 'package:figma/util/get_validation_color.dart';
 import 'package:figma/widget/form/form_button.dart';
 import 'package:figma/widget/form/form_title.dart';

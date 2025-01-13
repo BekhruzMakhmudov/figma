@@ -2,7 +2,7 @@ import 'package:figma/data/house_data.dart';
 import 'package:figma/data/knock_data.dart';
 import 'package:figma/data/review_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
-import 'package:figma/screen/knock_detail_screen.dart';
+import 'package:figma/screen/knock/knock_detail_screen.dart';
 import 'package:figma/widget/list_tile_shadow.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';

@@ -57,7 +57,11 @@ List<Widget> getNegotiationContent({required KnockModel knockModel}) {
       "Now you can contact ${knockModel.house.owner.name}!",
       style: TextStyle(fontWeight: FontWeight.bold),
     ),
-    LinkText(text: "Write Message", onTap: () {})
+    LinkText(
+      text: "Write Message",
+      onTap: () {},
+      isBold: true,
+    ),
   ];
 }
 

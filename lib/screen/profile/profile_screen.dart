@@ -1,10 +1,10 @@
 import 'package:figma/frame/navigation_frame.dart';
-import 'package:figma/screen/change_password_screen.dart';
-import 'package:figma/screen/favorite_houses_screen.dart';
-import 'package:figma/screen/my_houses_list_screen.dart';
-import 'package:figma/screen/profile_edit_screen.dart';
+import 'package:figma/screen/form/change_password_screen.dart';
+import 'package:figma/screen/house/favorite_houses_screen.dart';
+import 'package:figma/screen/house/my_houses_list_screen.dart';
+import 'package:figma/screen/profile/profile_edit_screen.dart';
 import 'package:figma/screen/review_screen.dart';
-import 'package:figma/screen/sign_in_screen.dart';
+import 'package:figma/screen/form/sign_in_screen.dart';
 import 'package:figma/widget/alert_cancel.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/list_tile_shadow.dart';

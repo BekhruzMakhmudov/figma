@@ -1,6 +1,6 @@
 import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/user_data.dart';
-import 'package:figma/screen/house_detail_screen.dart';
+import 'package:figma/screen/house/house_detail_screen.dart';
 import 'package:figma/widget/house/house_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/widget/text/icon_text.dart';

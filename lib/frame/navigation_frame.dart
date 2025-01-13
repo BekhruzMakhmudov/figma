@@ -1,7 +1,7 @@
-import 'package:figma/screen/houses_list_screen.dart';
-import 'package:figma/screen/knock_status_screen.dart';
-import 'package:figma/screen/my_houses_list_screen.dart';
-import 'package:figma/screen/profile_screen.dart';
+import 'package:figma/screen/house/houses_list_screen.dart';
+import 'package:figma/screen/knock/knock_status_screen.dart';
+import 'package:figma/screen/house/my_houses_list_screen.dart';
+import 'package:figma/screen/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavigationFrame extends StatefulWidget {
