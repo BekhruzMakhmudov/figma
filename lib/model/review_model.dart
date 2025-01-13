@@ -1,6 +1,6 @@
 import 'package:figma/model/user_model.dart';
 
-enum Parameter {
+enum Property {
   cleanliness,
   communication,
   nearPlace,
@@ -13,26 +13,22 @@ class ReviewModel {
   final String content;
   final UserModel author;
   final String date;
-  final double cleanliness;
-  final double communication;
-  final double nearPlace;
-  final double neighbors;
-  final double amenities;
+  final Map<Property, double> mapProperty;
 
   ReviewModel({
     required this.title,
     required this.content,
     required this.author,
     required this.date,
-    required this.cleanliness,
-    required this.communication,
-    required this.nearPlace,
-    required this.neighbors,
-    required this.amenities,
+    required this.mapProperty,
   });
 
   double get rating {
-    return (cleanliness + communication + nearPlace + neighbors + amenities) /
+    return (mapProperty[Property.cleanliness]! +
+            mapProperty[Property.communication]! +
+            mapProperty[Property.nearPlace]! +
+            mapProperty[Property.neighbors]! +
+            mapProperty[Property.amenities]!) /
         5;
   }
 }

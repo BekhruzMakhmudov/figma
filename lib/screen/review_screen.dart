@@ -1,11 +1,11 @@
 import 'package:figma/data/house_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
+import 'package:figma/widget/review/review_house.dart';
+import 'package:figma/widget/review/review_user.dart';
 import 'package:figma/widget/text/header_text.dart';
-import 'package:figma/widget/review/review_card.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/model/review_model.dart';
-import 'package:figma/widget/review/review_target.dart';
-import 'package:figma/widget/review/review_metric.dart';
+import 'package:figma/data/user_data.dart';
 
 class ReviewScreen extends StatelessWidget {
   final List<ReviewModel> reviews;
@@ -17,79 +17,76 @@ class ReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, double> ratings = {
-      'Cleanliness': 4,
-      'Communication with member': 5,
-      'Area near place': 4,
-      'Neighbours': 3,
-      'Amenities': 4,
-    };
-    return NavigationFrame(
-      index: 2,
-      body: SingleChildScrollView(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeaderText(
-                text: "Reviews",
-                isLarge: true,
-                isBold: true,
-              ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: Text('Reviews (${reviews.length})'),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.surface,
-                        foregroundColor: Colors.black,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: Text('Your reviews (${reviews.length})'),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              ReviewTarget(
-                houseModel: myHouses[0],
-              ),
-              const SizedBox(height: 16),
-              ...ratings.entries.map(
-                    (entry) => Column(
-                  children: [
-                    ReviewMetric(
-                      label: entry.key,
-                      rating: entry.value,
-                    ),
-                    const SizedBox(height: 16),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 24),
-              ...reviews.map((review) => ReviewCard(reviewModel: review)),
+    final yourReviews =
+        reviews.where((review) => review.author == users[0]).toList();
+    return DefaultTabController(
+      length: 2,
+      child: NavigationFrame(
+        index: 2,
+        appBar: AppBar(
+          title: HeaderText(
+            text: "Reviews",
+            isBold: true,
+            isLarge: true,
+          ),
+          bottom: TabBar(
+            indicator: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            labelColor: Colors.white,
+            indicatorSize: TabBarIndicatorSize.tab,
+            tabs: [
+              Tab(text: 'Reviews (${reviews.length})'),
+              Tab(text: 'Your reviews (${yourReviews.length})'),
             ],
           ),
         ),
+        body: TabBarView(
+          children: [
+            (reviews.isEmpty)
+                ? EmptyStateWidget()
+                : SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ReviewHouse(
+                          houseModel: houses[0],
+                        ),
+                        const SizedBox(height: 16),
+                        ...reviews.map(
+                          (review) => ReviewUser(reviewModel: review),
+                        ),
+                      ],
+                    ),
+                  ),
+            (yourReviews.isEmpty)
+                ? EmptyStateWidget()
+                : SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ...yourReviews.map((review) => Column(
+                            children: [
+                              ReviewHouse(houseModel: houses[0]),
+                              ReviewUser(reviewModel: review),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+          ],
+        ),
+      ),
     );
+  }
+}
+
+class EmptyStateWidget extends StatelessWidget {
+  const EmptyStateWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: Text('No results found'));
   }
 }

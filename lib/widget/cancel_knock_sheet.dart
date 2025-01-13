@@ -1,5 +1,6 @@
 import 'package:figma/data/knock_data.dart';
 import 'package:figma/model/knock_model.dart';
+import 'package:figma/screen/knock/knock_status_screen.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 
@@ -65,7 +66,7 @@ class _CancelKnockSheetState extends State<CancelKnockSheet> {
                   onChanged: (value) {
                     setState(() {
                       selectedReason = entry.value;
-                      reason=entry.key;
+                      reason = entry.key;
                     });
                   },
                 )),
@@ -91,11 +92,17 @@ class _CancelKnockSheetState extends State<CancelKnockSheet> {
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    widget.knockModel.status=KnockStatus.declined;
-                    widget.knockModel.reason=reason;
-                    widget.knockModel.additional=_descriptionController.text;
+                    widget.knockModel.status = KnockStatus.declined;
+                    widget.knockModel.reason = reason;
+                    widget.knockModel.additional = _descriptionController.text;
                   });
-                  Navigator.of(context).pop();
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => KnockStatusScreen(),
+                    ),
+                    (route) => false,
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),

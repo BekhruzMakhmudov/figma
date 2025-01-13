@@ -82,7 +82,7 @@ class _HouseCardState extends State<HouseCard> {
                     child: IconText(
                       icon: Icons.star,
                       iconColor: Colors.yellow,
-                      text: "${widget.houseModel.rating}",
+                      text: widget.houseModel.averageRating,
                       textColor: Colors.white,
                     ),
                   ),

@@ -8,7 +8,10 @@ import 'package:flutter/material.dart';
 
 class KnockCard extends StatelessWidget {
   final KnockModel knockModel;
-  const KnockCard({super.key, required this.knockModel});
+  const KnockCard({
+    super.key,
+    required this.knockModel,
+  });
   @override
   Widget build(BuildContext context) {
     String text = knockStatusSubtitle[knockModel.status]!;
@@ -121,11 +124,13 @@ class KnockCard extends StatelessWidget {
             if (knockStatusCancel[knockModel.status] != null)
               Center(
                 child: TextButton(
-                  onPressed: () {
-                    showModalBottomSheet(
+                  onPressed: () async {
+                    showModalBottomSheet<bool>(
                       context: context,
                       isScrollControlled: true,
-                      builder: (context) => CancelKnockSheet(knockModel: knockModel),
+                      builder: (context) => CancelKnockSheet(
+                        knockModel: knockModel,
+                      ),
                     );
                   },
                   child: Text(

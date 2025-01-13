@@ -22,7 +22,7 @@ class KnockContent extends StatelessWidget {
         if (knockModel.status == KnockStatus.received ||
             knockModel.status == KnockStatus.exchanged)
           HouseCard(
-            houseModel: myHouses[0],
+            houseModel: houses[0],
             onTap: () {},
             inKnock: true,
           ),

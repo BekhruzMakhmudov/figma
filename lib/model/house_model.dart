@@ -36,7 +36,14 @@ class HouseModel{
     this.amenities=const [],
     this.reviews=const [],
   });
-  double get rating {
-    return getAverageRating(reviews);
+  Map<Property,double> get mapRating{
+    return getMapRating(reviews);
+  }
+  String get averageRating{
+    double result=0;
+    for(var value in mapRating.values){
+      result+=value;
+    }
+    return (result/5).toStringAsFixed(1);
   }
 }

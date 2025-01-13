@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class UserModel {
   final Color avatar;
   final String name;

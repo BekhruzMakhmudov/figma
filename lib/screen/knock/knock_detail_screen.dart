@@ -1,9 +1,10 @@
 import 'package:figma/data/knock_data.dart';
+import 'package:figma/model/knock_model.dart';
 import 'package:figma/widget/knock/knock_card.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 
-class KnockDetailScreen extends StatelessWidget {
+class KnockDetailScreen extends StatefulWidget {
   final KnockStatus status;
   final int count;
   const KnockDetailScreen({
@@ -13,8 +14,14 @@ class KnockDetailScreen extends StatelessWidget {
   });
 
   @override
+  State<KnockDetailScreen> createState() => _KnockDetailScreenState();
+}
+
+class _KnockDetailScreenState extends State<KnockDetailScreen> {
+  @override
   Widget build(BuildContext context) {
-    final filtredKnocked=knocks.where((knock)=>knock.status==status);
+    List<KnockModel> filtredKnocked =
+        knocks.where((knock) => knock.status == widget.status).toList();
     return Scaffold(
       appBar: AppBar(
         title: Text('Back'),
@@ -27,21 +34,22 @@ class KnockDetailScreen extends StatelessWidget {
           children: [
             ListTile(
               title: HeaderText(
-                text: knockStatusTitle[status]!,
+                text: knockStatusTitle[widget.status]!,
                 isLarge: true,
                 isBold: true,
               ),
               trailing: HeaderText(
-                text: '($count)',
+                text: '(${widget.count})',
                 isLarge: false,
                 isBold: true,
               ),
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  ...filtredKnocked.map((knock)=>KnockCard(knockModel: knock))
-                ],
+              child: ListView.builder(
+                itemCount: filtredKnocked.length,
+                itemBuilder: (context, index) => KnockCard(
+                  knockModel: filtredKnocked[index],
+                ),
               ),
             ),
           ],

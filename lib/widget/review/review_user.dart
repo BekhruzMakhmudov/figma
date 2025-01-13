@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:figma/model/review_model.dart';
 
-class ReviewCard extends StatelessWidget {
+class ReviewUser extends StatelessWidget {
   final ReviewModel reviewModel;
-  const ReviewCard({super.key, required this.reviewModel});
+  const ReviewUser({super.key, required this.reviewModel});
   @override
   Widget build(BuildContext context) {
     return Column(

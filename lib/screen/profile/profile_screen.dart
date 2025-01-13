@@ -1,3 +1,4 @@
+import 'package:figma/data/user_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/screen/form/change_password_screen.dart';
 import 'package:figma/screen/house/favorite_houses_screen.dart';
@@ -9,7 +10,6 @@ import 'package:figma/widget/alert_cancel.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/list_tile_shadow.dart';
 import 'package:flutter/material.dart';
-import 'package:figma/data/profile_data.dart';
 import 'package:figma/data/review_data.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -72,7 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          userData,
+                          users[0].name,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -86,9 +86,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Text(emailData),
+                        Text(users[0].email),
                         SizedBox(height: 5),
-                        Text(phoneData),
+                        Text(users[0].phone),
                       ],
                     ),
                   ),

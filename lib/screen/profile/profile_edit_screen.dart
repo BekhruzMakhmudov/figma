@@ -1,8 +1,7 @@
-import 'package:figma/data/profile_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
-
+import 'package:figma/data/user_data.dart';
 class ProfileEditScreen extends StatefulWidget {
   const ProfileEditScreen({super.key});
 
@@ -133,7 +132,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           Row(
                             children: [
                               Text(
-                                emailData,
+                                users[0].email,
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               SizedBox(width: 16),
@@ -162,7 +161,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           Row(
                             children: [
                               Text(
-                                phoneData,
+                                users[0].phone,
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               SizedBox(width: 16),

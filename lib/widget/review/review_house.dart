@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:figma/model/house_model.dart';
 
-class ReviewTarget extends StatelessWidget {
+class ReviewHouse extends StatelessWidget {
   final HouseModel houseModel;
 
-  const ReviewTarget({
+  const ReviewHouse({
     super.key,
     required this.houseModel,
   });
@@ -33,7 +33,7 @@ class ReviewTarget extends StatelessWidget {
             ),
             Row(
               children: [
-                Text('${houseModel.rating}'),
+                Text(houseModel.averageRating),
                 const SizedBox(width: 4),
                 const Icon(Icons.star, color: Colors.amber, size: 16),
                 Text('(${houseModel.reviews.length} Reviews)'),

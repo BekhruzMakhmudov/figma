@@ -2,12 +2,13 @@ import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/widget/house/house_card.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/house_data.dart';
-
+import 'package:figma/data/user_data.dart';
 class MyHousesScreen extends StatelessWidget {
   const MyHousesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final myHouses=houses.where((house)=>house.owner==users[0]);
     return NavigationFrame(
       index: 3,
       appBar: AppBar(

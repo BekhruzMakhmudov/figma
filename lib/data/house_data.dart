@@ -2,8 +2,7 @@ import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/review_data.dart';
 import 'package:figma/data/user_data.dart';
 import 'package:figma/model/house_model.dart';
-List<HouseModel> emptyHouseList = [];
-final houses = [
+List<HouseModel> houses = [
   HouseModel(
     isVerified: true,
     address: 'Schoneberg, Berlin',
@@ -18,8 +17,6 @@ final houses = [
     reviews: reviews,
     status: StatusFilters.iKnocked,
   ),
-];
-final myHouses = [
   HouseModel(
     isVerified: true,
     address: 'Schoneberg, Berlin',

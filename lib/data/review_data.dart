@@ -4,23 +4,29 @@ import 'package:figma/model/review_model.dart';
 final reviews = [
   ReviewModel(
     title: "Exellent apartments with cozy and calm area!",
-    content: "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed, a closet and a work area. The windows of the living and lounge area of j.",
-    cleanliness: 4,
-    communication: 5,
-    nearPlace: 4,
-    neighbors: 3,
-    amenities: 4,
+    content:
+        "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed, a closet and a work area. The windows of the living and lounge area of j.",
+    mapProperty: {
+      Property.cleanliness: 4,
+      Property.communication: 5,
+      Property.nearPlace: 4,
+      Property.neighbors: 3,
+      Property.amenities: 4
+    },
     author: users[1],
     date: "12.09.2020",
   ),
   ReviewModel(
     title: "Exellent apartments with cozy and calm area!",
-    content: "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed, a closet and a work area. The windows of the living and lounge area of j.",
-    cleanliness: 5,
-    communication: 5,
-    nearPlace: 5,
-    neighbors: 5,
-    amenities: 5,
+    content:
+        "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed, a closet and a work area. The windows of the living and lounge area of j.",
+    mapProperty: {
+      Property.cleanliness: 5,
+      Property.communication: 5,
+      Property.nearPlace: 5,
+      Property.neighbors: 5,
+      Property.amenities: 5,
+    },
     author: users[1],
     date: "12.09.2020",
   ),
