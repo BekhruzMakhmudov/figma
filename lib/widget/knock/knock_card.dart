@@ -1,5 +1,7 @@
 import 'package:figma/data/knock_data.dart';
 import 'package:figma/model/knock_model.dart';
+import 'package:figma/widget/cancel_knock_sheet.dart';
+import 'package:figma/widget/rate_accommodation_sheet.dart';
 import 'package:figma/widget/knock/knock_content.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +92,15 @@ class KnockCard extends StatelessWidget {
             SizedBox(height: 8),
             if (knockStatusConfirm[knockModel.status] != null)
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (knockModel.status == KnockStatus.exchanged) {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) => RateAccommodationSheet(),
+                    );
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: (knockModel.status != KnockStatus.madeByMe)
                       ? Colors.blue
@@ -111,7 +121,13 @@ class KnockCard extends StatelessWidget {
             if (knockStatusCancel[knockModel.status] != null)
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) => CancelKnockSheet(),
+                    );
+                  },
                   child: Text(
                     knockStatusCancel[knockModel.status]!,
                     style: TextStyle(color: Colors.red),

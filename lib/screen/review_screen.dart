@@ -17,6 +17,13 @@ class ReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, double> ratings = {
+      'Cleanliness': 4,
+      'Communication with member': 5,
+      'Area near place': 4,
+      'Neighbours': 3,
+      'Amenities': 4,
+    };
     return NavigationFrame(
       index: 2,
       body: SingleChildScrollView(
@@ -67,7 +74,17 @@ class ReviewScreen extends StatelessWidget {
                 houseModel: myHouses[0],
               ),
               const SizedBox(height: 16),
-              ReviewMetric(),
+              ...ratings.entries.map(
+                    (entry) => Column(
+                  children: [
+                    ReviewMetric(
+                      label: entry.key,
+                      rating: entry.value,
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
               const SizedBox(height: 24),
               ...reviews.map((review) => ReviewCard(reviewModel: review)),
             ],
