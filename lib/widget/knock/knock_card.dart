@@ -125,7 +125,7 @@ class KnockCard extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       isScrollControlled: true,
-                      builder: (context) => CancelKnockSheet(),
+                      builder: (context) => CancelKnockSheet(knockModel: knockModel),
                     );
                   },
                   child: Text(

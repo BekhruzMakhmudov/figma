@@ -58,6 +58,7 @@ class _RateAccommodationSheetState extends State<RateAccommodationSheet> {
                 ),
               ],
             ),
+            Divider(),
             const SizedBox(height: 16),
             ...ratings.entries.map(
               (entry) => Column(

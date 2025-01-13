@@ -5,9 +5,9 @@ class KnockModel {
   final String date;
   final String period;
   final HouseModel house;
-  final KnockStatus status;
-  final String? reason;
-  final String? additional;
+  KnockStatus status;
+  CancelReason? reason;
+  String? additional;
   KnockModel({
     required this.date,
     required this.period,

@@ -11,6 +11,22 @@ enum KnockStatus {
   exchanged,
 }
 
+enum CancelReason {
+  planChanged,
+  foundBetter,
+  waitedLong,
+  unreliable,
+  other,
+}
+
+final mapCancelReason = {
+  CancelReason.planChanged: "My plans have changed",
+  CancelReason.foundBetter: "I have found better place",
+  CancelReason.waitedLong: "I waited too long for a respond",
+  CancelReason.unreliable: "I found that member unreliable",
+  CancelReason.other: "Other",
+};
+
 final knockStatusTitle = {
   KnockStatus.madeByMe: "Knocks made by Me",
   KnockStatus.received: "Knocks received",
@@ -128,10 +144,12 @@ List<KnockModel> knocks = [
     period: "27 May - 6 June",
     house: houses[0],
     status: KnockStatus.declined,
+    reason: CancelReason.unreliable,
+    additional: 'It was really complicate to speak with that person',
   ),
 ];
 
-Map<KnockStatus, int> getknockCount() {
+Map<KnockStatus, int> getKnockCount() {
   Map<KnockStatus, int> result = {};
   for (final i in knocks) {
     result[i.status] = (result[i.status] ?? 0) + 1;

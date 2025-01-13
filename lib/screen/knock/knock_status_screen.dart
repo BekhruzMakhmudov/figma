@@ -13,7 +13,7 @@ class KnockStatusScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final knockCount = getknockCount();
+    final knockCount = getKnockCount();
     return NavigationFrame(
       index: 2,
       body: SingleChildScrollView(

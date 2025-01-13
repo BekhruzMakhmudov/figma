@@ -1,7 +1,14 @@
+import 'package:figma/data/knock_data.dart';
+import 'package:figma/model/knock_model.dart';
+import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 
 class CancelKnockSheet extends StatefulWidget {
-  const CancelKnockSheet({super.key});
+  final KnockModel knockModel;
+  const CancelKnockSheet({
+    super.key,
+    required this.knockModel,
+  });
 
   @override
   State<CancelKnockSheet> createState() => _CancelKnockSheetState();
@@ -9,15 +16,8 @@ class CancelKnockSheet extends StatefulWidget {
 
 class _CancelKnockSheetState extends State<CancelKnockSheet> {
   String? selectedReason;
+  CancelReason? reason;
   final TextEditingController _descriptionController = TextEditingController();
-
-  final List<String> cancelReasons = [
-    'My plans have changed',
-    'I have found better place',
-    'I waited too long for a respond',
-    'I found that member unreliable',
-    'Other',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +31,18 @@ class _CancelKnockSheetState extends State<CancelKnockSheet> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Cancel Knock-Knock?',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                RichText(
+                  text: TextSpan(
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                    children: [
+                      TextSpan(text: "Cancel "),
+                      TextSpan(
+                        text: "Knock-Knock?",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ],
                   ),
                 ),
                 IconButton(
@@ -44,19 +51,21 @@ class _CancelKnockSheetState extends State<CancelKnockSheet> {
                 ),
               ],
             ),
+            Divider(),
             const SizedBox(height: 16),
-            const Text(
-              'Why do you want to cancel your Knock-Knock?',
-              style: TextStyle(fontSize: 16),
+            HeaderText(
+              text: 'Why do you want to cancel your Knock-Knock?',
+              isBold: true,
             ),
             const SizedBox(height: 16),
-            ...cancelReasons.map((reason) => RadioListTile<String>(
-                  title: Text(reason),
-                  value: reason,
+            ...mapCancelReason.entries.map((entry) => RadioListTile<String>(
+                  title: Text(entry.value),
+                  value: entry.value,
                   groupValue: selectedReason,
                   onChanged: (value) {
                     setState(() {
-                      selectedReason = value;
+                      selectedReason = entry.value;
+                      reason=entry.key;
                     });
                   },
                 )),
@@ -64,6 +73,7 @@ class _CancelKnockSheetState extends State<CancelKnockSheet> {
             TextField(
               controller: _descriptionController,
               decoration: InputDecoration(
+                label: Text('Describe your situation here if it is necessary'),
                 hintText:
                     'Share with us why you decided to cancel your Knock-Knock. We will do our best to help you in any situation!',
                 hintStyle: TextStyle(color: Colors.grey),
@@ -79,7 +89,14 @@ class _CancelKnockSheetState extends State<CancelKnockSheet> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    widget.knockModel.status=KnockStatus.declined;
+                    widget.knockModel.reason=reason;
+                    widget.knockModel.additional=_descriptionController.text;
+                  });
+                  Navigator.of(context).pop();
+                },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(

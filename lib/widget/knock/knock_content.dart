@@ -83,7 +83,9 @@ List<Widget> getDeclinedContent({
             text: "Reason: ",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          TextSpan(text: knockModel.reason ?? ""),
+          TextSpan(
+            text: mapCancelReason[knockModel.reason] ?? "",
+          ),
         ],
       ),
     ),
