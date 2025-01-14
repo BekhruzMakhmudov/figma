@@ -63,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     decoration: BoxDecoration(
                       borderRadius:
                           BorderRadius.circular(12), // Rounded corners
-                      color: Colors.grey,
+                      color: users[0].avatar,
                     ),
                   ),
                   const SizedBox(width: 20),

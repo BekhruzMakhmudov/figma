@@ -1,7 +1,9 @@
 import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/review_data.dart';
 import 'package:figma/data/user_data.dart';
+import 'package:figma/model/bed_model.dart';
 import 'package:figma/model/house_model.dart';
+import 'package:figma/model/room_model.dart';
 import 'package:flutter/material.dart';
 
 enum HouseDetail {
@@ -41,17 +43,43 @@ List<HouseModel> houses = [
     owner: users[1],
     detail: {
       HouseDetail.guest: 4,
-      HouseDetail.bedroom: 2,
-      HouseDetail.bed: 2,
       HouseDetail.bathroom: 1,
     },
+    rooms: [
+      RoomModel(
+        [
+          BedModel(size: "double size bed", count: 1),
+          BedModel(size: "sofa", count: 1),
+        ],
+      ),
+      RoomModel(
+        [
+          BedModel(size: "single size bed", count: 2),
+          BedModel(size: "sofa", count: 1),
+        ],
+      ),
+      RoomModel(
+        [
+          BedModel(size: "single size bed", count: 2),
+          BedModel(size: "sofa", count: 1),
+        ],
+      ),
+    ],
+    amenities: [
+      AmenityFilters.wifi,
+      AmenityFilters.hifi,
+      AmenityFilters.workingSpace,
+      AmenityFilters.library,
+      AmenityFilters.homeCinema,
+      AmenityFilters.dishwasher,
+    ],
     about:
         "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed.",
     rules:
         "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation.",
     reviews: reviews,
     status: StatusFilters.iKnocked,
-    image: Colors.yellow,
+    image: Colors.amber,
   ),
   HouseModel(
     isVerified: true,
@@ -62,10 +90,36 @@ List<HouseModel> houses = [
     owner: users[0],
     detail: {
       HouseDetail.guest: 4,
-      HouseDetail.bedroom: 2,
-      HouseDetail.bed: 2,
       HouseDetail.bathroom: 1,
     },
+    rooms: [
+      RoomModel(
+        [
+          BedModel(size: "double size bed", count: 1),
+          BedModel(size: "sofa", count: 1),
+        ],
+      ),
+      RoomModel(
+        [
+          BedModel(size: "single size bed", count: 2),
+          BedModel(size: "sofa", count: 1),
+        ],
+      ),
+      RoomModel(
+        [
+          BedModel(size: "single size bed", count: 2),
+          BedModel(size: "sofa", count: 1),
+        ],
+      ),
+    ],
+    amenities: [
+      AmenityFilters.wifi,
+      AmenityFilters.hifi,
+      AmenityFilters.workingSpace,
+      AmenityFilters.library,
+      AmenityFilters.homeCinema,
+      AmenityFilters.dishwasher,
+    ],
     about:
         "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed.",
     rules:
@@ -82,10 +136,36 @@ List<HouseModel> houses = [
     owner: users[0],
     detail: {
       HouseDetail.guest: 4,
-      HouseDetail.bedroom: 2,
-      HouseDetail.bed: 2,
       HouseDetail.bathroom: 1,
     },
+    rooms: [
+      RoomModel(
+        [
+          BedModel(size: "double size bed", count: 1),
+          BedModel(size: "sofa", count: 1),
+        ],
+      ),
+      RoomModel(
+        [
+          BedModel(size: "single size bed", count: 2),
+          BedModel(size: "sofa", count: 1),
+        ],
+      ),
+      RoomModel(
+        [
+          BedModel(size: "single size bed", count: 2),
+          BedModel(size: "sofa", count: 1),
+        ],
+      ),
+    ],
+    amenities: [
+      AmenityFilters.wifi,
+      AmenityFilters.hifi,
+      AmenityFilters.workingSpace,
+      AmenityFilters.library,
+      AmenityFilters.homeCinema,
+      AmenityFilters.dishwasher,
+    ],
     about:
         "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed.",
     rules:

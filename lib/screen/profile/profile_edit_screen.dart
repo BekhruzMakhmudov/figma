@@ -64,17 +64,10 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                     width: 150,
                     height: 150,
                     decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.surface,
-                        borderRadius:
-                            BorderRadius.circular(12), // Rounded corners
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withAlpha(90),
-                            blurRadius: 6,
-                            offset: const Offset(0, 3),
-                          ),
-                        ]),
-                    child: Icon(Icons.person, color: Colors.grey, size: 50),
+                      color: users[0].avatar,
+                      borderRadius:
+                          BorderRadius.circular(12), // Rounded corners
+                    ),
                   ),
                   SizedBox(height: 10),
                   Text(

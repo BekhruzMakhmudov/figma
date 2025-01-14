@@ -1,15 +1,15 @@
+import 'package:figma/model/bed_model.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class RoomCard extends StatelessWidget {
-  final IconData icon;
-  final String mainText;
-  final List<String> description;
-  const RoomCard(
-      {super.key,
-      required this.icon,
-      required this.mainText,
-      required this.description});
+  final int index;
+  final List<BedModel> listBeds;
+  const RoomCard({
+    super.key,
+    required this.index,
+    required this.listBeds,
+  });
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,10 +26,10 @@ class RoomCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              IconText(icon: icon, text: mainText),
-              ...description.map(
-                (text) => Text(
-                  text,
+              IconText(icon: Icons.bed, text: "Room ${index+1}"),
+              ...listBeds.map(
+                (bed) => Text(
+                  '${bed.count} ${bed.size}',
                   style: TextStyle(fontSize: 14),
                 ),
               ),
