@@ -13,7 +13,7 @@ class FavoriteHousesScreen extends StatefulWidget {
 class _FavoriteHousesScreenState extends State<FavoriteHousesScreen> {
   @override
   Widget build(BuildContext context) {
-    final favorites=houses.where((house)=>house.isFavorite).toList();
+    final favorites = houses.where((house) => house.isFavorite).toList();
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(),
@@ -43,18 +43,20 @@ class _FavoriteHousesScreenState extends State<FavoriteHousesScreen> {
             const SizedBox(height: 16),
             // Listings
             Expanded(
-              child: ListView.builder(
-                itemCount: favorites.length,
-                itemBuilder: (context, index) => HouseCard(
-                  houseModel: favorites[index],
-                  onTap: () {
-                        setState(() {
-                          favorites[index].isFavorite =
-                              !favorites[index].isFavorite;
-                        });
-                      },
-                ),
-              ),
+              child: (favorites.isEmpty)
+                  ? Center(child: Text("No result found"))
+                  : ListView.builder(
+                      itemCount: favorites.length,
+                      itemBuilder: (context, index) => HouseCard(
+                        houseModel: favorites[index],
+                        onTap: () {
+                          setState(() {
+                            favorites[index].isFavorite =
+                                !favorites[index].isFavorite;
+                          });
+                        },
+                      ),
+                    ),
             ),
           ],
         ),

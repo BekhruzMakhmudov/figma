@@ -2,11 +2,14 @@ import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/review_data.dart';
 import 'package:figma/data/user_data.dart';
 import 'package:figma/model/house_model.dart';
+import 'package:flutter/material.dart';
 List<HouseModel> houses = [
   HouseModel(
     isVerified: true,
-    address: 'Schoneberg, Berlin',
-    title: 'Cozy apartments in Berlin, Germany',
+    district: 'Schoneberg',
+    city: 'Berlin',
+    country: 'Germany',
+    title: 'Cozy apartments',
     owner: users[1],
     guests: 4,
     bedrooms: 2,
@@ -16,11 +19,14 @@ List<HouseModel> houses = [
     rules: "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation.",
     reviews: reviews,
     status: StatusFilters.iKnocked,
+    image: Colors.yellow,
   ),
   HouseModel(
     isVerified: true,
-    address: 'Schoneberg, Berlin',
-    title: 'Cozy apartments in Berlin, Germany',
+    district: 'Schoneberg',
+    city: 'Berlin',
+    country: 'Germany',
+    title: 'Cozy apartments',
     owner: users[0],
     guests: 4,
     bedrooms: 2,
@@ -29,11 +35,14 @@ List<HouseModel> houses = [
     about: "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed.",
     rules: "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation.",
     reviews: reviews,
+    image: Colors.green,
   ),
   HouseModel(
     isVerified: false,
-    address: 'Schoneberg, Berlin',
-    title: 'Cozy apartments in Berlin, Germany',
+    district: 'Schoneberg',
+    city: 'Berlin',
+    country: 'Germany',
+    title: 'Cozy apartments',
     owner: users[0],
     guests: 4,
     bedrooms: 2,
@@ -42,5 +51,6 @@ List<HouseModel> houses = [
     about: "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed.",
     rules: "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation.",
     reviews: reviews,
+    image: Colors.red,
   ),
 ];

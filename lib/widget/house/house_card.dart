@@ -47,7 +47,7 @@ class _HouseCardState extends State<HouseCard> {
                 Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Colors.grey,
+                    color: widget.houseModel.image,
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
@@ -108,7 +108,7 @@ class _HouseCardState extends State<HouseCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        widget.houseModel.address,
+                        widget.houseModel.cityCountry,
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 14,
@@ -161,7 +161,7 @@ class _HouseCardState extends State<HouseCard> {
                               height: 40,
                               width: 40,
                               decoration: BoxDecoration(
-                                color: Colors.grey,
+                                color: widget.houseModel.owner.avatar,
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),

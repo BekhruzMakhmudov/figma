@@ -1,11 +1,11 @@
 import 'package:figma/screen/house/houses_list_screen.dart';
 import 'package:figma/widget/filter/checkbox.dart';
 import 'package:figma/widget/filter/expansion.dart';
+import 'package:figma/widget/form/calendar_table.dart';
 import 'package:figma/widget/form/form_button.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/filter/list_tile_counter.dart';
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:figma/data/filter_data.dart';
 
 class FilterScreen extends StatefulWidget {
@@ -18,9 +18,8 @@ class FilterScreen extends StatefulWidget {
 class _FilterScreenState extends State<FilterScreen> {
   bool isFlexible = false;
   DateTime focusedDay = DateTime.now();
-  DateTime? selectedDay;
-  bool isVillaSelected = false;
-  bool isApartmentSelected = false;
+  DateTime? startDate;
+  DateTime? endDate;
 
   final TextEditingController fromSizeController =
       TextEditingController(text: '0');
@@ -112,18 +111,7 @@ class _FilterScreenState extends State<FilterScreen> {
               Expansion(
                 text: 'Dates',
                 children: [
-                  TableCalendar(
-                    firstDay: DateTime.utc(2021, 1, 1),
-                    lastDay: DateTime.utc(2025, 12, 31),
-                    focusedDay: focusedDay,
-                    selectedDayPredicate: (day) => isSameDay(selectedDay, day),
-                    onDaySelected: (selectedDay, focusedDay) {
-                      setState(() {
-                        this.selectedDay = selectedDay;
-                        this.focusedDay = focusedDay;
-                      });
-                    },
-                  ),
+                  CalendarTable(),
                   // Flexible Toggle
                   CheckBox(text: 'Flexible', isBold: true),
                 ],
@@ -276,7 +264,7 @@ class _FilterScreenState extends State<FilterScreen> {
               FormButton(
                 text: "Reset Filters",
                 onTap: () {},
-                isMain: false,
+                isReset: true,
               ),
             ],
           ),

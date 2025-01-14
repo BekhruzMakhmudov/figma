@@ -32,10 +32,10 @@ class _NavigationFrameState extends State<NavigationFrame> {
       appBar: widget.appBar,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: widget.body,
+            padding: const EdgeInsets.all(16),
+            child: widget.body,
+          ),
         ),
-      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: widget.index,
         onTap: (newIndex) {

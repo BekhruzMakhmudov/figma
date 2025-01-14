@@ -2,40 +2,49 @@ import 'package:figma/data/filter_data.dart';
 import 'package:figma/model/review_model.dart';
 import 'package:figma/model/user_model.dart';
 import 'package:figma/util/get_average_rating.dart';
+import 'package:flutter/material.dart';
 class HouseModel{
   final bool isVerified;
-  final String address;
-  final String? location;
   final String title;
+  final String district;
+  final String city;
+  final String country;
   final UserModel owner;
   final int guests;
   final int bedrooms;
   final int beds;
   final int bathrooms;
-  final String? imageUrl;
-  final String? about;
-  final String? rules;
+  final String about;
+  final String rules;
   final StatusFilters? status;
+  final Color? image;
   bool isFavorite=false;
   List<AmenityFilters> amenities;
   List<ReviewModel> reviews;
   HouseModel({
     required this.isVerified,
-    this.location,
-    required this.address,
+    required this.district,
+    required this.city,
+    required this.country,
     required this.title,
     required this.owner,
     required this.guests,
     required this.bedrooms,
     required this.beds,
     required this.bathrooms,
-    this.imageUrl,
-    this.about,
-    this.rules,
+    required this.about,
+    required this.rules,
     this.status,
+    this.image,
     this.amenities=const [],
     this.reviews=const [],
   });
+  String get cityCountry{
+    return '$city, $country';
+  }
+  String get fullTitle{
+    return '$title in $cityCountry';
+  }
   Map<Property,double> get mapRating{
     return getMapRating(reviews);
   }

@@ -17,7 +17,7 @@ class ReviewHouse extends StatelessWidget {
           width: 48,
           height: 48,
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: houseModel.image,
             borderRadius: BorderRadius.circular(8),
           ),
         ),

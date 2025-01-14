@@ -33,7 +33,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
                   ),
                   children: [
                     TextSpan(
-                      text: widget.houseModel.title,
+                      text: widget.houseModel.fullTitle,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
@@ -50,7 +50,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
               ),
               SizedBox(height: 4),
               Text(
-                widget.houseModel.address,
+                widget.houseModel.cityCountry,
                 style: TextStyle(fontSize: 16, color: Colors.grey[600]),
               ),
               SizedBox(height: 4),
@@ -60,7 +60,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: Colors.grey,
+                    color: widget.houseModel.image,
                   ),
                 ),
               ),
@@ -87,7 +87,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
                     ),
                     SizedBox(height: 12),
                     Text(
-                      widget.houseModel.about ?? "",
+                      widget.houseModel.about,
                       maxLines: _isExpanded ? null : 3,
                       style: TextStyle(fontSize: 16, height: 1.4),
                     ),
@@ -254,7 +254,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
                     ),
                     SizedBox(height: 12),
                     Text(
-                      widget.houseModel.rules ?? "",
+                      widget.houseModel.rules,
                       style: TextStyle(fontSize: 16, height: 1.4),
                     ),
                   ],

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 List<UserModel> users = [
   UserModel(
-    avatar: Colors.green,
+    avatar: Colors.grey,
     name: "Bekhruz Makhmudov",
     email: "a@a.ru",
     password: "Mb310502",

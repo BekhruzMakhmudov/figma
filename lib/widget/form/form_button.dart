@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class FormButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
-  final bool? isMain;
+  final bool? isReset;
   const FormButton({
     super.key,
     required this.text,
     required this.onTap,
-    this.isMain,
+    this.isReset,
   });
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class FormButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          backgroundColor: (isMain == null) ? Colors.blue : Colors.black12,
+          backgroundColor: (isReset == null) ? Colors.blue : Colors.black12,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

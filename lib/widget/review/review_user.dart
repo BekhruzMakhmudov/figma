@@ -40,7 +40,7 @@ class ReviewUser extends StatelessWidget {
               width: 50,
               height: 50,
               decoration: BoxDecoration(
-                color: Colors.grey[300],
+                color: reviewModel.author.avatar,
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
