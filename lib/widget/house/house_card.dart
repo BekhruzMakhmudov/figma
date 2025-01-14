@@ -145,10 +145,7 @@ class _HouseCardState extends State<HouseCard> {
                   ),
                   if(widget.inKnock==null) const SizedBox(height: 8),
                   HouseDetail(
-                    guests: widget.houseModel.guests,
-                    bathrooms: widget.houseModel.bathrooms,
-                    bedrooms: widget.houseModel.bedrooms,
-                    beds: widget.houseModel.beds,
+                    houseModel: widget.houseModel,
                   ),
                   if (widget.houseModel.owner != users[0]) SizedBox(height: 8),
                   if (widget.houseModel.owner != users[0])

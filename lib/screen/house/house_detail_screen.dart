@@ -39,7 +39,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
                       ),
                     ),
                     WidgetSpan(child: SizedBox(width: 8)),
-                    WidgetSpan(
+                    if(widget.houseModel.isVerified) WidgetSpan(
                       child: Icon(
                         Icons.check_circle,
                         color: Colors.blue,
@@ -66,10 +66,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
               ),
               SizedBox(height: 12),
               HouseDetail(
-                guests: widget.houseModel.guests,
-                bathrooms: widget.houseModel.bathrooms,
-                bedrooms: widget.houseModel.bedrooms,
-                beds: widget.houseModel.beds,
+                houseModel: widget.houseModel,
               ),
               Divider(),
               // About Place

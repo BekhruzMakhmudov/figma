@@ -139,7 +139,7 @@ class _FilterScreenState extends State<FilterScreen> {
               Expansion(
                 text: 'Type',
                 children: [
-                  ...typeAccommodation.map((text) => CheckBox(text: text))
+                  ...mapAccommodation.values.map((text) => CheckBox(text: text))
                 ],
               ),
               // Rooms Section
