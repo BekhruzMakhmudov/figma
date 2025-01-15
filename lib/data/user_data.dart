@@ -8,7 +8,10 @@ List<UserModel> users = [
     email: "a@a.ru",
     password: "Mb310502",
     phone: "+38 043 485 45 34",
-    isActive: true,
+    housesId: [
+      1,
+      2,
+    ],
   ),
   UserModel(
     avatar: Colors.red,
@@ -16,6 +19,8 @@ List<UserModel> users = [
     email: "b@b.ru",
     password: "Ab123456",
     phone: "+12 345 678 90 10",
-    isActive: true,
+    housesId: [
+      0,
+    ],
   ),
 ];

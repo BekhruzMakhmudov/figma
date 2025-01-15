@@ -4,7 +4,6 @@ import 'package:figma/widget/house/house_card.dart';
 import 'package:figma/widget/text/link_text.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/knock_data.dart';
-
 class KnockContent extends StatelessWidget {
   final KnockModel knockModel;
   const KnockContent({super.key, required this.knockModel});

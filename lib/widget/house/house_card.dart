@@ -51,7 +51,7 @@ class _HouseCardState extends State<HouseCard> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                if (widget.houseModel.owner != users[0])
+                if (widget.houseModel.ownerId != users[0].id)
                   Positioned(
                     right: 0,
                     child: IconButton(
@@ -147,8 +147,8 @@ class _HouseCardState extends State<HouseCard> {
                   HouseDetail(
                     houseModel: widget.houseModel,
                   ),
-                  if (widget.houseModel.owner != users[0]) SizedBox(height: 8),
-                  if (widget.houseModel.owner != users[0])
+                  if (widget.houseModel.ownerId != users[0].id) SizedBox(height: 8),
+                  if (widget.houseModel.ownerId != users[0].id)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

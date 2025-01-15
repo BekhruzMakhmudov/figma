@@ -3,7 +3,6 @@ import 'package:figma/screen/knock/knock_status_screen.dart';
 import 'package:figma/screen/house/my_houses_list_screen.dart';
 import 'package:figma/screen/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
-
 class NavigationFrame extends StatefulWidget {
   final Widget body;
   final PreferredSizeWidget? appBar;

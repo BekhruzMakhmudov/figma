@@ -1,6 +1,5 @@
 import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/review_data.dart';
-import 'package:figma/data/user_data.dart';
 import 'package:figma/data/room_data.dart';
 import 'package:figma/model/house_model.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,7 @@ List<HouseModel> houses = [
     city: 'Berlin',
     country: 'Germany',
     title: 'Cozy apartments',
-    owner: users[1],
+    ownerId: 1,
     detail: {
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,
@@ -67,7 +66,7 @@ List<HouseModel> houses = [
     city: 'Berlin',
     country: 'Germany',
     title: 'Cozy apartments',
-    owner: users[0],
+    ownerId: 0,
     detail: {
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,
@@ -94,7 +93,7 @@ List<HouseModel> houses = [
     city: 'Berlin',
     country: 'Germany',
     title: 'Cozy apartments',
-    owner: users[0],
+    ownerId: 0,
     detail: {
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,

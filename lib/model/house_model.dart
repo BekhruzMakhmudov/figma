@@ -5,16 +5,18 @@ import 'package:figma/model/user_model.dart';
 import 'package:figma/util/get_average_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/house_data.dart';
-
+import 'package:figma/data/user_data.dart';
 import '../widget/text/icon_text.dart';
 
 class HouseModel {
+  static int nextId = 0;
+  final int id;
   final bool isVerified;
   final String title;
   final String district;
   final String city;
   final String country;
-  final UserModel owner;
+  final int ownerId;
   final Map<HouseDetail, int> detail;
   final List<RoomModel> rooms;
   final String about;
@@ -30,7 +32,7 @@ class HouseModel {
     required this.city,
     required this.country,
     required this.title,
-    required this.owner,
+    required this.ownerId,
     required this.detail,
     required this.rooms,
     required this.about,
@@ -39,13 +41,19 @@ class HouseModel {
     this.image,
     this.amenities = const [],
     this.reviews = const [],
-  });
+  }) : id = nextId++;
+
   String get cityCountry {
     return '$city, $country';
   }
 
   String get fullTitle {
     return '$title in $cityCountry';
+  }
+
+  UserModel get owner {
+    final owner = users.where((user) => user.id == ownerId).first;
+    return owner;
   }
 
   Map<Property, double> get mapRating {
@@ -62,8 +70,8 @@ class HouseModel {
 
   List<Widget> get houseDetail {
     List<Widget> result = [];
-    detail[HouseDetail.bedroom]=rooms.length;
-    detail[HouseDetail.bed]=countBeds;
+    detail[HouseDetail.bedroom] = rooms.length;
+    detail[HouseDetail.bed] = countBeds;
     final entries = detail.entries.toList();
     for (int i = 0; i < entries.length; i++) {
       int value = detail[entries[i].key]!;
@@ -79,9 +87,9 @@ class HouseModel {
     return result;
   }
 
-  int get countBeds{
-    int result=0;
-    for(var room in rooms) {
+  int get countBeds {
+    int result = 0;
+    for (var room in rooms) {
       for (var bed in room.listBeds) {
         result += bed.count;
       }

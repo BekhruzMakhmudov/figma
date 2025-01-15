@@ -15,8 +15,8 @@ class KnockCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String text = knockStatusSubtitle[knockModel.status]!;
-    String name = knockModel.house.owner.name;
-    if (knockModel.status == KnockStatus.declined) text += " $name";
+    final owner = knockModel.house.owner;
+    if (knockModel.status == KnockStatus.declined) text += " ${owner.name}";
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -74,13 +74,13 @@ class KnockCard extends StatelessWidget {
                       height: 50,
                       width: 50,
                       decoration: BoxDecoration(
-                        color: knockModel.house.owner.avatar,
+                        color: owner.avatar,
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                     SizedBox(width: 8),
                     Text(
-                      name,
+                      owner.name,
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],
