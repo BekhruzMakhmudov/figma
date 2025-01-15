@@ -26,6 +26,7 @@ class HouseModel {
   bool isFavorite = false;
   List<AmenityFilters> amenities;
   List<ReviewModel> reviews;
+  List<String> availablePeriods;
   HouseModel({
     required this.isVerified,
     required this.district,
@@ -41,6 +42,7 @@ class HouseModel {
     this.image,
     this.amenities = const [],
     this.reviews = const [],
+    this.availablePeriods = const [],
   }) : id = nextId++;
 
   String get cityCountry {
@@ -49,6 +51,24 @@ class HouseModel {
 
   String get fullTitle {
     return '$title in $cityCountry';
+  }
+
+  Widget get periodRow {
+    final size = availablePeriods.length;
+    final result = Row(
+      children: [
+        Icon(Icons.calendar_today),
+        SizedBox(width: 4),
+        Text(availablePeriods.isEmpty ? 'Flexible' : availablePeriods.first),
+        if (size > 1) SizedBox(width: 4),
+        if (size > 1)
+          Text(
+            '(+${size - 1})',
+            style: TextStyle(color: Colors.blue),
+          ),
+      ],
+    );
+    return result;
   }
 
   UserModel get owner {

@@ -169,13 +169,7 @@ class _HouseCardState extends State<HouseCard> {
                             ),
                           ],
                         ),
-                        Row(
-                          children: const [
-                            Icon(Icons.calendar_today),
-                            SizedBox(width: 4),
-                            Text('15 Oct - 27 Oct'),
-                          ],
-                        ),
+                        widget.houseModel.periodRow,
                       ],
                     ),
                 ],

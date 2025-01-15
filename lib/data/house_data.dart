@@ -43,6 +43,11 @@ List<HouseModel> houses = [
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,
     },
+    availablePeriods: [
+      '15 oct - 17 oct',
+      '15 oct - 17 oct',
+      '15 oct - 17 oct',
+    ],
     rooms: rooms,
     amenities: [
       AmenityFilters.wifi,
