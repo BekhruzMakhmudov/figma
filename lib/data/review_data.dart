@@ -1,6 +1,5 @@
 import 'package:figma/data/user_data.dart';
 import 'package:figma/model/review_model.dart';
-
 final reviews = [
   ReviewModel(
     title: "Exellent apartments with cozy and calm area!",
@@ -14,6 +13,7 @@ final reviews = [
       Property.amenities: 4
     },
     author: users[1],
+    houseId: 0,
     date: "12.09.2020",
   ),
   ReviewModel(
@@ -28,6 +28,7 @@ final reviews = [
       Property.amenities: 5,
     },
     author: users[1],
+    houseId: 0,
     date: "12.09.2020",
   ),
 ];

@@ -12,6 +12,7 @@ class ReviewModel {
   final String title;
   final String content;
   final UserModel author;
+  final int houseId;
   final String date;
   final Map<Property, double> mapProperty;
 
@@ -19,6 +20,7 @@ class ReviewModel {
     required this.title,
     required this.content,
     required this.author,
+    required this.houseId,
     required this.date,
     required this.mapProperty,
   });

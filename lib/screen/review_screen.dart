@@ -94,7 +94,7 @@ class _ReviewScreenState extends State<ReviewScreen>
                         ...yourReviews.map(
                           (review) => Column(
                             children: [
-                              ReviewHouse(houseModel: houses[0]),
+                              ReviewHouse(houseModel: houses[review.houseId]),
                               ReviewUser(reviewModel: review),
                             ],
                           ),

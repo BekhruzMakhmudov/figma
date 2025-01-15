@@ -19,7 +19,7 @@ class KnockCard extends StatelessWidget {
     if (knockModel.status == KnockStatus.declined) text += " ${owner.name}";
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -100,7 +100,9 @@ class KnockCard extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       isScrollControlled: true,
-                      builder: (context) => RateAccommodationSheet(),
+                      builder: (context) => RateAccommodationSheet(
+                        houseId: knockModel.house.id,
+                      ),
                     );
                   }
                 },

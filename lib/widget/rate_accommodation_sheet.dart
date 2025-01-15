@@ -5,7 +5,11 @@ import 'package:figma/widget/review/review_metric.dart';
 import 'package:flutter/material.dart';
 
 class RateAccommodationSheet extends StatefulWidget {
-  const RateAccommodationSheet({super.key});
+  final int houseId;
+  const RateAccommodationSheet({
+    super.key,
+    required this.houseId,
+  });
 
   @override
   State<RateAccommodationSheet> createState() => _RateAccommodationSheetState();
@@ -104,6 +108,7 @@ class _RateAccommodationSheetState extends State<RateAccommodationSheet> {
                       title: _titleController.text,
                       content: _messageController.text,
                       author: users[0],
+                      houseId: widget.houseId,
                       date: '12.09.2020',
                       mapProperty: {
                         Property.cleanliness: 4,
