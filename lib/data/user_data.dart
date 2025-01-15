@@ -12,6 +12,7 @@ List<UserModel> users = [
       1,
       2,
     ],
+    isActive: true,
   ),
   UserModel(
     avatar: Colors.red,
@@ -20,7 +21,8 @@ List<UserModel> users = [
     password: "Ab123456",
     phone: "+12 345 678 90 10",
     housesId: [
-      0,
+      0
     ],
+    isActive: false,
   ),
 ];

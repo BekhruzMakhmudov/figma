@@ -7,6 +7,7 @@ class MyHousesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final houses=users[0].housesList;
     return NavigationFrame(
       index: 3,
       appBar: AppBar(
@@ -17,12 +18,12 @@ class MyHousesScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: (users[0].houses.isEmpty)
+      body: (houses.isEmpty)
           ? const EmptyStateWidget()
           : SingleChildScrollView(
               child: Column(
                 children: [
-                  ...users[0].houses.map(
+                  ...houses.map(
                     (house) => HouseCard(houseModel: house,onTap: (){}),
                   ),
                 ],
