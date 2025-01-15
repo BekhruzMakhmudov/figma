@@ -3,7 +3,8 @@ import 'package:figma/model/house_model.dart';
 import 'package:figma/widget/form/form_button.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
-import 'package:figma/widget/form/calendar_table.dart';
+import 'package:figma/widget/calendar_table.dart';
+import 'package:figma/data/user_data.dart';
 
 class AddPeriodScreen extends StatefulWidget {
   const AddPeriodScreen({super.key});
@@ -42,18 +43,30 @@ class _AddPeriodScreenState extends State<AddPeriodScreen> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Container(
-                    margin: EdgeInsets.all(4),
-                    height: 70,
-                    width: 60,
-                    color: Colors.green,
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(4),
-                    height: 70,
-                    width: 60,
-                    color: Colors.red,
-                  ),
+                  ...users[0].housesList.map(
+                        (house) => GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedHouse = house;
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(4),
+                            height: 70,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              color: house.image,
+                              borderRadius: BorderRadius.circular(12),
+                              border: (selectedHouse == house)
+                                  ? Border.all(
+                                      color: Colors.blue,
+                                      width: 2,
+                                    )
+                                  : null,
+                            ),
+                          ),
+                        ),
+                      ),
                 ],
               ),
             ),

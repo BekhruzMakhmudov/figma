@@ -1,7 +1,7 @@
 import 'package:figma/data/knock_data.dart';
 import 'package:figma/model/knock_model.dart';
-import 'package:figma/widget/cancel_knock_sheet.dart';
-import 'package:figma/widget/rate_accommodation_sheet.dart';
+import 'package:figma/widget/sheet/cancel_knock_sheet.dart';
+import 'package:figma/widget/sheet/rate_accommodation_sheet.dart';
 import 'package:figma/widget/knock/knock_content.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:flutter/material.dart';

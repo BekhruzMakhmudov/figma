@@ -44,9 +44,18 @@ List<HouseModel> houses = [
       HouseDetail.bathroom: 1,
     },
     availablePeriods: [
-      '15 oct - 17 oct',
-      '15 oct - 17 oct',
-      '15 oct - 17 oct',
+      DateTimeRange(
+        start: DateTime(2021, 10, 15),
+        end: DateTime(2021, 10, 17),
+      ),
+      DateTimeRange(
+        start: DateTime(2021, 10, 15),
+        end: DateTime(2021, 10, 17),
+      ),
+      DateTimeRange(
+        start: DateTime(2021, 10, 15),
+        end: DateTime(2021, 10, 17),
+      ),
     ],
     rooms: rooms,
     amenities: [
@@ -76,6 +85,12 @@ List<HouseModel> houses = [
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,
     },
+    availablePeriods: [
+      DateTimeRange(
+        start: DateTime(2021, 10, 15),
+        end: DateTime(2021, 10, 17),
+      ),
+    ],
     rooms: rooms,
     amenities: [
       AmenityFilters.wifi,
@@ -103,6 +118,16 @@ List<HouseModel> houses = [
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,
     },
+    availablePeriods: [
+      DateTimeRange(
+        start: DateTime(2021, 10, 15),
+        end: DateTime(2021, 10, 17),
+      ),
+      DateTimeRange(
+        start: DateTime(2021, 10, 15),
+        end: DateTime(2021, 10, 17),
+      ),
+    ],
     rooms: rooms,
     amenities: [
       AmenityFilters.wifi,
@@ -117,6 +142,6 @@ List<HouseModel> houses = [
     rules:
         "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation.",
     reviews: reviews,
-    image: Colors.red,
+    image: Colors.purple,
   ),
 ];

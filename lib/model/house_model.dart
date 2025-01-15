@@ -3,6 +3,7 @@ import 'package:figma/model/review_model.dart';
 import 'package:figma/model/room_model.dart';
 import 'package:figma/model/user_model.dart';
 import 'package:figma/util/get_average_rating.dart';
+import 'package:figma/util/get_period_string.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/house_data.dart';
 import 'package:figma/data/user_data.dart';
@@ -11,7 +12,6 @@ import '../widget/text/icon_text.dart';
 class HouseModel {
   static int nextId = 0;
   final int id;
-  final bool isVerified;
   final String title;
   final String district;
   final String city;
@@ -23,12 +23,16 @@ class HouseModel {
   final String rules;
   final StatusFilters? status;
   final Color? image;
-  bool isFavorite = false;
+  bool isVerified;
+  bool isFavorite;
+  bool isPublished;
   List<AmenityFilters> amenities;
   List<ReviewModel> reviews;
-  List<String> availablePeriods;
+  List<DateTimeRange> availablePeriods;
   HouseModel({
-    required this.isVerified,
+    this.isVerified = false,
+    this.isFavorite = false,
+    this.isPublished = false,
     required this.district,
     required this.city,
     required this.country,
@@ -59,7 +63,14 @@ class HouseModel {
       children: [
         Icon(Icons.calendar_today),
         SizedBox(width: 4),
-        Text(availablePeriods.isEmpty ? 'Flexible' : availablePeriods.first),
+        Text(
+          availablePeriods.isEmpty
+              ? 'Flexible'
+              : getPeriodString(
+                  period: availablePeriods.first,
+                  format: 'dd MMM',
+                ),
+        ),
         if (size > 1) SizedBox(width: 4),
         if (size > 1)
           Text(
