@@ -10,7 +10,6 @@ import 'package:figma/widget/alert_cancel.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/list_tile_shadow.dart';
 import 'package:flutter/material.dart';
-import 'package:figma/data/review_data.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -130,7 +129,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ReviewScreen(reviews: reviews),
+                    builder: (context) => ReviewScreen(),
                   ),
                 );
               },
