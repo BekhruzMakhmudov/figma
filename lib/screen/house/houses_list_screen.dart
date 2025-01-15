@@ -56,7 +56,7 @@ class _HousesScreenState extends State<HousesScreen> {
         body: TabBarView(
           children: [
             (houses.isEmpty)
-                ? EmptyStateWidget()
+                ? Center(child: Text('No results found'))
                 : ListView.builder(
                     itemCount: houses.length,
                     itemBuilder: (context, index) {
@@ -70,19 +70,11 @@ class _HousesScreenState extends State<HousesScreen> {
                       );
                     },
                   ),
-            EmptyStateWidget(),
-            EmptyStateWidget(),
+            Center(child: Text('No results found')),
+            Center(child: Text('No results found')),
           ],
         ),
       ),
     );
-  }
-}
-
-class EmptyStateWidget extends StatelessWidget {
-  const EmptyStateWidget({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('No results found'));
   }
 }

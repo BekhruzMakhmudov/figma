@@ -1,9 +1,8 @@
 import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/review_data.dart';
 import 'package:figma/data/user_data.dart';
-import 'package:figma/model/bed_model.dart';
+import 'package:figma/data/room_data.dart';
 import 'package:figma/model/house_model.dart';
-import 'package:figma/model/room_model.dart';
 import 'package:flutter/material.dart';
 
 enum HouseDetail {
@@ -45,26 +44,7 @@ List<HouseModel> houses = [
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,
     },
-    rooms: [
-      RoomModel(
-        [
-          BedModel(size: "double size bed", count: 1),
-          BedModel(size: "sofa", count: 1),
-        ],
-      ),
-      RoomModel(
-        [
-          BedModel(size: "single size bed", count: 2),
-          BedModel(size: "sofa", count: 1),
-        ],
-      ),
-      RoomModel(
-        [
-          BedModel(size: "single size bed", count: 2),
-          BedModel(size: "sofa", count: 1),
-        ],
-      ),
-    ],
+    rooms: rooms,
     amenities: [
       AmenityFilters.wifi,
       AmenityFilters.hifi,
@@ -92,26 +72,7 @@ List<HouseModel> houses = [
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,
     },
-    rooms: [
-      RoomModel(
-        [
-          BedModel(size: "double size bed", count: 1),
-          BedModel(size: "sofa", count: 1),
-        ],
-      ),
-      RoomModel(
-        [
-          BedModel(size: "single size bed", count: 2),
-          BedModel(size: "sofa", count: 1),
-        ],
-      ),
-      RoomModel(
-        [
-          BedModel(size: "single size bed", count: 2),
-          BedModel(size: "sofa", count: 1),
-        ],
-      ),
-    ],
+    rooms: rooms,
     amenities: [
       AmenityFilters.wifi,
       AmenityFilters.hifi,
@@ -138,26 +99,7 @@ List<HouseModel> houses = [
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,
     },
-    rooms: [
-      RoomModel(
-        [
-          BedModel(size: "double size bed", count: 1),
-          BedModel(size: "sofa", count: 1),
-        ],
-      ),
-      RoomModel(
-        [
-          BedModel(size: "single size bed", count: 2),
-          BedModel(size: "sofa", count: 1),
-        ],
-      ),
-      RoomModel(
-        [
-          BedModel(size: "single size bed", count: 2),
-          BedModel(size: "sofa", count: 1),
-        ],
-      ),
-    ],
+    rooms: rooms,
     amenities: [
       AmenityFilters.wifi,
       AmenityFilters.hifi,

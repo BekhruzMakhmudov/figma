@@ -1,6 +1,6 @@
-import 'package:figma/model/bed_model.dart';
+import 'package:figma/model/furniture_model.dart';
 
 class RoomModel{
-  final List<BedModel> listBeds;
+  final List<FurnitureModel> listBeds;
   RoomModel(this.listBeds);
 }

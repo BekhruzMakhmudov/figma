@@ -1,10 +1,10 @@
-import 'package:figma/model/bed_model.dart';
+import 'package:figma/model/furniture_model.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class RoomCard extends StatelessWidget {
   final int index;
-  final List<BedModel> listBeds;
+  final List<FurnitureModel> listBeds;
   const RoomCard({
     super.key,
     required this.index,
@@ -28,8 +28,8 @@ class RoomCard extends StatelessWidget {
             children: [
               IconText(icon: Icons.bed, text: "Room ${index+1}"),
               ...listBeds.map(
-                (bed) => Text(
-                  '${bed.count} ${bed.size}',
+                (furniture) => Text(
+                  '${furniture.count} ${furniture.furnitureName}',
                   style: TextStyle(fontSize: 14),
                 ),
               ),
