@@ -1,7 +1,8 @@
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/model/house_model.dart';
+import 'package:figma/util/get_period_string.dart';
 import 'package:figma/widget/house/house_category.dart';
-import 'package:figma/widget/house/house_detail.dart';
+import 'package:figma/widget/house/house_property.dart';
 import 'package:figma/widget/house/room_card.dart';
 import 'package:figma/widget/text/status_text.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +16,15 @@ class HouseDetailScreen extends StatefulWidget {
 }
 
 class _HouseDetailScreenState extends State<HouseDetailScreen> {
-  bool _isExpanded = false;
+  bool _isExpandedAbout = false;
+  bool _isExpandedPeriod = false;
   @override
   Widget build(BuildContext context) {
     final rooms = widget.houseModel.rooms;
+    final availablePeriods=widget.houseModel.availablePeriods;
+    final displayedPeriods = _isExpandedPeriod
+        ? availablePeriods
+        : availablePeriods.take(3).toList();
     return NavigationFrame(
       index: 3,
       appBar: AppBar(
@@ -84,25 +90,77 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
               ),
             ),
             SizedBox(height: 12),
-            HouseDetail(
+            HouseProperty(
               houseModel: widget.houseModel,
             ),
+            if (widget.houseModel.owner != users[0] &&
+                availablePeriods.isNotEmpty)
+              HouseCategory(
+                title: "Available periods",
+                content: [
+                  ...displayedPeriods.map(
+                    (period) => Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            getPeriodString(
+                                period: period,
+                                format: 'dd MMM, yyyy'),
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Icon(
+                              Icons.calendar_today,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  if (availablePeriods.length > 3)
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _isExpandedPeriod = !_isExpandedPeriod;
+                        });
+                      },
+                      child: Text(
+                        _isExpandedPeriod ? 'Show less' : 'Show more',
+                        style: const TextStyle(
+                          color: Colors.blue,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             HouseCategory(
               title: "About the place",
               content: [
                 Text(
                   widget.houseModel.about,
-                  maxLines: _isExpanded ? null : 3,
+                  maxLines: _isExpandedAbout ? null : 3,
                   style: TextStyle(fontSize: 16, height: 1.4),
                 ),
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      _isExpanded = !_isExpanded;
+                      _isExpandedAbout = !_isExpandedAbout;
                     });
                   },
                   child: Text(
-                    _isExpanded ? 'Show less' : 'Show more',
+                    _isExpandedAbout ? 'Show less' : 'Show more',
                     style: TextStyle(
                         color: Colors.blue, fontWeight: FontWeight.bold),
                   ),

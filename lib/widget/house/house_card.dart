@@ -1,6 +1,6 @@
 import 'package:figma/data/user_data.dart';
 import 'package:figma/screen/house/house_detail_screen.dart';
-import 'package:figma/widget/house/house_detail.dart';
+import 'package:figma/widget/house/house_property.dart';
 import 'package:figma/widget/text/status_text.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/widget/text/icon_text.dart';
@@ -129,7 +129,7 @@ class _HouseCardState extends State<HouseCard> {
                       ),
                     ),
                   if (widget.inKnock == null) const SizedBox(height: 8),
-                  HouseDetail(
+                  HouseProperty(
                     houseModel: widget.houseModel,
                   ),
                   if (widget.houseModel.ownerId != users[0].id)

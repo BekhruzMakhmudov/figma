@@ -56,6 +56,10 @@ List<HouseModel> houses = [
         start: DateTime(2021, 10, 15),
         end: DateTime(2021, 10, 17),
       ),
+      DateTimeRange(
+        start: DateTime(2021, 10, 15),
+        end: DateTime(2021, 10, 17),
+      ),
     ],
     rooms: rooms,
     amenities: [
