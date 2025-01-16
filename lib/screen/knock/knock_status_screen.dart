@@ -31,19 +31,13 @@ class KnockStatusScreen extends StatelessWidget {
             ),
             ...KnockStatus.values.map(
               (status) => ListTileShadow(
-                  title: knockStatusTitle[status]!,
-                  count: mapKnock[status]!.length,
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => KnockDetailScreen(
-                          status: status,
-                          knockList: mapKnock[status]!,
-                        ),
-                      ),
-                    );
-                  }),
+                title: knockStatusTitle[status]!,
+                count: mapKnock[status]!.length,
+                nextScreen: KnockDetailScreen(
+                  status: status,
+                  knockList: mapKnock[status]!,
+                ),
+              ),
             ),
             Container(
               padding: const EdgeInsets.all(12),

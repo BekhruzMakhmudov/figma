@@ -1,14 +1,8 @@
+import 'package:figma/data/profile_data.dart';
 import 'package:figma/data/user_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/model/user_model.dart';
-import 'package:figma/screen/form/change_password_screen.dart';
-import 'package:figma/screen/house/favorite_houses_screen.dart';
-import 'package:figma/screen/house/my_houses_list_screen.dart';
-import 'package:figma/screen/period/available_period_screen.dart';
 import 'package:figma/screen/profile/profile_edit_screen.dart';
-import 'package:figma/screen/review_screen.dart';
-import 'package:figma/screen/form/sign_in_screen.dart';
-import 'package:figma/widget/alert_cancel.dart';
 import 'package:figma/widget/house/house_card.dart';
 import 'package:figma/widget/profile_card.dart';
 import 'package:figma/widget/text/header_text.dart';
@@ -89,88 +83,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            ListTileShadow(
-              title: "My houses",
-              leading: Icon(Icons.home),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MyHousesScreen(),
-                  ),
-                );
-              },
-            ),
-            ListTileShadow(
-              title: "Available periods",
-              leading: Icon(Icons.calendar_month),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AvailablePeriodScreen(),
-                  ),
-                );
-              },
-            ),
-            ListTileShadow(
-              title: "Favourites",
-              leading: Icon(Icons.favorite_border),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FavoriteHousesScreen(),
-                  ),
-                );
-              },
-            ),
-            ListTileShadow(
-              title: "Reviews",
-              leading: Icon(Icons.star_border),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ReviewScreen(),
-                  ),
-                );
-              },
-            ),
-            ListTileShadow(
-              title: "Change password",
-              leading: Icon(Icons.key),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChangePasswordScreen(),
-                  ),
-                );
-              },
-            ),
-            ListTileShadow(
-              title: "Log out",
-              leading: Icon(
-                Icons.logout,
-                color: Colors.red,
+            ...ProfileOption.values.map(
+              (option) => ListTileShadow(
+                title: mapProfileString[option]!,
+                leading: Icon(
+                  mapProfileIcon[option],
+                  color: (option == ProfileOption.logOut) ? Colors.red : null,
+                ),
+                color: (option == ProfileOption.logOut) ? Colors.red : null,
+                nextScreen: mapProfileScreen[option]!,
+                hasAlert: (option == ProfileOption.logOut) ? true : null,
               ),
-              color: Colors.red,
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertCancel(
-                    title: "Are you sure you want to log out?",
-                    textButton: "Log out",
-                    onTap: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignInScreen(),
-                      ),
-                    ),
-                  ),
-                );
-              },
             ),
           ],
         ),

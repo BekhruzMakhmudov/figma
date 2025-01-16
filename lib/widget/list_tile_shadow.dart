@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
+import 'alert_cancel.dart';
+
 class ListTileShadow extends StatelessWidget {
   final Widget? leading;
   final String title;
   final int? count;
-  final VoidCallback onTap;
+  final Widget nextScreen;
   final Color? color;
+  final bool? hasAlert;
   const ListTileShadow({
     super.key,
     this.leading,
     required this.title,
     this.count,
-    required this.onTap,
+    required this.nextScreen,
     this.color,
+    this.hasAlert,
   });
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,21 @@ class ListTileShadow extends StatelessWidget {
         ],
       ),
       child: ListTile(
-        onTap: onTap,
+        onTap: () => (hasAlert != null)
+            ? AlertCancel(
+                title: "Are you sure you want to log out?",
+                textButton: "Log out",
+                onTap: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => nextScreen,
+                  ),
+                ),
+              )
+            : Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => nextScreen),
+              ),
         leading: leading,
         title: Text(
           title,
