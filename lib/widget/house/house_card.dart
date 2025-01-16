@@ -1,7 +1,7 @@
-import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/user_data.dart';
 import 'package:figma/screen/house/house_detail_screen.dart';
 import 'package:figma/widget/house/house_detail.dart';
+import 'package:figma/widget/text/status_text.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:figma/model/house_model.dart';
@@ -104,50 +104,36 @@ class _HouseCardState extends State<HouseCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if(widget.inKnock==null) Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        widget.houseModel.cityCountry,
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 14,
-                        ),
-                      ),
-                      if (widget.houseModel.status != null)
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text(
-                            mapFilters[widget.houseModel.status]!,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
+                  if (widget.inKnock == null)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          widget.houseModel.cityCountry,
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
                           ),
                         ),
-                    ],
-                  ),
-                  if(widget.inKnock==null) const SizedBox(height: 4),
-                  if(widget.inKnock==null) Text(
-                    widget.houseModel.title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                        if (widget.houseModel.status != null)
+                          StatusText(status: widget.houseModel.status!),
+                      ],
                     ),
-                  ),
-                  if(widget.inKnock==null) const SizedBox(height: 8),
+                  if (widget.inKnock == null) const SizedBox(height: 4),
+                  if (widget.inKnock == null)
+                    Text(
+                      widget.houseModel.title,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  if (widget.inKnock == null) const SizedBox(height: 8),
                   HouseDetail(
                     houseModel: widget.houseModel,
                   ),
-                  if (widget.houseModel.ownerId != users[0].id) SizedBox(height: 8),
+                  if (widget.houseModel.ownerId != users[0].id)
+                    SizedBox(height: 8),
                   if (widget.houseModel.ownerId != users[0].id)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

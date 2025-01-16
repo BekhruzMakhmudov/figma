@@ -144,4 +144,31 @@ List<HouseModel> houses = [
     reviews: reviews,
     image: Colors.purple,
   ),
+  HouseModel(
+    isVerified: false,
+    district: 'Schoneberg',
+    city: 'Berlin',
+    country: 'Germany',
+    title: 'Cozy apartments',
+    ownerId: 1,
+    detail: {
+      HouseDetail.guest: 4,
+      HouseDetail.bathroom: 1,
+    },
+    rooms: rooms,
+    amenities: [
+      AmenityFilters.wifi,
+      AmenityFilters.hifi,
+      AmenityFilters.workingSpace,
+      AmenityFilters.library,
+      AmenityFilters.homeCinema,
+      AmenityFilters.dishwasher,
+    ],
+    about:
+        "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation. The room faces the peaceful first patio and is outfitted with a twofold bed.",
+    rules:
+        "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation.",
+    reviews: reviews,
+    image: Colors.grey,
+  ),
 ];

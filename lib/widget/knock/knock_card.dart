@@ -55,6 +55,7 @@ class KnockCard extends StatelessWidget {
             ProfileCard(
               color: owner.avatar,
               size: 50,
+              isActive: owner.isActive,
               title: Text(
                 owner.name,
                 style: TextStyle(color: Colors.grey),
