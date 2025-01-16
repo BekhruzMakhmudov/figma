@@ -15,7 +15,10 @@ class ReviewSlider extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(text),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 26.0),
+          child: Text(text),
+        ),
         Row(
           children: [
             Expanded(

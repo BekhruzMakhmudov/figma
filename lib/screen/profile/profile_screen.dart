@@ -4,21 +4,22 @@ import 'package:figma/model/user_model.dart';
 import 'package:figma/screen/form/change_password_screen.dart';
 import 'package:figma/screen/house/favorite_houses_screen.dart';
 import 'package:figma/screen/house/my_houses_list_screen.dart';
+import 'package:figma/screen/period/available_period_screen.dart';
 import 'package:figma/screen/profile/profile_edit_screen.dart';
 import 'package:figma/screen/review_screen.dart';
 import 'package:figma/screen/form/sign_in_screen.dart';
 import 'package:figma/widget/alert_cancel.dart';
 import 'package:figma/widget/house/house_card.dart';
-import 'package:figma/widget/profile_user.dart';
+import 'package:figma/widget/profile_card.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/list_tile_shadow.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
-  final UserModel? userModel;
+  final UserModel userModel;
   const ProfileScreen({
     super.key,
-    this.userModel,
+    required this.userModel,
   });
 
   @override
@@ -28,9 +29,9 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return (widget.userModel == null)
+    return (widget.userModel == users[0])
         ? _buildMyProfile()
-        : _buildOtherProfile(user: widget.userModel!);
+        : _buildOtherProfile(user: widget.userModel);
   }
 
   Widget _buildMyProfile() {
@@ -66,7 +67,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ProfileUser(userModel: users[0]),
+            ProfileCard(
+              color: widget.userModel.avatar,
+              size: 100,
+              title: HeaderText(
+                text: widget.userModel.name,
+                isBold: true,
+                isLarge: false,
+              ),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Joined: Oct 2020",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Text(widget.userModel.email),
+                  Text(widget.userModel.phone),
+                ],
+              ),
+            ),
             ListTileShadow(
               title: "My houses",
               leading: Icon(Icons.home),
@@ -82,7 +104,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ListTileShadow(
               title: "Available periods",
               leading: Icon(Icons.calendar_month),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AvailablePeriodScreen(),
+                  ),
+                );
+              },
             ),
             ListTileShadow(
               title: "Favourites",
@@ -158,7 +187,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            ProfileUser(userModel: user),
+            ProfileCard(
+              color: user.avatar,
+              size: 100,
+              title: HeaderText(
+                text: user.name,
+                isBold: true,
+                isLarge: false,
+              ),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Houses: ${widget.userModel.housesList.length}'),
+                  Divider(),
+                  Row(
+                    children: [
+                      Text('Activity: '),
+                      Text(
+                        widget.userModel.isActive ? 'Online' : 'Offline',
+                        style: TextStyle(
+                            color: widget.userModel.isActive
+                                ? Colors.green
+                                : Colors.grey),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    "Joined: Oct 2020",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Expanded(
               child: ListView(
                 children: [

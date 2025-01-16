@@ -3,6 +3,7 @@ import 'package:figma/screen/knock/knock_status_screen.dart';
 import 'package:figma/screen/house/my_houses_list_screen.dart';
 import 'package:figma/screen/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:figma/data/user_data.dart';
 class NavigationFrame extends StatefulWidget {
   final Widget body;
   final PreferredSizeWidget? appBar;
@@ -24,7 +25,7 @@ class _NavigationFrameState extends State<NavigationFrame> {
       HousesScreen(),
       MyHousesScreen(),
       KnockStatusScreen(),
-      ProfileScreen()
+      ProfileScreen(userModel: users[0],),
     ];
     return Scaffold(
       resizeToAvoidBottomInset: false,
