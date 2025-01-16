@@ -1,6 +1,7 @@
 import 'package:figma/data/review_data.dart';
 import 'package:figma/data/user_data.dart';
 import 'package:figma/model/review_model.dart';
+import 'package:figma/screen/knock/knock_status_screen.dart';
 import 'package:figma/widget/review/review_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -120,7 +121,12 @@ class _RateAccommodationSheetState extends State<RateAccommodationSheet> {
                       },
                     ),
                   );
-                  Navigator.pop(context);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => KnockStatusScreen(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),

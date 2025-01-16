@@ -13,7 +13,7 @@ class KnockStatusScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final knockCount = getKnockCount();
+    final mapKnock = getMapKnock();
     return NavigationFrame(
       index: 2,
       body: SingleChildScrollView(
@@ -29,90 +29,22 @@ class KnockStatusScreen extends StatelessWidget {
                 isBold: true,
               ),
             ),
-            ListTileShadow(
-                title: knockStatusTitle[KnockStatus.madeByMe]!,
-                count: knockCount[KnockStatus.madeByMe] ?? 0,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => KnockDetailScreen(
-                        status: KnockStatus.madeByMe,
-                        count: knockCount[KnockStatus.madeByMe]!,
+            ...KnockStatus.values.map(
+              (status) => ListTileShadow(
+                  title: knockStatusTitle[status]!,
+                  count: mapKnock[status]!.length,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => KnockDetailScreen(
+                          status: status,
+                          knockList: mapKnock[status]!,
+                        ),
                       ),
-                    ),
-                  );
-                }),
-            ListTileShadow(
-                title: "Knocks received",
-                count: knockCount[KnockStatus.received],
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => KnockDetailScreen(
-                        status: KnockStatus.received,
-                        count: knockCount[KnockStatus.received]!,
-                      ),
-                    ),
-                  );
-                }),
-            ListTileShadow(
-                title: "Declined",
-                count: knockCount[KnockStatus.declined],
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => KnockDetailScreen(
-                        status: KnockStatus.declined,
-                        count: knockCount[KnockStatus.declined]!,
-                      ),
-                    ),
-                  );
-                }),
-            ListTileShadow(
-                title: "Negotiation",
-                count: knockCount[KnockStatus.negotiation],
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => KnockDetailScreen(
-                        status: KnockStatus.negotiation,
-                        count: knockCount[KnockStatus.negotiation]!,
-                      ),
-                    ),
-                  );
-                }),
-            ListTileShadow(
-                title: "Upcoming Exchanges",
-                count: knockCount[KnockStatus.upcoming],
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => KnockDetailScreen(
-                        status: KnockStatus.upcoming,
-                        count: knockCount[KnockStatus.upcoming]!,
-                      ),
-                    ),
-                  );
-                }),
-            ListTileShadow(
-                title: "Exchanged",
-                count: knockCount[KnockStatus.exchanged],
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => KnockDetailScreen(
-                        status: KnockStatus.exchanged,
-                        count: knockCount[KnockStatus.exchanged]!,
-                      ),
-                    ),
-                  );
-                }),
+                    );
+                  }),
+            ),
             Container(
               padding: const EdgeInsets.all(12),
               child: HeaderText(
@@ -123,11 +55,11 @@ class KnockStatusScreen extends StatelessWidget {
             ),
             _buildStatsItem(
                 title: 'Knock-knock requests',
-                count: knockCount[KnockStatus.received]!),
+                count: mapKnock[KnockStatus.received]!.length),
             const Divider(),
             _buildStatsItem(
                 title: 'Accommodation views',
-                count: knockCount[KnockStatus.declined]!),
+                count: mapKnock[KnockStatus.declined]!.length),
             const Divider(),
             _buildStatsItem(
                 title: 'Reviews',
@@ -137,7 +69,10 @@ class KnockStatusScreen extends StatelessWidget {
             const Divider(),
             _buildStatsItem(
                 title: 'Added to favorites',
-                count: houses.where((house) => house.isFavorite).length),
+                count: houses
+                    .where(
+                        (house) => house.isFavorite && house.owner != users[0])
+                    .length),
           ],
         ),
       ),

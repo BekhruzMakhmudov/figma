@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 class KnockDetailScreen extends StatefulWidget {
   final KnockStatus status;
-  final int count;
+  final List<KnockModel> knockList;
   const KnockDetailScreen({
     super.key,
     required this.status,
-    required this.count,
+    required this.knockList,
   });
 
   @override
@@ -20,8 +20,6 @@ class KnockDetailScreen extends StatefulWidget {
 class _KnockDetailScreenState extends State<KnockDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    List<KnockModel> filtredKnocked =
-        knocks.where((knock) => knock.status == widget.status).toList();
     return Scaffold(
       appBar: AppBar(
         title: Text('Back'),
@@ -39,16 +37,16 @@ class _KnockDetailScreenState extends State<KnockDetailScreen> {
                 isBold: true,
               ),
               trailing: HeaderText(
-                text: '(${widget.count})',
+                text: '(${widget.knockList.length})',
                 isLarge: false,
                 isBold: true,
               ),
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: filtredKnocked.length,
+                itemCount: widget.knockList.length,
                 itemBuilder: (context, index) => KnockCard(
-                  knockModel: filtredKnocked[index],
+                  knockModel: widget.knockList[index],
                 ),
               ),
             ),

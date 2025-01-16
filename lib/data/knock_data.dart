@@ -149,10 +149,17 @@ List<KnockModel> knocks = [
   ),
 ];
 
-Map<KnockStatus, int> getKnockCount() {
-  Map<KnockStatus, int> result = {};
-  for (final i in knocks) {
-    result[i.status] = (result[i.status] ?? 0) + 1;
+Map<KnockStatus, List<KnockModel>> getMapKnock(){
+  Map<KnockStatus, List<KnockModel>> result={
+    KnockStatus.madeByMe:[],
+    KnockStatus.received:[],
+    KnockStatus.declined: [],
+    KnockStatus.negotiation: [],
+    KnockStatus.upcoming: [],
+    KnockStatus.exchanged: [],
+  };
+  for(var knock in knocks){
+    result[knock.status]!.add(knock);
   }
   return result;
 }
