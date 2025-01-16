@@ -96,6 +96,7 @@ class _ReviewScreenState extends State<ReviewScreen>
                             children: [
                               ReviewHouse(houseModel: houses[review.houseId]),
                               ReviewUser(reviewModel: review),
+                              SizedBox(height: 12),
                             ],
                           ),
                         ),

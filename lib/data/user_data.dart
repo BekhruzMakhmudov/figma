@@ -23,6 +23,6 @@ List<UserModel> users = [
     housesId: [
       0
     ],
-    isActive: false,
+    isActive: true,
   ),
 ];

@@ -5,7 +5,7 @@ Map<Property, double> getMapRating(List<ReviewModel> reviews) {
     Property.cleanliness: 0.0,
     Property.communication: 0.0,
     Property.nearPlace: 0.0,
-    Property.neighbors: 0.0,
+    Property.neighbours: 0.0,
     Property.amenities: 0.0,
   };
   for (var review in reviews) {

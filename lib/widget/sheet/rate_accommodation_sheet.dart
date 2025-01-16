@@ -1,7 +1,7 @@
 import 'package:figma/data/review_data.dart';
 import 'package:figma/data/user_data.dart';
 import 'package:figma/model/review_model.dart';
-import 'package:figma/widget/review/review_metric.dart';
+import 'package:figma/widget/review/review_slider.dart';
 import 'package:flutter/material.dart';
 
 class RateAccommodationSheet extends StatefulWidget {
@@ -18,16 +18,15 @@ class RateAccommodationSheet extends StatefulWidget {
 class _RateAccommodationSheetState extends State<RateAccommodationSheet> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
-
+  final rating = {
+    Property.cleanliness: 0.0,
+    Property.communication: 0.0,
+    Property.nearPlace: 0.0,
+    Property.neighbours: 0.0,
+    Property.amenities: 0.0,
+  };
   @override
   Widget build(BuildContext context) {
-    final rating = {
-      Property.cleanliness: 0.0,
-      Property.communication: 0.0,
-      Property.nearPlace: 0.0,
-      Property.neighbors: 0.0,
-      Property.amenities: 0.0,
-    };
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -66,14 +65,16 @@ class _RateAccommodationSheetState extends State<RateAccommodationSheet> {
             Divider(),
             const SizedBox(height: 16),
             ...rating.entries.map(
-              (entry) => Column(
-                children: [
-                  ReviewMetric(
-                    label: entry.key.name,
-                    rating: entry.value,
-                  ),
-                  const SizedBox(height: 16),
-                ],
+              (entry) => ReviewSlider(
+                text: mapProperty[entry.key]!,
+                value: rating[entry.key]!,
+                onChanged: (value) {
+                  setState(
+                    () {
+                      rating[entry.key] = value;
+                    },
+                  );
+                },
               ),
             ),
             TextField(
@@ -111,11 +112,11 @@ class _RateAccommodationSheetState extends State<RateAccommodationSheet> {
                       houseId: widget.houseId,
                       date: '12.09.2020',
                       mapProperty: {
-                        Property.cleanliness: 4,
-                        Property.communication: 5,
-                        Property.nearPlace: 4,
-                        Property.neighbors: 3,
-                        Property.amenities: 4
+                        Property.cleanliness: rating[Property.cleanliness]!,
+                        Property.communication: rating[Property.communication]!,
+                        Property.nearPlace: rating[Property.nearPlace]!,
+                        Property.neighbours: rating[Property.neighbours]!,
+                        Property.amenities: rating[Property.amenities]!,
                       },
                     ),
                   );

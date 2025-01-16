@@ -1,3 +1,4 @@
+import 'package:figma/widget/review/review_card.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/model/review_model.dart';
 
@@ -6,6 +7,8 @@ class ReviewUser extends StatelessWidget {
   const ReviewUser({super.key, required this.reviewModel});
   @override
   Widget build(BuildContext context) {
+    double iconSize=25;
+    Color iconColor=Colors.amber;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -13,52 +16,58 @@ class ReviewUser extends StatelessWidget {
         Row(
           children: List.generate(
             5,
-            (index) => Icon(
-              index < reviewModel.rating ? Icons.star : Icons.star_border,
-              color: Colors.amber,
-              size: 20,
-            ),
+            (index) {
+              if (index < reviewModel.rating.floor()) {
+                // Full star
+                return Icon(
+                  Icons.star,
+                  color: iconColor,
+                  size: iconSize,
+                );
+              } else if (index < reviewModel.rating &&
+                  reviewModel.rating - index >= 0.5) {
+                // Half star
+                return Icon(
+                  Icons.star_half,
+                  color: iconColor,
+                  size: iconSize,
+                );
+              } else {
+                // Empty star
+                return Icon(
+                  Icons.star_border,
+                  color: iconColor,
+                  size: iconSize,
+                );
+              }
+            },
           ),
         ),
-        const SizedBox(height: 12),
-        Text(
-          reviewModel.title,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+        SizedBox(height: 12),
+        if (reviewModel.title.isNotEmpty)
+          Text(
+            reviewModel.title,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          reviewModel.content,
-          style: TextStyle(color: Colors.grey),
-        ),
-        const SizedBox(height: 16),
-        Row(
-          children: [
-            Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                color: reviewModel.author.avatar,
-                borderRadius: BorderRadius.circular(12),
-              ),
+        if (reviewModel.content.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              reviewModel.content,
+              style: TextStyle(color: Colors.grey),
             ),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  reviewModel.author.name,
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  reviewModel.date,
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ],
-            ),
-          ],
+          ),
+        ReviewCard(
+          image: reviewModel.author.avatar,
+          title: reviewModel.author.name,
+          subtitle: Text(
+            reviewModel.date,
+            style: TextStyle(color: Colors.grey),
+          ),
+          isActive: reviewModel.author.isActive,
         ),
       ],
     );

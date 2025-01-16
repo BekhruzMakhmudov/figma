@@ -4,9 +4,17 @@ enum Property {
   cleanliness,
   communication,
   nearPlace,
-  neighbors,
+  neighbours,
   amenities,
 }
+
+final mapProperty={
+  Property.cleanliness:'Cleanliness',
+  Property.communication:'Communication with member',
+  Property.nearPlace:'Area near place',
+  Property.neighbours:'Neighbours',
+  Property.amenities:'Amenities',
+};
 
 class ReviewModel {
   final String title;
@@ -26,11 +34,10 @@ class ReviewModel {
   });
 
   double get rating {
-    return (mapProperty[Property.cleanliness]! +
-            mapProperty[Property.communication]! +
-            mapProperty[Property.nearPlace]! +
-            mapProperty[Property.neighbors]! +
-            mapProperty[Property.amenities]!) /
-        5;
+    double result=0;
+    for(var property in Property.values){
+      result+=mapProperty[property]!;
+    }
+    return result/Property.values.length;
   }
 }

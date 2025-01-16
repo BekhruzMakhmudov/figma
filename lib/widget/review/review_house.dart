@@ -1,3 +1,6 @@
+import 'package:figma/model/review_model.dart';
+import 'package:figma/widget/review/review_card.dart';
+import 'package:figma/widget/review/review_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/model/house_model.dart';
 
@@ -11,35 +14,33 @@ class ReviewHouse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    final mapRating = houseModel.mapRating;
+    return Column(
       children: [
-        Container(
-          width: 48,
-          height: 48,
-          decoration: BoxDecoration(
-            color: houseModel.image,
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              houseModel.title,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ReviewCard(
+              image: houseModel.image!,
+              title: houseModel.fullTitle,
+              subtitle: Row(
+                children: [
+                  const Icon(Icons.star, color: Colors.amber, size: 16),
+                  Text(houseModel.averageRating),
+                  const SizedBox(width: 4),
+                  Text('(${houseModel.reviews.length} Reviews)'),
+                ],
               ),
             ),
-            Row(
-              children: [
-                Text(houseModel.averageRating),
-                const SizedBox(width: 4),
-                const Icon(Icons.star, color: Colors.amber, size: 16),
-                Text('(${houseModel.reviews.length} Reviews)'),
-              ],
-            ),
-          ],
+          ),
+        ),
+        SizedBox(height: 16),
+        ...Property.values.map(
+          (property) => ReviewSlider(
+            text: mapProperty[property]!,
+            value: mapRating[property]!,
+            onChanged: (value) {},
+          ),
         ),
       ],
     );
