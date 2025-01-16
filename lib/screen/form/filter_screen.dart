@@ -38,6 +38,9 @@ class _FilterScreenState extends State<FilterScreen> {
   @override
   Widget build(BuildContext context) {
     final statusFilters = mapFilters.values.toList();
+    final today = DateTime.now();
+    DateTime? start;
+    DateTime? end;
     return Scaffold(
       appBar: AppBar(
         title: HeaderText(
@@ -111,7 +114,21 @@ class _FilterScreenState extends State<FilterScreen> {
               Expansion(
                 text: 'Dates',
                 children: [
-                  CalendarTable(),
+                  CalendarTable(
+                    today: today,
+                    onRangeSelected: (newStart, newEnd, _) {
+                      setState(
+                        () {
+                          if (start?.isAfter(today) ?? true) {
+                            start = newStart;
+                          }
+                          if (end?.isAfter(today) ?? true) {
+                            end = newEnd;
+                          }
+                        },
+                      );
+                    },
+                  ),
                   // Flexible Toggle
                   CheckBox(text: 'Flexible', isBold: true),
                 ],

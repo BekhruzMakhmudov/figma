@@ -17,6 +17,7 @@ class AlertCancel extends StatelessWidget {
         title,
         textAlign: TextAlign.center,
       ),
+      actionsAlignment: MainAxisAlignment.spaceAround,
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),

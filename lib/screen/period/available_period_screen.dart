@@ -1,6 +1,8 @@
 import 'package:figma/data/user_data.dart';
 import 'package:figma/screen/period/add_period_screen.dart';
+import 'package:figma/screen/profile/profile_screen.dart';
 import 'package:figma/util/get_period_string.dart';
+import 'package:figma/widget/alert_cancel.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:flutter/material.dart';
 
@@ -53,6 +55,34 @@ class _AvailablePeriodScreenState extends State<AvailablePeriodScreen> {
                                 onPressed: () {
                                   setState(() {
                                     house.isPublished = !house.isPublished;
+                                    ScaffoldMessenger.of(context).clearSnackBars();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: Theme.of(context)
+                                            .colorScheme
+                                            .surface,
+                                        behavior: SnackBarBehavior.floating,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        content: Row(
+                                          children: [
+                                            Icon(Icons.check,
+                                                color: Colors.green),
+                                            SizedBox(width: 4),
+                                            Text(
+                                              'House ${house.isPublished ? '' : 'un'}published successfully',
+                                              style: TextStyle(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .onSurface,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -67,13 +97,14 @@ class _AvailablePeriodScreenState extends State<AvailablePeriodScreen> {
                               ),
                               onLongPress: () {},
                             ),
-                            ...house.availablePeriods.map(
-                              (period) => Card(
+                            ...List.generate(
+                              house.availablePeriods.length,
+                              (index) => Card(
                                 child: Column(
                                   children: [
                                     Text(
                                       getPeriodString(
-                                          period: period,
+                                          period: house.availablePeriods[index],
                                           format: 'dd MMM, yyyy'),
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
@@ -99,7 +130,30 @@ class _AvailablePeriodScreenState extends State<AvailablePeriodScreen> {
                                           ),
                                         ),
                                         TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              builder: (context) => AlertCancel(
+                                                title:
+                                                    'Are you sure you want to delete available period?',
+                                                textButton: 'Delete',
+                                                onTap: () {
+                                                  house.availablePeriods
+                                                      .removeAt(index);
+                                                  Navigator.pushAndRemoveUntil(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ProfileScreen(
+                                                              userModel:
+                                                                  users[0]),
+                                                    ),
+                                                    (route) => false,
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                          },
                                           child: Text(
                                             "Delete",
                                             style: TextStyle(color: Colors.red),

@@ -1,5 +1,6 @@
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/model/house_model.dart';
+import 'package:figma/screen/profile/profile_screen.dart';
 import 'package:figma/widget/form/form_button.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,11 @@ class AddPeriodScreen extends StatefulWidget {
 
 class _AddPeriodScreenState extends State<AddPeriodScreen> {
   HouseModel? selectedHouse;
-  DateTimeRange? selectedRange;
+  DateTime? start;
+  DateTime? end;
   @override
   Widget build(BuildContext context) {
+    final today = DateTime.now();
     return NavigationFrame(
       index: 3,
       appBar: AppBar(
@@ -31,7 +34,23 @@ class _AddPeriodScreenState extends State<AddPeriodScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CalendarTable(),
+            CalendarTable(
+              today: today,
+              start: start,
+              end: end,
+              onRangeSelected: (newStart, newEnd, _) {
+                setState(
+                  () {
+                    if (start?.isAfter(today) ?? true) {
+                      start = newStart;
+                    }
+                    if (end?.isAfter(today) ?? true) {
+                      end = newEnd;
+                    }
+                  },
+                );
+              },
+            ),
             Text(
               "Choose house",
               style: TextStyle(
@@ -74,7 +93,35 @@ class _AddPeriodScreenState extends State<AddPeriodScreen> {
             FormButton(
                 text: "Save",
                 onTap: () {
-                  Navigator.pop(context, selectedRange);
+                  selectedHouse!.availablePeriods.add(
+                    DateTimeRange(start: start!, end: end!),
+                  );
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('New available period successfully added'),
+                      actionsAlignment: MainAxisAlignment.center,
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProfileScreen(
+                                  userModel: users[0],
+                                ),
+                              ),
+                                  (route) => false,
+                            );
+                          },
+                          child: Text(
+                            'Got it',
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
                 }),
             SizedBox(height: 16),
             FormButton(
