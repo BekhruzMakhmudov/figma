@@ -1,7 +1,7 @@
+import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/user_data.dart';
 import 'package:figma/screen/house/house_detail_screen.dart';
 import 'package:figma/widget/house/house_property.dart';
-import 'package:figma/widget/text/status_text.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:figma/model/house_model.dart';
@@ -116,7 +116,14 @@ class _HouseCardState extends State<HouseCard> {
                           ),
                         ),
                         if (widget.houseModel.status != null)
-                          StatusText(status: widget.houseModel.status!),
+                          Chip(
+                            padding: EdgeInsets.zero,
+                            backgroundColor: Colors.blue,
+                            label: Text(
+                              mapStatusFilters[widget.houseModel.status]!,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
                       ],
                     ),
                   if (widget.inKnock == null) const SizedBox(height: 4),

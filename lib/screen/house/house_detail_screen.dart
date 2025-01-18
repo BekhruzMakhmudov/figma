@@ -1,10 +1,10 @@
+import 'package:figma/data/filter_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/model/house_model.dart';
 import 'package:figma/util/get_period_string.dart';
 import 'package:figma/widget/house/house_category.dart';
 import 'package:figma/widget/house/house_property.dart';
 import 'package:figma/widget/house/room_card.dart';
-import 'package:figma/widget/text/status_text.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/user_data.dart';
 
@@ -21,7 +21,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final rooms = widget.houseModel.rooms;
-    final availablePeriods=widget.houseModel.availablePeriods;
+    final availablePeriods = widget.houseModel.availablePeriods;
     final displayedPeriods = _isExpandedPeriod
         ? availablePeriods
         : availablePeriods.take(3).toList();
@@ -29,6 +29,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
       index: 3,
       appBar: AppBar(
         title: Text("Back"),
+        centerTitle: false,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -37,7 +38,14 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
             if (widget.houseModel.status != null)
               Padding(
                 padding: const EdgeInsets.only(bottom: 6),
-                child: StatusText(status: widget.houseModel.status!),
+                child: Chip(
+                  padding: EdgeInsets.zero,
+                  backgroundColor: Colors.blue,
+                  label: Text(
+                    mapStatusFilters[widget.houseModel.status]!,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ),
             if (!widget.houseModel.isVerified &&
                 widget.houseModel.owner != users[0])
@@ -106,8 +114,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
                         children: [
                           Text(
                             getPeriodString(
-                                period: period,
-                                format: 'dd MMM, yyyy'),
+                                period: period, format: 'dd MMM, yyyy'),
                             style: const TextStyle(
                               fontSize: 16,
                             ),

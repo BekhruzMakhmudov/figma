@@ -33,11 +33,11 @@ class _FilterScreenState extends State<FilterScreen> {
   int carPlace = 0;
   int charger = 0;
 
-  final List<bool> statusSelected = [false, false, false, false];
+  final statusSelected = [false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
-    final statusFilters = mapFilters.values.toList();
+    final statusList = StatusFilters.values;
     final today = DateTime.now();
     DateTime? start;
     DateTime? end;
@@ -72,26 +72,32 @@ class _FilterScreenState extends State<FilterScreen> {
                 height: 40,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: statusFilters.length,
+                  itemCount: statusList.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: FilterChip(
+                        padding: EdgeInsets.zero,
+                        label: Text(
+                          mapStatusFilters[statusList[index]]!,
+                          style: TextStyle(
+                            color: statusSelected[index] ? Colors.white : null,
+                          ),
+                        ),
+                        showCheckmark: false,
                         selected: statusSelected[index],
-                        label: Text(statusFilters[index]),
                         onSelected: (bool selected) {
                           setState(() {
                             statusSelected[index] = selected;
                           });
                         },
-                        selectedColor: Colors.blue.shade100,
+                        selectedColor: Colors.blue,
                       ),
                     );
                   },
                 ),
               ),
               // Location Section
-              const SizedBox(height: 24),
               Expansion(
                 text: 'Where?',
                 children: [
@@ -110,7 +116,6 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
 
               // Calendar Section
-              const SizedBox(height: 16),
               Expansion(
                 text: 'Dates',
                 children: [
@@ -135,7 +140,6 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
 
               // Guests Section
-              const SizedBox(height: 16),
               Expansion(
                 text: 'Guests',
                 children: [
@@ -152,7 +156,6 @@ class _FilterScreenState extends State<FilterScreen> {
                 ],
               ),
               // Property Type Section
-              const SizedBox(height: 16),
               Expansion(
                 text: 'Type',
                 children: [
@@ -160,7 +163,6 @@ class _FilterScreenState extends State<FilterScreen> {
                 ],
               ),
               // Rooms Section
-              const SizedBox(height: 16),
               Expansion(
                 text: 'Rooms & arrangements',
                 children: [
@@ -194,7 +196,6 @@ class _FilterScreenState extends State<FilterScreen> {
                 ],
               ),
               //Size of place Section
-              const SizedBox(height: 16),
               Expansion(
                 text: 'Size of place',
                 children: [
@@ -215,7 +216,6 @@ class _FilterScreenState extends State<FilterScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 16),
                         Expanded(
                           child: TextField(
                             controller: toSizeController,
@@ -235,7 +235,6 @@ class _FilterScreenState extends State<FilterScreen> {
                 ],
               ),
               // Amenities Section
-              const SizedBox(height: 16),
               Expansion(
                 text: 'Amenities',
                 children: [
@@ -243,7 +242,6 @@ class _FilterScreenState extends State<FilterScreen> {
                 ],
               ),
               // Car Section
-              const SizedBox(height: 16),
               Expansion(
                 text: 'Place for a car',
                 children: [

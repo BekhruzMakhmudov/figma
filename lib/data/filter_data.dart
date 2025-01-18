@@ -7,7 +7,7 @@ enum StatusFilters {
   deal,
 }
 
-final Map<StatusFilters, String> mapFilters = {
+final Map<StatusFilters, String> mapStatusFilters = {
   StatusFilters.knockedYou: 'Knocked you',
   StatusFilters.iKnocked: 'I Knocked',
   StatusFilters.negotiation: 'Negotiation',

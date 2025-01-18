@@ -2,6 +2,7 @@ import 'package:figma/data/house_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/screen/form/filter_screen.dart';
 import 'package:figma/widget/house/house_card.dart';
+import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 
 class HousesScreen extends StatefulWidget {
@@ -19,19 +20,10 @@ class _HousesScreenState extends State<HousesScreen> {
       child: NavigationFrame(
         index: 0,
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: const Text(
-            'Houses',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          title: HeaderText(text: 'Houses'),
           actions: [
             IconButton(
-              icon: const Icon(Icons.tune, color: Colors.black),
+              icon: const Icon(Icons.tune),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
@@ -64,7 +56,8 @@ class _HousesScreenState extends State<HousesScreen> {
                         houseModel: houses[index],
                         onTap: () {
                           setState(() {
-                            houses[index].isFavorite = !houses[index].isFavorite;
+                            houses[index].isFavorite =
+                                !houses[index].isFavorite;
                           });
                         },
                       );
