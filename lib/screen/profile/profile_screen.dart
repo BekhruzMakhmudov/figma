@@ -83,6 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
+            SizedBox(height: 8),
             if (widget.userModel.housesList.isEmpty)
               Container(
                 margin: EdgeInsets.symmetric(vertical: 8),

@@ -13,7 +13,9 @@ class MyHousesScreen extends StatelessWidget {
     return NavigationFrame(
       index: 3,
       appBar: AppBar(
-        leading: BackButton(),
+        leading: BackButton(
+          onPressed: () => Navigator.pop(context),
+        ),
         title: HeaderText(text: 'My houses'),
       ),
       body: (houses.isEmpty)

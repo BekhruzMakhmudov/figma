@@ -20,7 +20,9 @@ class _FavoriteHousesScreenState extends State<FavoriteHousesScreen> {
         .toList();
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
+        leading: BackButton(
+          onPressed: () => Navigator.pop(context),
+        ),
         title: const Text('Back'),
       ),
       body: Padding(

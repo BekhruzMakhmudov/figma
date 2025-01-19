@@ -22,6 +22,9 @@ class _KnockDetailScreenState extends State<KnockDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text('Back'),
         centerTitle: false,
       ),

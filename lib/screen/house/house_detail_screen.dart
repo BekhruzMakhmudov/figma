@@ -28,6 +28,9 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
     return NavigationFrame(
       index: 3,
       appBar: AppBar(
+        leading: BackButton(
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text("Back"),
         centerTitle: false,
       ),
