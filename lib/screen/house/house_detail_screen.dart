@@ -60,7 +60,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
             RichText(
               text: TextSpan(
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
                 children: [
@@ -70,7 +70,9 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
                       color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
-                  WidgetSpan(child: SizedBox(width: 8)),
+                  WidgetSpan(
+                    child: SizedBox(width: 4),
+                  ),
                   if (widget.houseModel.isVerified!)
                     WidgetSpan(
                       child: Icon(

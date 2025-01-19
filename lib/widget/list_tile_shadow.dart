@@ -39,13 +39,16 @@ class ListTileShadow extends StatelessWidget {
       ),
       child: ListTile(
         onTap: () => (hasAlert != null)
-            ? AlertCancel(
-                title: "Are you sure you want to log out?",
-                textButton: "Log out",
-                onTap: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => nextScreen,
+            ? showDialog(
+                context: context,
+                builder: (context) => AlertCancel(
+                  title: "Are you sure you want to log out?",
+                  textButton: "Log out",
+                  onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => nextScreen,
+                    ),
                   ),
                 ),
               )

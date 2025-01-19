@@ -1,3 +1,4 @@
+import 'package:figma/widget/check_icon.dart';
 import 'package:flutter/material.dart';
 
 SnackBar snackBarFloating({
@@ -8,7 +9,7 @@ SnackBar snackBarFloating({
   return SnackBar(
     backgroundColor: Theme.of(context).colorScheme.surface,
     behavior: SnackBarBehavior.floating,
-    margin: inTop!=null
+    margin: inTop != null
         ? EdgeInsets.only(
             bottom: MediaQuery.of(context).size.height - 160,
             left: 10,
@@ -20,7 +21,7 @@ SnackBar snackBarFloating({
     ),
     content: Row(
       children: [
-        Icon(Icons.check, color: Colors.green),
+        CheckIcon(color: Colors.green),
         SizedBox(width: 4),
         Text(
           text,

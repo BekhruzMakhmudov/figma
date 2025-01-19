@@ -1,5 +1,5 @@
 import 'package:figma/screen/form/change_password_screen.dart';
-import 'package:figma/screen/form/sign_up_screen.dart';
+import 'package:figma/screen/form/sign_in_screen.dart';
 import 'package:figma/screen/house/favorite_houses_screen.dart';
 import 'package:figma/screen/house/my_houses_list_screen.dart';
 import 'package:figma/screen/period/available_period_screen.dart';
@@ -38,5 +38,5 @@ final mapProfileScreen={
   ProfileOption.favorite:FavoriteHousesScreen(),
   ProfileOption.review:ReviewScreen(),
   ProfileOption.changePassword:ChangePasswordScreen(),
-  ProfileOption.logOut:SignUpScreen(),
+  ProfileOption.logOut:SignInScreen(),
 };

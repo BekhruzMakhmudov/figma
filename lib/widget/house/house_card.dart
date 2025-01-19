@@ -1,6 +1,7 @@
 import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/user_data.dart';
 import 'package:figma/screen/house/house_detail_screen.dart';
+import 'package:figma/widget/check_icon.dart';
 import 'package:figma/widget/house/house_property.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/widget/text/icon_text.dart';
@@ -68,11 +69,15 @@ class _HouseCardState extends State<HouseCard> {
                   Positioned(
                     bottom: 8,
                     left: 7,
-                    child: IconText(
-                      icon: Icons.check_circle,
-                      iconColor: Colors.blue,
-                      text: "Verified",
-                      textColor: Colors.white,
+                    child: Row(
+                      children: [
+                        CheckIcon(color: Colors.blue),
+                        SizedBox(width: 4),
+                        Text(
+                          'Verified',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
                     ),
                   ),
                 if (widget.houseModel.isVerified!)
