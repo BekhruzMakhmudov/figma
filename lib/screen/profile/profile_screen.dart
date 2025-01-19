@@ -83,6 +83,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
+            if (widget.userModel.housesList.isEmpty)
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 8),
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.red.shade300,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Reminder',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      'You can’t Knock until you upload your accommodation',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 23,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ...ProfileOption.values.map(
               (option) => ListTileShadow(
                 title: mapProfileString[option]!,

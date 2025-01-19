@@ -64,7 +64,7 @@ class _HouseCardState extends State<HouseCard> {
                       ),
                     ),
                   ),
-                if (widget.houseModel.isVerified)
+                if (widget.houseModel.isVerified!)
                   Positioned(
                     bottom: 8,
                     left: 7,
@@ -75,7 +75,7 @@ class _HouseCardState extends State<HouseCard> {
                       textColor: Colors.white,
                     ),
                   ),
-                if (widget.houseModel.isVerified)
+                if (widget.houseModel.isVerified!)
                   Positioned(
                     bottom: 8,
                     right: 9,
@@ -86,7 +86,7 @@ class _HouseCardState extends State<HouseCard> {
                       textColor: Colors.white,
                     ),
                   ),
-                if (!widget.houseModel.isVerified)
+                if (!widget.houseModel.isVerified!)
                   Positioned(
                     bottom: 8,
                     left: 7,

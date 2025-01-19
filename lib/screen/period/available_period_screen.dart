@@ -3,6 +3,7 @@ import 'package:figma/screen/period/add_period_screen.dart';
 import 'package:figma/screen/profile/profile_screen.dart';
 import 'package:figma/util/get_period_string.dart';
 import 'package:figma/widget/alert_cancel.dart';
+import 'package:figma/widget/snackbar_floating.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:flutter/material.dart';
 
@@ -55,38 +56,20 @@ class _AvailablePeriodScreenState extends State<AvailablePeriodScreen> {
                                 onPressed: () {
                                   setState(() {
                                     house.isPublished = !house.isPublished;
-                                    ScaffoldMessenger.of(context).clearSnackBars();
+                                    ScaffoldMessenger.of(context)
+                                        .clearSnackBars();
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: Theme.of(context)
-                                            .colorScheme
-                                            .surface,
-                                        behavior: SnackBarBehavior.floating,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                        content: Row(
-                                          children: [
-                                            Icon(Icons.check,
-                                                color: Colors.green),
-                                            SizedBox(width: 4),
-                                            Text(
-                                              'House ${house.isPublished ? '' : 'un'}published successfully',
-                                              style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .onSurface,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                      snackBarFloating(
+                                        context: context,
+                                        text:
+                                            'House ${house.isPublished ? '' : 'un'}published successfully',
                                       ),
                                     );
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.white,
+                                  padding: EdgeInsets.all(8),
                                   backgroundColor: house.isPublished
                                       ? Colors.blue
                                       : Colors.red,

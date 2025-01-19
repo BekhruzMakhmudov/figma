@@ -34,6 +34,8 @@ final mapDetailIcon = {
 List<HouseModel> houses = [
   HouseModel(
     isVerified: true,
+    type: TypeAccommodation.apartment,
+    size: 345,
     district: 'Schoneberg',
     city: 'Berlin',
     country: 'Germany',
@@ -80,6 +82,8 @@ List<HouseModel> houses = [
   ),
   HouseModel(
     isVerified: true,
+    type: TypeAccommodation.apartment,
+    size: 345,
     district: 'Schoneberg',
     city: 'Berlin',
     country: 'Germany',
@@ -113,6 +117,8 @@ List<HouseModel> houses = [
   ),
   HouseModel(
     isVerified: false,
+    type: TypeAccommodation.apartment,
+    size: 345,
     district: 'Schoneberg',
     city: 'Berlin',
     country: 'Germany',
@@ -150,6 +156,8 @@ List<HouseModel> houses = [
   ),
   HouseModel(
     isVerified: false,
+    type: TypeAccommodation.apartment,
+    size: 345,
     district: 'Schoneberg',
     city: 'Berlin',
     country: 'Germany',

@@ -14,7 +14,7 @@ final Map<StatusFilters, String> mapStatusFilters = {
   StatusFilters.deal: 'Deal'
 };
 
-enum Accommodation{
+enum TypeAccommodation{
   villa,
   apartment,
   mansion,
@@ -23,13 +23,13 @@ enum Accommodation{
   detached,
 }
 
-final mapAccommodation = {
-  Accommodation.villa:'Villa',
-  Accommodation.apartment:'Apartment',
-  Accommodation.mansion:'Mansion',
-  Accommodation.manor:'Manor',
-  Accommodation.house:'House',
-  Accommodation.detached:'Detached House',
+final mapTypeAccommodation = {
+  TypeAccommodation.villa:'Villa',
+  TypeAccommodation.apartment:'Apartment',
+  TypeAccommodation.mansion:'Mansion',
+  TypeAccommodation.manor:'Manor',
+  TypeAccommodation.house:'House',
+  TypeAccommodation.detached:'Detached House',
 };
 
 enum AmenityFilters{

@@ -22,8 +22,10 @@ class HouseModel {
   final String about;
   final String rules;
   final StatusFilters? status;
+  final TypeAccommodation type;
+  final int size;
   final Color? image;
-  bool isVerified;
+  bool? isVerified;
   bool isFavorite;
   bool isPublished;
   List<AmenityFilters> amenities;
@@ -42,6 +44,8 @@ class HouseModel {
     required this.rooms,
     required this.about,
     required this.rules,
+    required this.type,
+    required this.size,
     this.status,
     this.image,
     this.amenities = const [],

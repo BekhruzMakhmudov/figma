@@ -2,6 +2,7 @@ import 'package:figma/data/house_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/screen/form/filter_screen.dart';
 import 'package:figma/widget/house/house_card.dart';
+import 'package:figma/widget/snackbar_floating.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 
@@ -59,6 +60,15 @@ class _HousesScreenState extends State<HousesScreen> {
                             houses[index].isFavorite =
                                 !houses[index].isFavorite;
                           });
+                          ScaffoldMessenger.of(context).clearSnackBars();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            snackBarFloating(
+                              context: context,
+                              text:
+                                  '${houses[index].isFavorite ? 'Added to' : 'Removed from'} your favourites',
+                              inTop: true,
+                            ),
+                          );
                         },
                       );
                     },

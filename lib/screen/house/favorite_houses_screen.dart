@@ -1,8 +1,10 @@
 import 'package:figma/data/house_data.dart';
 import 'package:figma/widget/house/house_card.dart';
+import 'package:figma/widget/snackbar_floating.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/user_data.dart';
+
 class FavoriteHousesScreen extends StatefulWidget {
   const FavoriteHousesScreen({super.key});
 
@@ -13,7 +15,9 @@ class FavoriteHousesScreen extends StatefulWidget {
 class _FavoriteHousesScreenState extends State<FavoriteHousesScreen> {
   @override
   Widget build(BuildContext context) {
-    final favorites = houses.where((house) => house.isFavorite && house.owner!=users[0]).toList();
+    final favorites = houses
+        .where((house) => house.isFavorite && house.owner != users[0])
+        .toList();
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(),
@@ -54,6 +58,14 @@ class _FavoriteHousesScreenState extends State<FavoriteHousesScreen> {
                             favorites[index].isFavorite =
                                 !favorites[index].isFavorite;
                           });
+                          ScaffoldMessenger.of(context).clearSnackBars();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            snackBarFloating(
+                              context: context,
+                              text: 'Removed from your favourites',
+                              inTop: true,
+                            ),
+                          );
                         },
                       ),
                     ),

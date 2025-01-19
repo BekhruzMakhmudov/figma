@@ -81,7 +81,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         label: Text(
                           mapStatusFilters[statusList[index]]!,
                           style: TextStyle(
-                            color: statusSelected[index] ? Colors.white : null,
+                            color: Colors.white,
                           ),
                         ),
                         showCheckmark: false,
@@ -92,6 +92,8 @@ class _FilterScreenState extends State<FilterScreen> {
                           });
                         },
                         selectedColor: Colors.blue,
+                        backgroundColor: Colors.blue.withAlpha(70),
+                        side: BorderSide.none,
                       ),
                     );
                   },
@@ -159,7 +161,7 @@ class _FilterScreenState extends State<FilterScreen> {
               Expansion(
                 text: 'Type',
                 children: [
-                  ...mapAccommodation.values.map((text) => CheckBox(text: text))
+                  ...mapTypeAccommodation.values.map((text) => CheckBox(text: text))
                 ],
               ),
               // Rooms Section
