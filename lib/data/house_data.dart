@@ -78,7 +78,7 @@ List<HouseModel> houses = [
         "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation.",
     reviews: reviews,
     status: StatusFilters.iKnocked,
-    image: Colors.brown,
+    image: Colors.grey,
   ),
   HouseModel(
     isVerified: true,
@@ -181,6 +181,6 @@ List<HouseModel> houses = [
     rules:
         "Excellent, open and calm 2 room loft in the energetic zone of Prenzlauer Berg with extraordinary shopping, bistros, eateries and open transportation.",
     reviews: reviews,
-    image: Colors.grey,
+    image: Colors.brown,
   ),
 ];

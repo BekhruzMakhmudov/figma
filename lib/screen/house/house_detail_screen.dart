@@ -1,7 +1,7 @@
-import 'package:figma/data/filter_data.dart';
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/model/house_model.dart';
 import 'package:figma/util/get_period_string.dart';
+import 'package:figma/widget/chip_status.dart';
 import 'package:figma/widget/house/house_category.dart';
 import 'package:figma/widget/house/house_property.dart';
 import 'package:figma/widget/house/room_card.dart';
@@ -41,14 +41,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
             if (widget.houseModel.status != null)
               Padding(
                 padding: const EdgeInsets.only(bottom: 6),
-                child: Chip(
-                  padding: EdgeInsets.zero,
-                  backgroundColor: Colors.blue,
-                  label: Text(
-                    mapStatusFilters[widget.houseModel.status]!,
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
+                child: ChipStatus(status: widget.houseModel.status!),
               ),
             if (!widget.houseModel.isVerified! &&
                 widget.houseModel.owner != users[0])

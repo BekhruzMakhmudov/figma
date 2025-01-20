@@ -18,17 +18,16 @@ class FormButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          backgroundColor: (isReset == null) ? Colors.blue : Colors.black12,
+          backgroundColor: (isReset == null) ? Colors.blue : Colors.white60,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
         ),
         child: Text(
           text,
-          style: Theme.of(context)
-              .textTheme
-              .bodyLarge
-              ?.copyWith(color: Colors.white),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: (isReset == null) ? Colors.white : Colors.black,
+              ),
         ),
       ),
     );

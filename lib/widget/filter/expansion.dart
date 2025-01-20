@@ -7,13 +7,19 @@ class Expansion extends StatelessWidget {
   const Expansion({super.key, required this.text, required this.children});
   @override
   Widget build(BuildContext context) {
-    return ExpansionTile(
-      title: HeaderText(
-        text:text,
-        isLarge: false,
-        isBold: true,
-      ),
-      children: children,
+    return Column(
+      children: [
+        ExpansionTile(
+          shape: Border(),
+          title: HeaderText(
+            text:text,
+            isLarge: false,
+            isBold: true,
+          ),
+          children: children,
+        ),
+        Divider(),
+      ],
     );
   }
 }

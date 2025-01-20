@@ -1,6 +1,7 @@
 import 'package:figma/frame/form_frame.dart';
 import 'package:figma/screen/form/forgot_password_screen.dart';
 import 'package:figma/screen/form/sign_up_screen.dart';
+import 'package:figma/widget/form/form_button.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/form/social_button.dart';
 import 'package:flutter/material.dart';
@@ -124,20 +125,9 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ),
             const Spacer(flex: 3),
-            ElevatedButton(
-              onPressed: _validateAndSignIn,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                minimumSize: const Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: HeaderText(
-                text: 'Sign in',
-                isLarge: false,
-                color: Colors.white,
-              ),
+            FormButton(
+              onTap: _validateAndSignIn,
+              text: 'Sign in',
             ),
             const Spacer(flex: 3),
             Row(
