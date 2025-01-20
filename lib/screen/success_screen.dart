@@ -1,3 +1,4 @@
+import 'package:figma/widget/form/form_button.dart';
 import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {
@@ -34,27 +35,16 @@ class SuccessScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () => (nextScreen == null)
+            FormButton(
+              onTap: () => (nextScreen == null)
                   ? Navigator.of(context).pop()
                   : Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => nextScreen!),
                     ),
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-                backgroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: Text(
-                buttonText,
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              text: buttonText,
+              colorText: Colors.blue,
+              background: Colors.white,
             ),
           ],
         ),

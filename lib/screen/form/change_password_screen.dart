@@ -1,5 +1,6 @@
 import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/screen/success_screen.dart';
+import 'package:figma/widget/form/form_button.dart';
 import 'package:figma/widget/text/header_text.dart';
 import 'package:figma/widget/form/requirement_password.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       index: 3,
       appBar: AppBar(
         title: HeaderText(
-          text:"Change password",
+          text: "Change password",
           isLarge: false,
           isBold: true,
         ),
@@ -40,49 +41,37 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       body: Form(
         key: _formKey,
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Spacer(flex: 2),
-              passwordFormField("Current Password", _oldPasswordController),
-              Spacer(flex: 2),
-              RequirementPassword(text: _newPasswordController.text),
-              Spacer(flex: 2),
-              passwordFormField("New Password", _newPasswordController),
-              Spacer(flex: 1),
-              passwordFormField("Confirm Password", _confirmPasswordController),
-              Spacer(flex: 4),
-              ElevatedButton(
-                onPressed: () {
-                  if (isValid) {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => SuccessScreen(
-                          text: "Password has been changed successfully",
-                          buttonText: "Back to profile",
-                        ),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Spacer(flex: 2),
+            passwordFormField("Current Password", _oldPasswordController),
+            Spacer(flex: 2),
+            RequirementPassword(text: _newPasswordController.text),
+            Spacer(flex: 2),
+            passwordFormField("New Password", _newPasswordController),
+            Spacer(flex: 1),
+            passwordFormField("Confirm Password", _confirmPasswordController),
+            Spacer(flex: 4),
+            FormButton(
+              onTap: () {
+                if (isValid) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => SuccessScreen(
+                        text: "Password has been changed successfully",
+                        buttonText: "Back to profile",
                       ),
-                    );
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
-                  backgroundColor: isValid ? Colors.blue : Colors.grey,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Text(
-                  "Continue",
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-              ),
-              Spacer(flex: 6),
-            ],
-          ),
+                    ),
+                  );
+                }
+              },
+              background: isValid ? Colors.blue : Colors.blue.withAlpha(60),
+              text: "Continue",
+            ),
+            Spacer(flex: 6),
+          ],
         ),
+      ),
     );
   }
 
@@ -92,7 +81,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       controller: controller,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Password is required';
+          return 'Field is required';
         }
         String pattern = r'^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$';
         RegExp regExp = RegExp(pattern);
@@ -126,7 +115,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         }
       },
       decoration: InputDecoration(
-        border: OutlineInputBorder(),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
         suffixIcon: IconButton(
           icon: Icon(
             mapObscure[label]! ? Icons.visibility_off : Icons.visibility,

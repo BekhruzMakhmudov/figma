@@ -290,7 +290,8 @@ class _FilterScreenState extends State<FilterScreen> {
               child: FormButton(
                 text: "Reset Filters",
                 onTap: () {},
-                isReset: true,
+                colorText: Colors.black,
+                background: Colors.white60,
               ),
             ),
           ],
