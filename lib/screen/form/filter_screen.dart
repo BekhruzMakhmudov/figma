@@ -51,8 +51,7 @@ class _FilterScreenState extends State<FilterScreen> {
         ),
         centerTitle: false,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.close, size: 30),
+          CloseButton(
             onPressed: () => Navigator.pushReplacement(
               context,
               MaterialPageRoute(
