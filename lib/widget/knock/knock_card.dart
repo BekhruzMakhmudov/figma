@@ -22,7 +22,7 @@ class _KnockCardState extends State<KnockCard> {
   bool isExpanded = true;
   @override
   Widget build(BuildContext context) {
-    String text = knockStatusSubtitle[widget.knockModel.status]!;
+    String text = widget.knockModel.status.subtitle;
     final owner = widget.knockModel.house.owner;
     if (widget.knockModel.status == KnockStatus.declined) {
       text += " ${owner.name}";
@@ -99,7 +99,7 @@ class _KnockCardState extends State<KnockCard> {
         SizedBox(height: 8),
         KnockContent(knockModel: widget.knockModel),
         SizedBox(height: 8),
-        if (knockStatusConfirm[widget.knockModel.status] != null)
+        if (widget.knockModel.status.confirm.isNotEmpty)
           ElevatedButton(
             onPressed: () {
               if (widget.knockModel.status == KnockStatus.exchanged) {
@@ -124,13 +124,13 @@ class _KnockCardState extends State<KnockCard> {
               ),
             ),
             child: Text(
-              knockStatusConfirm[widget.knockModel.status]!,
+              widget.knockModel.status.confirm,
               style: TextStyle(
                 color: Colors.blue[20],
               ),
             ),
           ),
-        if (knockStatusCancel[widget.knockModel.status] != null)
+        if (widget.knockModel.status.cancel.isNotEmpty)
           Center(
             child: TextButton(
               onPressed: () async {
@@ -143,7 +143,7 @@ class _KnockCardState extends State<KnockCard> {
                 );
               },
               child: Text(
-                knockStatusCancel[widget.knockModel.status]!,
+                widget.knockModel.status.cancel,
                 style: TextStyle(color: Colors.red),
               ),
             ),

@@ -75,7 +75,7 @@ class _FilterScreenState extends State<FilterScreen> {
                     return Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: ChipStatus(
-                        status:statusList[index],
+                        status: statusList[index],
                         selected: statusSelected[index],
                         onSelected: (bool selected) {
                           setState(() {
@@ -151,8 +151,8 @@ class _FilterScreenState extends State<FilterScreen> {
             Expansion(
               text: 'Type',
               children: [
-                ...mapTypeAccommodation.values
-                    .map((text) => CheckBox(text: text))
+                ...TypeAccommodation.values
+                    .map((type) => CheckBox(text: type.text))
               ],
             ),
             // Rooms Section
@@ -231,7 +231,9 @@ class _FilterScreenState extends State<FilterScreen> {
             Expansion(
               text: 'Amenities',
               children: [
-                ...amenityName.values.map((text) => CheckBox(text: text))
+                ...AmenityFilters.values.map(
+                  (amenity) => CheckBox(text: amenity.text),
+                ),
               ],
             ),
             // Car Section

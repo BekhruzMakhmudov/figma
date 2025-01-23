@@ -112,13 +112,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ...ProfileOption.values.map(
               (option) => ListTileShadow(
-                title: mapProfileString[option]!,
+                title: option.text,
                 leading: Icon(
-                  mapProfileIcon[option],
+                  option.icon,
                   color: (option == ProfileOption.logOut) ? Colors.red : null,
                 ),
                 color: (option == ProfileOption.logOut) ? Colors.red : null,
-                nextScreen: mapProfileScreen[option]!,
+                nextScreen: option.widget,
                 hasAlert: (option == ProfileOption.logOut) ? true : null,
               ),
             ),

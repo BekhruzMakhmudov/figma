@@ -1,120 +1,56 @@
 import 'package:flutter/material.dart';
 
 enum StatusFilters {
-  knockedYou,
-  iKnocked,
-  negotiation,
-  deal,
-}
+  knockedYou('Knocked you'),
+  iKnocked('I Knocked'),
+  negotiation('Negotiation'),
+  deal('Deal');
 
-final Map<StatusFilters, String> mapStatusFilters = {
-  StatusFilters.knockedYou: 'Knocked you',
-  StatusFilters.iKnocked: 'I Knocked',
-  StatusFilters.negotiation: 'Negotiation',
-  StatusFilters.deal: 'Deal'
-};
+  const StatusFilters(this.text);
+  final String text;
+}
 
 enum TypeAccommodation {
-  villa,
-  apartment,
-  mansion,
-  manor,
-  house,
-  detached,
-}
+  villa('Villa'),
+  apartment('Apartment'),
+  mansion('Mansion'),
+  manor('Manor'),
+  house('House'),
+  detached('Detached House');
 
-final mapTypeAccommodation = {
-  TypeAccommodation.villa: 'Villa',
-  TypeAccommodation.apartment: 'Apartment',
-  TypeAccommodation.mansion: 'Mansion',
-  TypeAccommodation.manor: 'Manor',
-  TypeAccommodation.house: 'House',
-  TypeAccommodation.detached: 'Detached House',
-};
+  const TypeAccommodation(this.text);
+  final String text;
+}
 
 enum AmenityFilters {
-  wifi,
-  hifi,
-  workingSpace,
-  fireplace,
-  dishwasher,
-  petFriendly,
-  equippedKids,
-  swimmingPool,
-  garden,
-  playstation,
-  cleaningIncluded,
-  motorcycle,
-  bicycle,
-  satellite,
-  homeCinema,
-  library,
-  lounge,
-  dryer,
-  terrace,
-  gym,
-  balcony,
-  cableTV,
-  netflix,
-  boat,
-  wii,
-  car,
+  wifi(Icons.wifi, 'Wi-Fi'),
+  hifi(Icons.surround_sound, 'Hi-Fi Sound'),
+  workingSpace(Icons.work, 'Working space'),
+  fireplace(Icons.fireplace, 'Fireplace'),
+  dishwasher(Icons.kitchen, 'Dishwasher'),
+  petFriendly(Icons.pets, 'Pet Friendly'),
+  equippedKids(Icons.child_friendly, 'Equipped for kids'),
+  swimmingPool(Icons.pool, 'Swimming pool'),
+  garden(Icons.grass, 'Garden'),
+  playstation(Icons.gamepad, 'Playstation'),
+  cleaningIncluded(Icons.cleaning_services, 'Cleaning included'),
+  motorcycle(Icons.motorcycle, 'Motorcycle'),
+  bicycle(Icons.pedal_bike, 'Bicycle'),
+  satellite(Icons.satellite_alt, 'Satellite'),
+  homeCinema(Icons.movie, 'Home cinema'),
+  library(Icons.local_library, 'Library'),
+  lounge(Icons.weekend, 'Lounge'),
+  dryer(Icons.dry_cleaning, 'Dryer'),
+  terrace(Icons.terrain, 'Terrace'),
+  gym(Icons.fitness_center, 'Gym'),
+  balcony(Icons.balcony, 'Balcony'),
+  cableTV(Icons.cable, 'Cable TV'),
+  netflix(Icons.movie, 'Netflix'),
+  boat(Icons.directions_boat, 'Boat'),
+  wii(Icons.gamepad, 'Wii'),
+  car(Icons.directions_car, 'Car');
+
+  const AmenityFilters(this.icon, this.text);
+  final IconData icon;
+  final String text;
 }
-
-final Map<AmenityFilters, IconData> amenityIcon = {
-  AmenityFilters.wifi: Icons.wifi,
-  AmenityFilters.hifi: Icons.surround_sound,
-  AmenityFilters.workingSpace: Icons.work,
-  AmenityFilters.fireplace: Icons.fireplace,
-  AmenityFilters.dishwasher: Icons.kitchen,
-  AmenityFilters.petFriendly: Icons.pets,
-  AmenityFilters.equippedKids: Icons.child_friendly,
-  AmenityFilters.swimmingPool: Icons.pool,
-  AmenityFilters.garden: Icons.grass,
-  AmenityFilters.playstation: Icons.gamepad,
-  AmenityFilters.cleaningIncluded: Icons.cleaning_services,
-  AmenityFilters.motorcycle: Icons.motorcycle,
-  AmenityFilters.bicycle: Icons.pedal_bike,
-  AmenityFilters.satellite: Icons.satellite_alt,
-  AmenityFilters.homeCinema: Icons.movie,
-  AmenityFilters.library: Icons.local_library,
-  AmenityFilters.lounge: Icons.weekend,
-  AmenityFilters.dryer: Icons.dry_cleaning,
-  AmenityFilters.terrace: Icons.terrain,
-  AmenityFilters.gym: Icons.fitness_center,
-  AmenityFilters.balcony: Icons.balcony,
-  AmenityFilters.cableTV: Icons.cable,
-  AmenityFilters.netflix: Icons.movie,
-  AmenityFilters.boat: Icons.directions_boat,
-  AmenityFilters.wii: Icons.gamepad,
-  AmenityFilters.car: Icons.directions_car,
-};
-
-final Map<AmenityFilters, String> amenityName = {
-  AmenityFilters.wifi: 'Wi-Fi',
-  AmenityFilters.hifi: 'Hi-Fi Sound',
-  AmenityFilters.workingSpace: 'Working space',
-  AmenityFilters.fireplace: 'Fireplace',
-  AmenityFilters.dishwasher: 'Dishwasher',
-  AmenityFilters.petFriendly: 'Pet Friendly',
-  AmenityFilters.equippedKids: 'Equipped for kids',
-  AmenityFilters.swimmingPool: 'Swimming pool',
-  AmenityFilters.garden: 'Garden',
-  AmenityFilters.playstation: 'Playstation',
-  AmenityFilters.cleaningIncluded: 'Cleaning included',
-  AmenityFilters.motorcycle: 'Motorcycle',
-  AmenityFilters.bicycle: 'Bicycle',
-  AmenityFilters.satellite: 'Satellite',
-  AmenityFilters.homeCinema: 'Home cinema',
-  AmenityFilters.library: 'Library',
-  AmenityFilters.lounge: 'Lounge',
-  AmenityFilters.dryer: 'Dryer',
-  AmenityFilters.terrace: 'Terrace',
-  AmenityFilters.gym: 'Gym',
-  AmenityFilters.balcony: 'Balcony',
-  AmenityFilters.cableTV: 'Cable TV',
-  AmenityFilters.netflix: 'Netflix',
-  AmenityFilters.boat: 'Boat',
-  AmenityFilters.wii: 'Wii',
-  AmenityFilters.car: 'Car',
-};

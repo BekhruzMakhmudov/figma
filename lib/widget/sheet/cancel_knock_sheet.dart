@@ -59,14 +59,14 @@ class _CancelKnockSheetState extends State<CancelKnockSheet> {
               isBold: true,
             ),
             const SizedBox(height: 16),
-            ...mapCancelReason.entries.map((entry) => RadioListTile<String>(
-                  title: Text(entry.value),
-                  value: entry.value,
+            ...CancelReason.values.map((entry) => RadioListTile<String>(
+                  title: Text(entry.text),
+                  value: entry.text,
                   groupValue: selectedReason,
                   onChanged: (value) {
                     setState(() {
-                      selectedReason = entry.value;
-                      reason = entry.key;
+                      selectedReason = entry.text;
+                      reason = entry;
                     });
                   },
                 )),

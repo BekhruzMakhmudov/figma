@@ -3,58 +3,66 @@ import 'package:figma/model/knock_model.dart';
 import 'package:flutter/material.dart';
 
 enum KnockStatus {
-  madeByMe,
-  received,
-  declined,
-  negotiation,
-  upcoming,
-  exchanged,
+  madeByMe(
+    title: "Knocks made by Me",
+    subtitle: "You knocked",
+    confirm: "You knocked",
+    cancel: "Cancel",
+  ),
+  received(
+    title: "Knocks received",
+    subtitle: "Knocked",
+    confirm: "Accept",
+    cancel: "Decline",
+  ),
+  declined(
+    title: "Declined",
+    subtitle: "by",
+    confirm: "",
+    cancel: "",
+  ),
+  negotiation(
+    title: "Negotiation",
+    subtitle: "Accepted",
+    confirm: "Deal",
+    cancel: "Decline",
+  ),
+  upcoming(
+    title: "Upcoming Exchanges",
+    subtitle: "Deal",
+    confirm: "",
+    cancel: "Cancel Deal",
+  ),
+  exchanged(
+    title: "Exchanged",
+    subtitle: "Success",
+    confirm: "Rate House",
+    cancel: "",
+  );
+
+  const KnockStatus({
+    required this.title,
+    required this.subtitle,
+    required this.confirm,
+    required this.cancel,
+  });
+  final String title;
+  final String subtitle;
+  final String confirm;
+  final String cancel;
 }
 
 enum CancelReason {
-  planChanged,
-  foundBetter,
-  waitedLong,
-  unreliable,
-  other,
+  planChanged("My plans have changed"),
+  foundBetter("I have found better place"),
+  waitedLong("I waited too long for a respond"),
+  unreliable("I found that member unreliable"),
+  other("Other");
+
+  const CancelReason(this.text);
+  final String text;
 }
 
-final mapCancelReason = {
-  CancelReason.planChanged: "My plans have changed",
-  CancelReason.foundBetter: "I have found better place",
-  CancelReason.waitedLong: "I waited too long for a respond",
-  CancelReason.unreliable: "I found that member unreliable",
-  CancelReason.other: "Other",
-};
-
-final knockStatusTitle = {
-  KnockStatus.madeByMe: "Knocks made by Me",
-  KnockStatus.received: "Knocks received",
-  KnockStatus.declined: "Declined",
-  KnockStatus.negotiation: "Negotiation",
-  KnockStatus.upcoming: "Upcoming Exchanges",
-  KnockStatus.exchanged: "Exchanged",
-};
-final knockStatusSubtitle = {
-  KnockStatus.madeByMe: 'You knocked',
-  KnockStatus.received: 'Knocked',
-  KnockStatus.declined: 'by',
-  KnockStatus.negotiation: 'Accepted',
-  KnockStatus.upcoming: 'Deal',
-  KnockStatus.exchanged: 'Success',
-};
-final knockStatusConfirm = {
-  KnockStatus.madeByMe: 'You knocked',
-  KnockStatus.received: 'Accept',
-  KnockStatus.negotiation: 'Deal',
-  KnockStatus.exchanged: 'Rate House',
-};
-final knockStatusCancel = {
-  KnockStatus.madeByMe: 'Cancel',
-  KnockStatus.received: 'Decline',
-  KnockStatus.negotiation: 'Decline',
-  KnockStatus.upcoming: 'Cancel Deal',
-};
 final knockStatusUserButton = {
   KnockStatus.received: ElevatedButton(
     onPressed: () {},
@@ -149,16 +157,16 @@ List<KnockModel> knocks = [
   ),
 ];
 
-Map<KnockStatus, List<KnockModel>> getMapKnock(){
-  Map<KnockStatus, List<KnockModel>> result={
-    KnockStatus.madeByMe:[],
-    KnockStatus.received:[],
+Map<KnockStatus, List<KnockModel>> getMapKnock() {
+  Map<KnockStatus, List<KnockModel>> result = {
+    KnockStatus.madeByMe: [],
+    KnockStatus.received: [],
     KnockStatus.declined: [],
     KnockStatus.negotiation: [],
     KnockStatus.upcoming: [],
     KnockStatus.exchanged: [],
   };
-  for(var knock in knocks){
+  for (var knock in knocks) {
     result[knock.status]!.add(knock);
   }
   return result;

@@ -20,7 +20,7 @@ class ChipStatus extends StatelessWidget {
             side: BorderSide.none,
             backgroundColor: Colors.blue,
             label: Text(
-              mapStatusFilters[status]!,
+              status.text,
               style: TextStyle(color: Colors.white),
             ),
           )
@@ -31,7 +31,7 @@ class ChipStatus extends StatelessWidget {
             selectedColor: Colors.blue,
             backgroundColor: Colors.blue.withAlpha(70),
             label: Text(
-              mapStatusFilters[status]!,
+              status.text,
               style: TextStyle(color: Colors.white),
             ),
             selected: selected!,

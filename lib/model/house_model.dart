@@ -103,10 +103,10 @@ class HouseModel {
     final entries = detail.entries.toList();
     for (int i = 0; i < entries.length; i++) {
       int value = detail[entries[i].key]!;
-      String text = mapDetailText[entries[i].key]!;
+      String text = entries[i].key.text;
       result.add(
         IconText(
-          icon: mapDetailIcon[entries[i].key]!,
+          icon: entries[i].key.icon,
           text: "$value $text${(value > 1) ? 's' : ''}",
         ),
       );
@@ -130,8 +130,8 @@ class HouseModel {
     for (var i = start; i < amenities.length; i += 2) {
       result.add(
         IconText(
-          icon: amenityIcon[amenities[i]]!,
-          text: amenityName[amenities[i]]!,
+          icon: amenities[i].icon,
+          text: amenities[i].text,
         ),
       );
     }

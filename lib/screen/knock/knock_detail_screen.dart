@@ -35,7 +35,7 @@ class _KnockDetailScreenState extends State<KnockDetailScreen> {
           children: [
             ListTile(
               title: HeaderText(
-                text: knockStatusTitle[widget.status]!,
+                text: widget.status.title,
                 isLarge: true,
                 isBold: true,
               ),

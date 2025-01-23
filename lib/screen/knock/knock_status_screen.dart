@@ -31,7 +31,7 @@ class KnockStatusScreen extends StatelessWidget {
             ),
             ...KnockStatus.values.map(
               (status) => ListTileShadow(
-                title: knockStatusTitle[status]!,
+                title: status.title,
                 count: mapKnock[status]!.length,
                 nextScreen: KnockDetailScreen(
                   status: status,

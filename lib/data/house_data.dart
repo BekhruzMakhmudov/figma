@@ -6,31 +6,17 @@ import 'package:figma/model/house_model.dart';
 import 'package:flutter/material.dart';
 
 enum HouseDetail {
-  guest,
-  bedroom,
-  bed,
-  bathroom,
-  carPlace,
-  carCharger,
+  guest(Icons.person, 'guest'),
+  bedroom(Icons.bed, 'bedroom'),
+  bed(Icons.bed, 'bed'),
+  bathroom(Icons.bathroom, 'bathroom'),
+  carPlace(Icons.local_parking, 'car place'),
+  carCharger(Icons.charging_station, 'car charger');
+
+  const HouseDetail(this.icon, this.text);
+  final IconData icon;
+  final String text;
 }
-
-final mapDetailText = {
-  HouseDetail.guest: 'guest',
-  HouseDetail.bedroom: 'bedroom',
-  HouseDetail.bed: 'bed',
-  HouseDetail.bathroom: 'bathroom',
-  HouseDetail.carPlace: 'car place',
-  HouseDetail.carCharger: 'car charger',
-};
-
-final mapDetailIcon = {
-  HouseDetail.guest: Icons.person,
-  HouseDetail.bedroom: Icons.bed,
-  HouseDetail.bed: Icons.bed,
-  HouseDetail.bathroom: Icons.bathroom,
-  HouseDetail.carPlace: Icons.local_parking,
-  HouseDetail.carCharger: Icons.charging_station
-};
 
 List<HouseModel> houses = [
   HouseModel(
