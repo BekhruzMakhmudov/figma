@@ -44,41 +44,44 @@ class _HouseCardState extends State<HouseCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: widget.houseModel.image,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                if (widget.houseModel.ownerId != users[0].id)
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: IconButton(
-                      onPressed: widget.onTap,
-                      icon: Icon(
-                        widget.houseModel.isFavorite
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                Positioned(
-                  left: 8,
-                  bottom: 4,
+            SizedBox(
+              height: 200,
+              child: GridTile(
+                header: (widget.houseModel.ownerId != users[0].id)
+                    ? Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          onPressed: widget.onTap,
+                          icon: Icon(
+                            widget.houseModel.isFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: Colors.red,
+                          ),
+                        ),
+                      )
+                    : null,
+                footer: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4),
                   child: (widget.houseModel.isVerified!)
                       ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            CheckIcon(color: Colors.blue),
-                            SizedBox(width: 4),
-                            Text(
-                              'Verified',
-                              style: TextStyle(color: Colors.white),
+                            Row(
+                              children: [
+                                CheckIcon(color: Colors.blue),
+                                SizedBox(width: 4),
+                                Text(
+                                  'Verified',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                            IconText(
+                              icon: Icons.star,
+                              iconColor: Colors.yellow,
+                              text: widget.houseModel.averageRating,
+                              textColor: Colors.white,
                             ),
                           ],
                         )
@@ -89,18 +92,13 @@ class _HouseCardState extends State<HouseCard> {
                           textColor: Colors.white,
                         ),
                 ),
-                if (widget.houseModel.isVerified!)
-                  Positioned(
-                    right: 8,
-                    bottom: 4,
-                    child: IconText(
-                      icon: Icons.star,
-                      iconColor: Colors.yellow,
-                      text: widget.houseModel.averageRating,
-                      textColor: Colors.white,
-                    ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: widget.houseModel.image,
+                    borderRadius: BorderRadius.circular(12),
                   ),
-              ],
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(12),
