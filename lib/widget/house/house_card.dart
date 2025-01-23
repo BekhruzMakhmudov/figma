@@ -45,6 +45,7 @@ class _HouseCardState extends State<HouseCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
+              alignment: Alignment.bottomCenter,
               children: [
                 Container(
                   height: 200,
@@ -55,6 +56,7 @@ class _HouseCardState extends State<HouseCard> {
                 ),
                 if (widget.houseModel.ownerId != users[0].id)
                   Positioned(
+                    top: 0,
                     right: 0,
                     child: IconButton(
                       onPressed: widget.onTap,
@@ -66,40 +68,35 @@ class _HouseCardState extends State<HouseCard> {
                       ),
                     ),
                   ),
-                if (widget.houseModel.isVerified!)
-                  Positioned(
-                    bottom: 8,
-                    left: 7,
-                    child: Row(
-                      children: [
-                        CheckIcon(color: Colors.blue),
-                        SizedBox(width: 4),
-                        Text(
-                          'Verified',
-                          style: TextStyle(color: Colors.white),
+                Positioned(
+                  left: 8,
+                  bottom: 4,
+                  child: (widget.houseModel.isVerified!)
+                      ? Row(
+                          children: [
+                            CheckIcon(color: Colors.blue),
+                            SizedBox(width: 4),
+                            Text(
+                              'Verified',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        )
+                      : IconText(
+                          icon: Icons.hourglass_top,
+                          iconColor: Colors.white,
+                          text: "Waiting for verification",
+                          textColor: Colors.white,
                         ),
-                      ],
-                    ),
-                  ),
+                ),
                 if (widget.houseModel.isVerified!)
                   Positioned(
-                    bottom: 8,
-                    right: 9,
+                    right: 8,
+                    bottom: 4,
                     child: IconText(
                       icon: Icons.star,
                       iconColor: Colors.yellow,
                       text: widget.houseModel.averageRating,
-                      textColor: Colors.white,
-                    ),
-                  ),
-                if (!widget.houseModel.isVerified!)
-                  Positioned(
-                    bottom: 8,
-                    left: 7,
-                    child: IconText(
-                      icon: Icons.hourglass_top,
-                      iconColor: Colors.white,
-                      text: "Waiting for verification",
                       textColor: Colors.white,
                     ),
                   ),
@@ -127,7 +124,7 @@ class _HouseCardState extends State<HouseCard> {
                     ),
                   if (widget.inKnock == null)
                     HeaderText(
-                      text:widget.houseModel.fullTitle,
+                      text: widget.houseModel.fullTitle,
                       isBold: true,
                       isLarge: false,
                     ),

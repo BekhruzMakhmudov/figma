@@ -21,6 +21,7 @@ class ProfileCard extends StatelessWidget {
     return Row(
       children: [
         Stack(
+          alignment: Alignment.topRight,
           children: [
             Container(
               width: size,
@@ -32,14 +33,13 @@ class ProfileCard extends StatelessWidget {
               ),
             ),
             if (isActive != null)
-              Positioned(
-                top: 4,
-                right: 2,
+              Padding(
+                padding: const EdgeInsets.all(4),
                 child: Icon(
-                  Icons.circle,
-                  size: 15,
-                  color: (isActive!) ? Colors.greenAccent : Colors.grey,
-                ),
+                    Icons.circle,
+                    size: 15,
+                    color: (isActive!) ? Colors.greenAccent : Colors.grey,
+                  ),
               ),
           ],
         ),
