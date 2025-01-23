@@ -3,6 +3,7 @@ import 'package:figma/screen/house/house_detail_screen.dart';
 import 'package:figma/widget/check_icon.dart';
 import 'package:figma/widget/chip_status.dart';
 import 'package:figma/widget/house/house_property.dart';
+import 'package:figma/widget/text/header_text.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/widget/text/icon_text.dart';
 import 'package:figma/model/house_model.dart';
@@ -114,26 +115,22 @@ class _HouseCardState extends State<HouseCard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          widget.houseModel.cityCountry,
+                          widget.houseModel.address.districtCity,
                           style: TextStyle(
                             color: Colors.grey,
-                            fontSize: 14,
+                            fontSize: 18,
                           ),
                         ),
                         if (widget.houseModel.status != null)
                           ChipStatus(status: widget.houseModel.status!),
                       ],
                     ),
-                  if (widget.inKnock == null) const SizedBox(height: 4),
                   if (widget.inKnock == null)
-                    Text(
-                      widget.houseModel.title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    HeaderText(
+                      text:widget.houseModel.fullTitle,
+                      isBold: true,
+                      isLarge: false,
                     ),
-                  if (widget.inKnock == null) const SizedBox(height: 8),
                   HouseProperty(
                     houseModel: widget.houseModel,
                   ),

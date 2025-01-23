@@ -81,7 +81,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
             ),
             SizedBox(height: 4),
             Text(
-              widget.houseModel.cityCountry,
+              widget.houseModel.address.cityCountry,
               style: TextStyle(fontSize: 16, color: Colors.grey[600]),
             ),
             SizedBox(height: 4),

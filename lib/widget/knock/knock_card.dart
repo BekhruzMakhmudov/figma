@@ -24,8 +24,9 @@ class _KnockCardState extends State<KnockCard> {
   Widget build(BuildContext context) {
     String text = knockStatusSubtitle[widget.knockModel.status]!;
     final owner = widget.knockModel.house.owner;
-    if (widget.knockModel.status == KnockStatus.declined)
+    if (widget.knockModel.status == KnockStatus.declined) {
       text += " ${owner.name}";
+    }
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(8),
@@ -48,21 +49,24 @@ class _KnockCardState extends State<KnockCard> {
             SizedBox(height: 8),
             ProfileCard(
               color: widget.knockModel.house.image!,
-              size: 50,
+              size: 70,
               title: IconText(
                 icon: Icons.calendar_month,
                 text: widget.knockModel.period,
                 iconColor: Colors.blue,
               ),
               subtitle: Text(
-                widget.knockModel.house.title,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                widget.knockModel.house.fullTitle,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
             ),
             SizedBox(height: 8),
             ProfileCard(
               color: owner.avatar,
-              size: 50,
+              size: 70,
               isActive: owner.isActive,
               title: Text(
                 owner.name,
@@ -70,7 +74,6 @@ class _KnockCardState extends State<KnockCard> {
               ),
               button: knockStatusUserButton[widget.knockModel.status],
             ),
-            SizedBox(height: 16),
             if (isExpanded) _buildExpandedContent(),
             Center(
               child: ExpandIcon(
@@ -91,6 +94,7 @@ class _KnockCardState extends State<KnockCard> {
   Widget _buildExpandedContent() {
     return Column(
       children: [
+        SizedBox(height: 8),
         Divider(),
         SizedBox(height: 8),
         KnockContent(knockModel: widget.knockModel),

@@ -1,4 +1,5 @@
 import 'package:figma/data/filter_data.dart';
+import 'package:figma/model/address_model.dart';
 import 'package:figma/model/review_model.dart';
 import 'package:figma/model/room_model.dart';
 import 'package:figma/model/user_model.dart';
@@ -13,9 +14,7 @@ class HouseModel {
   static int nextId = 0;
   final int id;
   final String title;
-  final String district;
-  final String city;
-  final String country;
+  final AddressModel address;
   final int ownerId;
   final Map<HouseDetail, int> detail;
   final List<RoomModel> rooms;
@@ -35,9 +34,7 @@ class HouseModel {
     this.isVerified = false,
     this.isFavorite = false,
     this.isPublished = false,
-    required this.district,
-    required this.city,
-    required this.country,
+    required this.address,
     required this.title,
     required this.ownerId,
     required this.detail,
@@ -53,12 +50,8 @@ class HouseModel {
     this.availablePeriods = const [],
   }) : id = nextId++;
 
-  String get cityCountry {
-    return '$city, $country';
-  }
-
   String get fullTitle {
-    return '$title in $cityCountry';
+    return '$title in ${address.cityCountry}';
   }
 
   Widget get periodRow {

@@ -1,6 +1,7 @@
 import 'package:figma/data/filter_data.dart';
 import 'package:figma/data/review_data.dart';
 import 'package:figma/data/room_data.dart';
+import 'package:figma/model/address_model.dart';
 import 'package:figma/model/house_model.dart';
 import 'package:flutter/material.dart';
 
@@ -36,9 +37,11 @@ List<HouseModel> houses = [
     isVerified: true,
     type: TypeAccommodation.apartment,
     size: 345,
-    district: 'Schoneberg',
-    city: 'Berlin',
-    country: 'Germany',
+    address: AddressModel(
+      district: 'Schoneberg',
+      city: 'Berlin',
+      country: 'Germany',
+    ),
     title: 'Cozy apartments',
     ownerId: 1,
     detail: {
@@ -84,9 +87,11 @@ List<HouseModel> houses = [
     isVerified: true,
     type: TypeAccommodation.apartment,
     size: 345,
-    district: 'Schoneberg',
-    city: 'Berlin',
-    country: 'Germany',
+    address: AddressModel(
+      district: 'Schoneberg',
+      city: 'Berlin',
+      country: 'Germany',
+    ),
     title: 'Cozy apartments',
     ownerId: 0,
     detail: {
@@ -119,9 +124,11 @@ List<HouseModel> houses = [
     isVerified: false,
     type: TypeAccommodation.apartment,
     size: 345,
-    district: 'Schoneberg',
-    city: 'Berlin',
-    country: 'Germany',
+    address: AddressModel(
+      district: 'Schoneberg',
+      city: 'Berlin',
+      country: 'Germany',
+    ),
     title: 'Cozy apartments',
     ownerId: 0,
     detail: {
@@ -158,9 +165,11 @@ List<HouseModel> houses = [
     isVerified: false,
     type: TypeAccommodation.apartment,
     size: 345,
-    district: 'Schoneberg',
-    city: 'Berlin',
-    country: 'Germany',
+    address: AddressModel(
+      district: 'Schoneberg',
+      city: 'Berlin',
+      country: 'Germany',
+    ),
     title: 'Cozy apartments',
     ownerId: 1,
     detail: {
