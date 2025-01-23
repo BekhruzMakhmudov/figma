@@ -1,13 +1,11 @@
 import 'package:figma/screen/house/houses_list_screen.dart';
 import 'package:figma/widget/chip_status.dart';
-import 'package:figma/widget/filter/checkbox.dart';
-import 'package:figma/widget/filter/expansion.dart';
 import 'package:figma/widget/calendar_table.dart';
 import 'package:figma/widget/form/form_button.dart';
 import 'package:figma/widget/text/header_text.dart';
-import 'package:figma/widget/filter/list_tile_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/filter_data.dart';
+import 'package:figma/widget/filter/filter_widgets.dart';
 
 class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});

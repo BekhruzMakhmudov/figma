@@ -2,9 +2,7 @@ import 'package:figma/frame/navigation_frame.dart';
 import 'package:figma/model/house_model.dart';
 import 'package:figma/util/get_period_string.dart';
 import 'package:figma/widget/chip_status.dart';
-import 'package:figma/widget/house/house_category.dart';
-import 'package:figma/widget/house/house_property.dart';
-import 'package:figma/widget/house/room_card.dart';
+import 'package:figma/widget/house/house_detail_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/user_data.dart';
 
