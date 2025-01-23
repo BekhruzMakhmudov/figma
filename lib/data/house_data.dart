@@ -82,12 +82,7 @@ List<HouseModel> houses = [
       HouseDetail.guest: 4,
       HouseDetail.bathroom: 1,
     },
-    availablePeriods: [
-      DateTimeRange(
-        start: DateTime(2021, 10, 15),
-        end: DateTime(2021, 10, 17),
-      ),
-    ],
+    availablePeriods: [],
     rooms: rooms,
     amenities: [
       AmenityFilters.wifi,

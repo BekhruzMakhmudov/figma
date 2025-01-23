@@ -62,10 +62,10 @@ class _HouseCardState extends State<HouseCard> {
                       )
                     : null,
                 footer: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4),
-                  child: (widget.houseModel.isVerified!)
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: (widget.houseModel.isVerified)
                       ? Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
@@ -126,11 +126,24 @@ class _HouseCardState extends State<HouseCard> {
                       isBold: true,
                       isLarge: false,
                     ),
-                  HouseProperty(
-                    houseModel: widget.houseModel,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: HouseProperty(
+                      houseModel: widget.houseModel,
+                    ),
                   ),
-                  if (widget.houseModel.ownerId != users[0].id)
-                    SizedBox(height: 8),
+                  if (widget.houseModel.availablePeriods.isEmpty &&
+                      !widget.houseModel.isFlexible &&
+                      widget.houseModel.ownerId == users[0].id)
+                    IconText(
+                      icon: Icons.info,
+                      text:
+                          'Your dates are over. Modify your dates or set it as flexible',
+                      size: 16,
+                      isExpanded: true,
+                      iconColor: Colors.red,
+                      textColor: Colors.red,
+                    ),
                   if (widget.houseModel.ownerId != users[0].id)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

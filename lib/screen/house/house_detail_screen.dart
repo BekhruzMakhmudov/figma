@@ -41,7 +41,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
                 padding: const EdgeInsets.only(bottom: 6),
                 child: ChipStatus(status: widget.houseModel.status!),
               ),
-            if (!widget.houseModel.isVerified! &&
+            if (!widget.houseModel.isVerified &&
                 widget.houseModel.owner != users[0])
               Text(
                 'You can not Knock until the accommodation is verified',
@@ -67,7 +67,7 @@ class _HouseDetailScreenState extends State<HouseDetailScreen> {
                   WidgetSpan(
                     child: SizedBox(width: 4),
                   ),
-                  if (widget.houseModel.isVerified!)
+                  if (widget.houseModel.isVerified)
                     WidgetSpan(
                       child: Icon(
                         Icons.check_circle,

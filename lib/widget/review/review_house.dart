@@ -22,7 +22,7 @@ class ReviewHouse extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ProfileCard(
               size: 50,
-              color: houseModel.image!,
+              color: houseModel.image,
               title: Text(houseModel.fullTitle),
               subtitle: Row(
                 children: [

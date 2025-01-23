@@ -10,27 +10,29 @@ import '../widget/text/icon_text.dart';
 class HouseModel {
   static int nextId = 0;
   final int id;
-  final String title;
   final AddressModel address;
   final int ownerId;
   final Map<HouseDetail, int> detail;
   final List<RoomModel> rooms;
-  final String about;
-  final String rules;
-  final StatusFilters? status;
   final TypeAccommodation type;
   final int size;
-  final Color? image;
-  bool? isVerified;
+  final Color image;
+  final List<AmenityFilters> amenities;
+  String title;
+  String about;
+  String rules;
+  bool isVerified;
   bool isFavorite;
   bool isPublished;
-  List<AmenityFilters> amenities;
+  bool isFlexible;
+  StatusFilters? status;
   List<ReviewModel> reviews;
   List<DateTimeRange> availablePeriods;
   HouseModel({
     this.isVerified = false,
     this.isFavorite = false,
     this.isPublished = false,
+    this.isFlexible = false,
     required this.address,
     required this.title,
     required this.ownerId,
@@ -41,8 +43,8 @@ class HouseModel {
     required this.type,
     required this.size,
     this.status,
-    this.image,
-    this.amenities = const [],
+    required this.image,
+    required this.amenities,
     this.reviews = const [],
     this.availablePeriods = const [],
   }) : id = nextId++;

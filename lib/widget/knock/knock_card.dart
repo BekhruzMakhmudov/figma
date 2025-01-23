@@ -48,7 +48,7 @@ class _KnockCardState extends State<KnockCard> {
             ),
             SizedBox(height: 8),
             ProfileCard(
-              color: widget.knockModel.house.image!,
+              color: widget.knockModel.house.image,
               size: 70,
               title: IconText(
                 icon: Icons.calendar_month,
