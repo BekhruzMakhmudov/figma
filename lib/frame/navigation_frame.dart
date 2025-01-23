@@ -1,7 +1,7 @@
 import 'package:figma/screen/house/my_houses_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:figma/data/user_data.dart';
-import 'package:figma/screen/navigation_frame_screens.dart';
+import 'package:figma/screen/screens_for_navigation.dart';
 class NavigationFrame extends StatefulWidget {
   final Widget body;
   final PreferredSizeWidget? appBar;

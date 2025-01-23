@@ -1,8 +1,5 @@
 import 'package:figma/data/filter_data.dart';
-import 'package:figma/model/address_model.dart';
-import 'package:figma/model/review_model.dart';
-import 'package:figma/model/room_model.dart';
-import 'package:figma/model/user_model.dart';
+import 'models_for_house.dart';
 import 'package:figma/util/get_average_rating.dart';
 import 'package:figma/util/get_period_string.dart';
 import 'package:flutter/material.dart';
